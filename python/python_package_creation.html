@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Package Creation Guide &mdash; uasal_development_guide  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="UASAL Configuration Management Summary" href="configuration_management.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="python.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uasal_development_guide
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general.html">General Development Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#coding-standards">Coding Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#using-ai-in-content-development">Using AI in Content Development.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#python-packaging">Python Packaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#configuration-practices">Configuration Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#other-notes">Other Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#useful-tools">Useful tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#unit-testing">Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#loggers">Loggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#debuggers">Debuggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#git-lfs">Git LFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#uasal-configuration-management">UASAL Configuration Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#git-flow-overview">Git-Flow Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Git</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../git/git-flow-guide.html">Git-Flow Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/gitlab_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Package Creation Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#making-your-python-package-installable-using-pip">Making your Python package installable using pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reinstalling-a-broken-package">Reinstalling a broken package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_management.html">UASAL Configuration Management Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uasal_development_guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="python.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Python Package Creation Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/python/python_package_creation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="python-package-creation-guide">
+<h1>Python Package Creation Guide<a class="headerlink" href="#python-package-creation-guide" title="Link to this heading"></a></h1>
+<p>Written by Sanchit Sabhlok, Adam Schilperoort, Stephanie Rinaldi and
+Patrick Ingraham on 03/02/2025</p>
+<section id="making-your-python-package-installable-using-pip">
+<h2>Making your Python package installable using pip<a class="headerlink" href="#making-your-python-package-installable-using-pip" title="Link to this heading"></a></h2>
+<p>This guide helps convert a python directory structure into an
+installable package algorithmically. This is for people who have never
+turned a python package into a pip installation and as such does not go
+into the various details and advanced settings/configurations one can
+get into. This is a very basic overview of the process. For a slightly
+deeper dive, a bit more automation see
+<a class="reference external" href="https://lincc-ppt.readthedocs.io/en/stable/source/new_project.html">LINCC</a>
+(Caution: May be for intermediate - advanced users). 1. Create your
+directory structure. I’ve created one that looks like this -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── docs
+├── notebooks
+│   ├── sample_notebook.ipynb
+├── pyproject.toml
+├── README.md
+├── src
+│   ├── package_name
+│   │   ├── source_code.py
+│   │   ├── __init__.py
+│   │   ├── packaged_directory
+│   │   │   └── data.csv
+│   │   └── _version.py
+└── tests
+    └── test.py
+</pre></div>
+</div>
+<p>Here, the <code class="docutils literal notranslate"><span class="pre">notebooks</span></code> contains jupyter notebooks. The <code class="docutils literal notranslate"><span class="pre">src</span></code>
+directory is important to keep the name of as it makes sure that tests
+are run against the installed version of your package rather than the
+files in your package working directory, (For more details, <a class="reference external" href="https://www.pyopensci.org/python-package-guide/package-structure-code/python-package-structure.html#the-src-layout-and-testing">check
+here</a>).
+Lastly, the <code class="docutils literal notranslate"><span class="pre">packaged_directory</span></code> directory can be used to contain any
+data files required for the package. To ensure the data inside can be
+found by python scripts when importing the package, check the
+<code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file setup.</p>
+<ol class="arabic simple" start="2">
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. This file contains the metadata that will
+be used to convert the package into an installation and is the only
+file needed to be written in detail. However, a user doesn’t have to
+start from scratch, there are plenty of template files on the
+internet to choose from. One such template is provided here -</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">build</span><span class="o">-</span><span class="n">system</span><span class="p">]</span>
+<span class="n">requires</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;setuptools&quot;</span><span class="p">,</span> <span class="s2">&quot;setuptools-scm&quot;</span><span class="p">,</span> <span class="s2">&quot;wheel&quot;</span><span class="p">]</span>
+<span class="n">build</span><span class="o">-</span><span class="n">backend</span> <span class="o">=</span> <span class="s2">&quot;setuptools.build_meta&quot;</span>
+
+<span class="p">[</span><span class="n">project</span><span class="p">]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;package_name&quot;</span>
+<span class="n">authors</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">{</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Aa****&quot;</span><span class="p">,</span> <span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;go*****@*****.edu&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Ju****&quot;</span><span class="p">,</span> <span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;ja*****@*****.edu&quot;</span><span class="p">},</span>
+<span class="p">{</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Je****&quot;</span><span class="p">,</span> <span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;ja*****@*****.edu&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="n">maintainers</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">{</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Sa****&quot;</span><span class="p">,</span> <span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;ss******@arizona.edu&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Sample project description.&quot;</span>
+<span class="n">readme</span> <span class="o">=</span> <span class="s2">&quot;README.md&quot;</span>
+<span class="n">license</span> <span class="o">=</span> <span class="p">{</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;GNU GENERAL PUBLIC LICENSE - Version 3&quot;</span> <span class="p">}</span>
+<span class="n">requires</span><span class="o">-</span><span class="n">python</span> <span class="o">=</span> <span class="s2">&quot;&gt;=3.8&quot;</span>
+<span class="n">dependencies</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;astropy&quot;</span><span class="p">]</span>
+
+<span class="n">dynamic</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]</span>
+
+<span class="p">[</span><span class="n">project</span><span class="o">.</span><span class="n">urls</span><span class="p">]</span>
+<span class="n">Homepage</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/uasal/package_name/blob/&lt;branch_name&gt;/README.md&quot;</span>
+<span class="n">Changelog</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/uasal/package_name/blob/&lt;branch_name&gt;/CHANGELOG.md&quot;</span>
+<span class="n">Repository</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/uasal/package_name&quot;</span>
+
+<span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">setuptools</span><span class="p">]</span>
+<span class="n">packages</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">]</span>
+<span class="n">package</span><span class="o">-</span><span class="nb">dir</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;&quot;</span> <span class="o">=</span> <span class="s2">&quot;src&quot;</span> <span class="p">}</span>
+<span class="n">include</span><span class="o">-</span><span class="n">package</span><span class="o">-</span><span class="n">data</span> <span class="o">=</span> <span class="n">true</span>
+
+<span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">setuptools_scm</span><span class="p">]</span>
+<span class="n">write_to</span> <span class="o">=</span> <span class="s2">&quot;src/package_name/_version.py&quot;</span>
+<span class="n">version_scheme</span> <span class="o">=</span> <span class="s2">&quot;post-release&quot;</span>
+<span class="n">local_scheme</span> <span class="o">=</span> <span class="s2">&quot;node-and-date&quot;</span>
+
+<span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">pytest</span><span class="o">.</span><span class="n">ini_options</span><span class="p">]</span>
+<span class="n">testpaths</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s2">&quot;tests&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">coverage</span><span class="o">.</span><span class="n">run</span><span class="p">]</span>
+<span class="n">omit</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;src/package_name/_version.py&quot;</span><span class="p">]</span>
+
+<span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">setuptools</span><span class="o">.</span><span class="n">package</span><span class="o">-</span><span class="n">data</span><span class="p">]</span>
+<span class="s2">&quot;package_name&quot;</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;packaged_directory/**/*&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Make note of which directories are preceded by <code class="docutils literal notranslate"><span class="pre">src</span></code>, and which are
+NOT. Where they aren’t, the root path is assumed to be the src
+directory, automatically handled by the backend build tools.</p>
+<p>Project URLs: The Project URLs contain metadata that is <a class="reference external" href="https://docs.pypi.org/project_metadata/">described
+here</a>. The links here are
+for this specific project, modify them suitably for your project.</p>
+<p>Changelog: CHANGELOG.md is autogenerated from GitHub after making a new
+release, but perhaps won’t exist if the project doesn’t have any
+releases yet Licenses: You can include either text OR a license file if
+you’re including a <code class="docutils literal notranslate"><span class="pre">LICENSE.md</span></code> in the project’s root directory
+Versions: There are strategies to implement a “Git tag” on version
+control, effectively stamping each commit as a new “version” which is
+something git/pip can automatically handle/update. This is called
+“dynamic” version control and that is what is specified by the
+<code class="docutils literal notranslate"><span class="pre">dynamic</span> <span class="pre">=</span> <span class="pre">[&quot;version&quot;]</span></code> in the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file. For more
+details, you can read a <a class="reference external" href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#static-vs-dynamic-metadata">primer article
+here</a>.
+You can also read about <a class="reference external" href="https://semver.org/">Semantic Versioning
+here</a> (Very short summary - Release versions
+should be named MAJOR.MINOR.PATCH).</p>
+<p>If excluding this section -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Repository</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/uasal/package_name&quot;</span>
+
+<span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">setuptools</span><span class="p">]</span>
+<span class="n">packages</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">]</span>
+<span class="n">package</span><span class="o">-</span><span class="nb">dir</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;&quot;</span> <span class="o">=</span> <span class="s2">&quot;src&quot;</span> <span class="p">}</span>
+<span class="n">include</span><span class="o">-</span><span class="n">package</span><span class="o">-</span><span class="n">data</span> <span class="o">=</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>Setup tools will treat the package structure as ‘flat’ which has some
+undesirable behaviour. Check this webpage for a <a class="reference external" href="https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/">slightly deeper dive
+into the
+topic</a>.
+The last line is only needed if including a <code class="docutils literal notranslate"><span class="pre">packaged_directory</span></code> kind
+of directory which includes package data. This must then be specified
+under the <code class="docutils literal notranslate"><span class="pre">[tool.setuptools.package-data]</span></code> heading.</p>
+<ol class="arabic simple" start="3">
+<li><p>Add a couple of files to the <code class="docutils literal notranslate"><span class="pre">src/package_name/</span></code> directories,
+namely <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> and <code class="docutils literal notranslate"><span class="pre">_version.py</span></code>. The code inside
+<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> is -</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">importlib.metadata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">version</span><span class="p">(</span><span class="n">__package__</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_data_path</span><span class="p">():</span>
+    <span class="n">package_root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+    <span class="n">data_path</span> <span class="o">=</span> <span class="n">package_root</span> <span class="o">/</span> <span class="s2">&quot;packaged_directory&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Support data directory not found: </span><span class="si">{</span><span class="n">data_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;get_data_path&quot;</span><span class="p">,</span> <span class="s2">&quot;__version__&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The key thing here is the <code class="docutils literal notranslate"><span class="pre">__all__</span></code> parameter at the bottom is going
+to make any functions inside that dictionary available throughout the
+package no matter where you import from.</p>
+<ol class="arabic simple" start="4">
+<li><p>On the machine you want to install the package, first clone the repo
+-</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="o">&lt;</span><span class="n">your_github_repo_link</span><span class="o">&gt;/&lt;</span><span class="n">git_repo_name</span><span class="o">&gt;.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>The usual caveats on how to clone a repo apply. More importantly, the
+<code class="docutils literal notranslate"><span class="pre">branch</span></code> of the repo you clone and are actively working in at the time
+of installation will be installed as the package if multiple branches
+can be installed. So, for instance to install the package from the
+<code class="docutils literal notranslate"><span class="pre">develop</span></code> branch, after cloning, run -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">develop</span>
+</pre></div>
+</div>
+<p>And then build -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>If you are on a different machine and would like to install the package
+using pip, but do not wish to keep a permanent clone in your file
+system, you can install via, for example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;git+https://github.com/&lt;git_repo_name&gt;.git@&lt;branch_name&gt;&quot;</span>
+</pre></div>
+</div>
+<p>This automatically specifies the branch to be installed from.</p>
+<p>Lastly, while developing the package, you may want to do an “Editable”
+installation, which will prevent you from reinstalling the package over
+and over while you develop it. To do this, you can instead install using
+-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">editable</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>You can check here for more details on <a class="reference external" href="https://setuptools.pypa.io/en/latest/userguide/development_mode.html">the advantages and drawbacks of
+an Editable
+installation</a>
+when the package is in active development.</p>
+<p>That is about it! You can check your installed package by running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="nb">list</span>
+</pre></div>
+</div>
+<p>And this should now show your package in the list of packages installed!</p>
+</section>
+<section id="reinstalling-a-broken-package">
+<h2>Reinstalling a broken package<a class="headerlink" href="#reinstalling-a-broken-package" title="Link to this heading"></a></h2>
+<p>WARNING: The following commands need to be used with caution! It is not
+recommended to use <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span></code> regularly and should only be done when the
+user understands exactly what the command is going to remove.</p>
+<p>If a package is updated and needs to be reinstalled, the following
+commands can be run inside the package directory to do a clean reinstall
+-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">build</span> <span class="n">dist</span> <span class="o">*.</span><span class="n">egg</span><span class="o">-</span><span class="n">info</span>
+<span class="n">pip</span> <span class="n">uninstall</span> <span class="o">&lt;</span><span class="n">config_stp_X</span><span class="o">&gt;</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">reinstall</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>If you are doing this frequently, you can add the following function to
+your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> (or the MacOS equivalent) -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>clean_and_reinstall {
+rm -rf build dist *.egg-info;
+pip uninstall $1;
+pip install --no-cache-dir --force-reinstall .
+}
+</pre></div>
+</div>
+<p>Once you save and source the <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file, you can call this
+function from inside the package directory -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clean_and_reinstall</span> <span class="o">&lt;</span><span class="n">name_of_your_package</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Important note: Make sure to check the <code class="docutils literal notranslate"><span class="pre">branch</span></code> you are working on,
+since that is the branch that will be installed. You can also add a
+print statement to your quick command to check which branch has been
+installed.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="configuration_management.html" class="btn btn-neutral float-right" title="UASAL Configuration Management Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UASAL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

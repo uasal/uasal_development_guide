@@ -1,0 +1,786 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git-Flow Workflow Guide &mdash; uasal_development_guide  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setting Up SSH for GitHub" href="ssh_key_tutorial.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="git.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uasal_development_guide
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general.html">General Development Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#coding-standards">Coding Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#using-ai-in-content-development">Using AI in Content Development.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#python-packaging">Python Packaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#configuration-practices">Configuration Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#other-notes">Other Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#useful-tools">Useful tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#unit-testing">Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#loggers">Loggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#debuggers">Debuggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#git-lfs">Git LFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#uasal-configuration-management">UASAL Configuration Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#git-flow-overview">Git-Flow Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Git</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Git-Flow Workflow Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-information">General Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#repositories">Repositories</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-repository">Creating a Repository</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#forks">Forks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fork-vs-branch">Fork vs Branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#warnings">Warnings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#branches">Branches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#branch-naming">Branch Naming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#branch-types">Branch Types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#merge-methods">Merge Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#merge-commit">Merge Commit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#squash-merging">Squash Merging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#github-overview">GitHub Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pull-requests">Pull Requests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pr-naming">PR Naming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pr-process">PR Process</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#gitlab-overview">GitLab Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#merge-requests">Merge Requests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#relevant-terms">Relevant Terms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mr-naming">MR Naming</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#updating-source-branch">Updating Source Branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mr-process">MR Process</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-resources">Useful Resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trainings">Trainings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-tools">Git Tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitlab_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/python_package_creation.html">Python Package Creation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/configuration_management.html">UASAL Configuration Management Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uasal_development_guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="git.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Git-Flow Workflow Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/git/git-flow-guide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="git-flow-workflow-guide">
+<h1>Git-Flow Workflow Guide<a class="headerlink" href="#git-flow-workflow-guide" title="Link to this heading"></a></h1>
+<p>This document provides information of key information related to
+git-flow practices used within UASAL. This includes general repository
+standards, how to submit changes to protected branches and general git
+practices.An overview of GitHub and GitLab differences and how to create
+a Pull or Merge Request is detailed as well.</p>
+<section id="general-information">
+<h2>General Information<a class="headerlink" href="#general-information" title="Link to this heading"></a></h2>
+<p><em>The following section details the basic information related to git-flow
+that isn’t exclusive to GitHub or GitLab but tied to the generating and
+usage of a repository.</em></p>
+<hr class="docutils" />
+<section id="repositories">
+<h3>Repositories<a class="headerlink" href="#repositories" title="Link to this heading"></a></h3>
+<p>A repository is a location to store and manage items such as documents,
+software, or any other type of data. Both GitHub and GitLab repositories
+allow for version controlling information to assist in traceability with
+using git. Every repository will have at least one or more ‘branches’
+with content at different stages. Refer to the <a class="reference internal" href="#branches"><span class="std std-ref">Branches</span></a>
+section for more information.</p>
+<hr class="docutils" />
+<section id="creating-a-repository">
+<h4>Creating a Repository<a class="headerlink" href="#creating-a-repository" title="Link to this heading"></a></h4>
+<p><em>If creating a new repository under the UASAL organization, use the
+following naming and setting guidelines in place when generating a new
+repo.</em></p>
+<section id="naming">
+<h5>Naming<a class="headerlink" href="#naming" title="Link to this heading"></a></h5>
+<p><em>Repositories should use the following naming guidelines:</em></p>
+<ul class="simple">
+<li><p>Keep repository name short as possible</p></li>
+<li><p>Keep repository name description <em>(while short)</em> to properly indicate
+what the repo contains.</p></li>
+<li><p>Use all lower-case letters <em>when appropriate</em></p></li>
+<li><p>Use <em>snake-case</em></p>
+<ul>
+<li><p>Utilize <em>dashes</em> <code class="docutils literal notranslate"><span class="pre">-</span></code> over <em>underscores</em> <code class="docutils literal notranslate"><span class="pre">_</span></code> to chain words</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="settings">
+<h5>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h5>
+<p><em>Repository baseline settings should be set at the organization level
+and or be based from template repositories (if applicable / available).
+If not, verify the following settings are enabled within the repository
+when generating a new one within UASAL.</em></p>
+<p><strong>General Settings</strong> <em>The following are general settings that are used
+in UASAL repositories. Depending upon the usage and intention of the
+repo, they may require modification.</em></p>
+<ul class="simple">
+<li><p>☐ Verify Default Branch is either <code class="docutils literal notranslate"><span class="pre">main</span></code> or <code class="docutils literal notranslate"><span class="pre">develop</span></code> (depending
+on repo)</p>
+<ul>
+<li><p>If there are active adjustments that are frequent being applied, the
+default branch should be <code class="docutils literal notranslate"><span class="pre">develop</span></code></p></li>
+<li><p>If there are released stable versions for content and less active
+development, the default branch should be <code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
+</ul>
+</li>
+<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Issues</span></code> is turned <strong>ON</strong></p></li>
+<li><p>☐ Check <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">forking</span></code> is either enabled or disabled depending on
+the intent of the repo</p>
+<ul>
+<li><p>Generally <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">forking</span></code> is disabled but dependent on purpose of
+repository</p></li>
+<li><p>Refer to the <a class="reference external" href="#forks">Forks</a> section for more information /
+guidance</p></li>
+</ul>
+</li>
+<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Discussions</span></code> is turned <strong>ON</strong></p></li>
+<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Projects</span></code> is turned <strong>ON</strong></p></li>
+<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">merge</span> <span class="pre">commits</span></code> is turned <strong>ON</strong></p></li>
+<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">squash</span> <span class="pre">merging</span></code> is turned <strong>ON</strong></p></li>
+<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Commit</span> <span class="pre">Message</span></code> under <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">squash</span> <span class="pre">merging</span></code> is
+set to <strong>Pull request title and commit details</strong>.</p></li>
+<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Always</span> <span class="pre">suggest</span> <span class="pre">updating</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">branches</span></code> is turned
+<strong>ON</strong></p></li>
+<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">auto-merge</span></code> is turned <strong>OFF</strong></p></li>
+<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Automatically</span> <span class="pre">delete</span> <span class="pre">head</span> <span class="pre">branches</span></code> is turned <strong>ON</strong></p>
+<ul>
+<li><p>Make sure the <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch if being used in the repository is
+protected so it’s not impacted by this.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Branch Settings</strong> <em>Verify branch rulesets line-up accordingly to the
+following in the ``Branches`` settings category.</em></p>
+<ul class="simple">
+<li><p>☐ Verify a ruleset is applied to <code class="docutils literal notranslate"><span class="pre">main</span></code> branch</p>
+<ul>
+<li><p>Generally want to have <code class="docutils literal notranslate"><span class="pre">main</span></code> setup so a PR is <em>required</em> to push
+content too</p></li>
+<li><p>Adding additional settings for if x amount of reviewers is needed
+depends on the repo content</p></li>
+<li><p>Configuration repositories or other version controlled repos should
+have reviewers required typically</p></li>
+<li><p>If repo is for sharing development (such as public repos) or require
+any content that needs to be strict on change control / versioning
+(such as requirements ), a ruleset should be applied</p></li>
+</ul>
+</li>
+<li><p>☐ Verify a ruleset is applied to <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch</p>
+<ul>
+<li><p>If the <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch being used in the repo, a ruleset to
+require a PR to be made to update <code class="docutils literal notranslate"><span class="pre">develop</span></code> should be applied</p></li>
+<li><p>Similar guidelines listed under for the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch apply to
+<code class="docutils literal notranslate"><span class="pre">develop</span></code> as well</p></li>
+<li><p>The use of a <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch allows pre-testing of features and
+or a combination of features before impacting <code class="docutils literal notranslate"><span class="pre">main</span></code> so that there
+is alway a stable <code class="docutils literal notranslate"><span class="pre">main</span></code> or base to the repository</p></li>
+</ul>
+</li>
+<li><p>☐ Verify both rulesets are <code class="docutils literal notranslate"><span class="pre">Enabled</span></code></p></li>
+<li><p>☐ Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Restrict</span> <span class="pre">deletions</span></code></p></li>
+<li><p>☐ Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Require</span> <span class="pre">linear</span> <span class="pre">history</span></code></p></li>
+<li><p>☐ Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Require</span> <span class="pre">a</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">before</span> <span class="pre">merging</span></code></p></li>
+<li><p>☐ Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Block</span> <span class="pre">force</span> <span class="pre">pushes</span></code></p></li>
+</ul>
+<p><strong>Access Settings</strong> <em>Verify setting up access to the repo to needed
+team members by doing the following under the
+``Collaborators and teams`` option within settings.</em></p>
+<ul class="simple">
+<li><p>☐ <strong>Add</strong> teams via <code class="docutils literal notranslate"><span class="pre">Organization</span> <span class="pre">access</span></code> under <em>Manage access</em> to
+repo as applicable.</p>
+<ul>
+<li><p>Repo owners are encouraged to add entire teams rather than
+individual members.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="forks">
+<h3>Forks<a class="headerlink" href="#forks" title="Link to this heading"></a></h3>
+<p>Forks are similar to clones of a repository but are mainly used for
+collaborating with external organization members. <em>If</em> you are a UASAL
+team member, then when editing or adding a new feature that will be
+merged into the original repository source, you <strong>should generally use a
+branch instead of a fork</strong>.</p>
+<section id="fork-vs-branch">
+<h4>Fork vs Branch<a class="headerlink" href="#fork-vs-branch" title="Link to this heading"></a></h4>
+<p>Use the following breakdowns for considering when to use a fork over a
+branch. Note that UASAL team members are generally encouraged to use
+branches when making/proposing changes.</p>
+<p><strong>Branch:</strong> - Have write access to the original repository - Applying
+quick fixes collaboratively within the same project - Applying /
+developing features collaboratively within the same project - Need to
+synchronize your code with the main repository - Need to have your
+content easily accessible / viewable for members in the same project</p>
+<p><strong>Fork:</strong> - For experimenting / testing items that do not necessary need
+to be collaboratively - <em>Ex.) CI workflow testing, verifying triggers
+for workflow are functional after PR/MR, etc.</em> - Non-critical external
+contributions to the base project - Contributing to an open-source
+project that require changes to be done independently before merging -
+For using the original project as a starting point that you are
+developing independently</p>
+<p>If more information is needed, refer to
+<a class="reference external" href="https://graphite.dev/guides/git-fork-vs-branch">Graphite</a> and a
+related community post on
+<a class="reference external" href="https://github.com/orgs/community/discussions/22846">GitHub</a> for a
+breakdown between the difference between a branch and a fork and when to
+use them.</p>
+</section>
+<section id="warnings">
+<h4>Warnings<a class="headerlink" href="#warnings" title="Link to this heading"></a></h4>
+<p><strong>NOTES:</strong> - You <strong>cannot use</strong> repo secrets if there is a CI process on
+the repository being forked. - Current workflows <strong>will not</strong> function
+in the fork whether inside or outside of a pull/merge request as well. -
+<strong>Forks can become out of date!</strong> Keep forks synced with base repository
+if a fork is needed! Refer to the <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork">GitHub
+Docs</a>
+for additional support.</p>
+<p><em>Refer to the</em> <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks">GitHub
+Docs</a>
+<em>on Forks for more information.</em></p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="branches">
+<span id="id1"></span><h3>Branches<a class="headerlink" href="#branches" title="Link to this heading"></a></h3>
+<p>If there is active development in the repository with multiple
+contributors, there should be both a <code class="docutils literal notranslate"><span class="pre">main</span></code> and a <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch.
+Refer to the <a class="reference internal" href="#branch-types"><span class="std std-ref">Branch Types</span></a> section for more details
+on the functionality / purpose of each branch type.</p>
+<p>Any content that needs to be added whether a fix or a feature needs to
+start on its own branch <strong>before</strong> its merged into develop and/or main
+via a Pull or a Merge Request (<em>depending on if its GitHub or GitLab</em>).
+In special cases for where a <em>‘hotfix’</em> needs to be applied to the main
+branch, it should be based off of the <em>main</em> branch and still go through
+a pull/merge request.</p>
+<p><em>Refer to the</em> <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches">GitHub
+Docs</a>
+<em>for additional information about branches if needed.</em></p>
+<hr class="docutils" />
+<section id="branch-naming">
+<h4>Branch Naming<a class="headerlink" href="#branch-naming" title="Link to this heading"></a></h4>
+<p><em>UASAL has adopted to the following naming convention branches:</em> -
+<strong>``main``</strong> instead of <em>master</em> - <strong>``develop``</strong> instead of <em>dev</em>- <strong>Feature Branches:</strong> <code class="docutils literal notranslate"><span class="pre">username/branch-description</span></code> - <strong>Hotfix
+Branches:</strong> <code class="docutils literal notranslate"><span class="pre">hotfix/fix-name</span></code></p>
+<p>Do <strong>NOT</strong> have the character <code class="docutils literal notranslate"><span class="pre">#</span></code> in the branch name or any other
+special characters that are latex sensitive as this will cause issues
+when it grabs git information. Either drop the issue number call out or
+<em>just</em> have the number in the branch name.</p>
+<p><strong>Example Acceptable Branch Names:</strong> - [x] <code class="docutils literal notranslate"><span class="pre">sfrinaldi/ci-testing</span></code> -
+[x] <code class="docutils literal notranslate"><span class="pre">sfrinaldi/fix-publishing</span></code> - [x] <code class="docutils literal notranslate"><span class="pre">hotfix/ci-compile-addon</span></code></p>
+<section id="naming-overview">
+<h5>Naming Overview<a class="headerlink" href="#naming-overview" title="Link to this heading"></a></h5>
+<p>Some of the following rules are already imposed with git but are listed
+anyways for reference.</p>
+<ol class="arabic simple">
+<li><p><strong>Never</strong> name branches (or anything else) something that is not safe
+for work or you’re not comfortable with all of your colleagues
+seeing.</p></li>
+<li><p><strong>Keep</strong> branch names as short as possible</p></li>
+<li><p><strong>Use</strong> lower-cased letter for branch names</p></li>
+<li><p><strong>Use</strong> dashes over underscores whenever possible</p></li>
+<li><p><strong>Use</strong> main as the main branch / not master</p></li>
+<li><p><strong>Use</strong> develop as the develop branch / not dev_</p></li>
+<li><p><strong>Never</strong> have duplicate main or develop branches</p></li>
+<li><p><strong>Never</strong> use reserved names for branches</p>
+<ol class="arabic simple">
+<li><p><em>Examples: HEAD, FETCH_HEAD, ORIG_HEAD</em></p></li>
+</ol>
+</li>
+</ol>
+<hr class="docutils" />
+</section>
+</section>
+<section id="branch-types">
+<span id="id2"></span><h4>Branch Types<a class="headerlink" href="#branch-types" title="Link to this heading"></a></h4>
+<p><em>Refer to the following diagram to see an overview of how the different
+branches should interact with each other.</em></p>
+<p><img alt="image1" src="../_images/git-flow.drawio.png" /></p>
+<section id="main">
+<h5>Main<a class="headerlink" href="#main" title="Link to this heading"></a></h5>
+<p>The main branch should <strong>never</strong> be committed to directly except for the
+initial commit. Items that are to be added to main should be tested
+previously and reviewed by the necessary parties via a Pull or a Merge
+Request. <em>(Dependent on repository content)</em></p>
+</section>
+<section id="develop">
+<h5>Develop<a class="headerlink" href="#develop" title="Link to this heading"></a></h5>
+<p>The develop branch is a point where multiple features can be merged into
+before main to test the integration. This allows for tasks / features to
+be broken up more for multiple users to work on with limited merge
+conflicts (depending on how its organized). This allows for a
+combination of features to be added and tested before it is <em>released</em>
+into <em>main</em> via a pull or merge request.</p>
+</section>
+<section id="feature-branches">
+<h5>Feature Branches<a class="headerlink" href="#feature-branches" title="Link to this heading"></a></h5>
+<p>A feature branch is your working branch that you are implementing a fix
+or a feature too that will go into the <em>develop</em> branch. This is not to
+be confused with a <em>hotfix</em> branch and is ‘based’ or ‘derived’ from the
+develop branch.</p>
+</section>
+<section id="hotfix-branches">
+<h5>Hotfix Branches<a class="headerlink" href="#hotfix-branches" title="Link to this heading"></a></h5>
+<p>A hotfix branch applies a <em>quick</em> fix to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch and is
+‘<em>derived</em>’ from the main branch instead of the develop branch. This is
+normally for fixing small issues that do not need to increment a new
+release version / tag.</p>
+<p><strong>NOTE</strong>: A pull or merge request is still required for a hotfix branch
+to be applied to the main branch.</p>
+</section>
+</section>
+</section>
+<section id="merge-methods">
+<h3>Merge Methods<a class="headerlink" href="#merge-methods" title="Link to this heading"></a></h3>
+<p>There are a couple different methods of updating branches that require
+either a Pull or a Merge Request in order to go through. Each method
+impacts the git history differently and have their usage.</p>
+<section id="merge-commit">
+<h4>Merge Commit<a class="headerlink" href="#merge-commit" title="Link to this heading"></a></h4>
+<p>Normally a merge commit will be the default option when creating a Pull
+Request and a Merge Request. <strong>All</strong> commits from the <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch
+will be added to the <code class="docutils literal notranslate"><span class="pre">base</span></code> branch that is specified within the Pull /
+Merge Request.</p>
+<p><img alt="image2" src="../_images/merge-commit.drawio.png" /> <em>Example diagram for a Merge Commit.</em></p>
+<p>It is best to ‘<em>pre-squash</em>’ commits that are similar with each other in
+the original <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch before doing a merge commit to keep the
+git history clean / relevant at the top level.</p>
+<p><strong>NOTE:</strong> Notice in the reference diagram for visualizing a merge
+commit, a direct reference to the original <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch that ‘C’
+and ‘D’ came from is not specified.</p>
+<section id="applicable-scenarios">
+<h5>Applicable Scenarios<a class="headerlink" href="#applicable-scenarios" title="Link to this heading"></a></h5>
+<p>The following are acceptable scenarios to choose a merge commit over
+other options:</p>
+<ul class="simple">
+<li><p>Multiple ‘features’ or ‘fixes’ on the same <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch.</p>
+<ul>
+<li><p>Allows for easier reverting per commits relating to features or
+fixes that need troubleshooting still.</p></li>
+</ul>
+</li>
+<li><p>All commit information is desired to be retained.</p></li>
+<li><p>Commit messages are all cleaned up and structured.</p>
+<ul>
+<li><p>No extra commits of ‘fix typos’, etc.</p></li>
+</ul>
+</li>
+<li><p>Repository is not under strictly version controlled / flexible.</p></li>
+</ul>
+<p><strong>NOTE:</strong> Pre-squashing related commits per features, fixes, and files
+edited is highly recommended.</p>
+</section>
+</section>
+<section id="squash-merging">
+<h4>Squash Merging<a class="headerlink" href="#squash-merging" title="Link to this heading"></a></h4>
+<p>In a squash merge, all commits in a <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch are squashed into
+<strong>one</strong> commit. This means the individual commit messages from each
+contributor in that original <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch are combined into
+<strong>one</strong> commit when merging.</p>
+<p><img alt="image3" src="../_images/squash-merge.drawio.png" /> <em>Example diagram for a Squash Merge.</em></p>
+<p><strong>NOTE:</strong> Information will be lost on when specific commits / changes
+were originally made vs when the squash commit was applied. You might
+run into conflict issues if you continue to work on the <code class="docutils literal notranslate"><span class="pre">feature</span></code>
+branch after doing a squash merge. This can be avoided by making sure
+the <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch is deleted after a Merge/Pull Request is
+completed.</p>
+<section id="applicable-scenarios-1">
+<span id="id3"></span><h5>Applicable Scenarios<a class="headerlink" href="#applicable-scenarios-1" title="Link to this heading"></a></h5>
+<ul class="simple">
+<li><p>Repository is under a strict version control protocol.</p></li>
+<li><p>Git History is desired to be ‘cleaned’ / less populated with unrelated
+information.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch that has commits being merged in is planned to
+be deleted after Pull/Merge Request goes through.</p>
+<ul>
+<li><p>Prevents potential future merge conflicts.</p></li>
+</ul>
+</li>
+<li><p>Majority of commits in the <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch in the Pull/Merge
+Request are not necessarily important and were more for saving
+information / work-in-progress commits.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="github-overview">
+<h2>GitHub Overview<a class="headerlink" href="#github-overview" title="Link to this heading"></a></h2>
+<p>Non-export controlled content is hosted in the <a class="reference external" href="https://github.com/uasal">UASAL
+GitHub</a> organization repositories.</p>
+<p>GitHub has a variety of documentation available already on the different
+features available and how to get started. Refer to the <a class="reference external" href="https://docs.github.com/en">GitHub
+Docs</a> if you need more information on
+other items not supplied in this guide.</p>
+<section id="pull-requests">
+<span id="pr-info"></span><h3>Pull Requests<a class="headerlink" href="#pull-requests" title="Link to this heading"></a></h3>
+<p>Pull Requests <em>(PRs)</em> are an equivalent of Merge Requests <em>(MRs)</em> that
+is the term used with GitLab. A Pull Request is a process of requesting
+content to be pulled into another branch <em>(normally a protected one)</em>.</p>
+<p>When creating a new Pull Request, you will see something similar to the
+screenshot provided below. The <code class="docutils literal notranslate"><span class="pre">base</span></code> is the branch you want to push
+your update too. <em>(Equivalent to the ``target`` branch in GitLab)</em> The
+branch you select under the <code class="docutils literal notranslate"><span class="pre">compare</span></code> option is the name of the branch
+with changes you want to apply to the <code class="docutils literal notranslate"><span class="pre">base</span></code> branch. <em>(Equivalent to
+the ``source`` branch for GitLab)</em></p>
+<p><em>For more information, please refer to the</em> <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">GitHub
+Docs</a>
+<em>on Pull Requests for details.</em></p>
+<p><img alt="image4" src="../_images/PR-example.png" /> <em>Example PR screenshot options when selecting to create a new
+pull request on GitHub.</em></p>
+<p><strong>NOTE:</strong> If a Pull Request template is available in the repository,
+always select an appropriate template whenever possible over no template
+if it applies. An example PR template can be found here:
+<a class="reference external" href="https://github.com/uasal/lab_documents/.github/PULL_REQUEST_TEMPLATE/pull_request_template.md">pull_request_template.md</a></p>
+<section id="pr-naming">
+<span id="id4"></span><h4>PR Naming<a class="headerlink" href="#pr-naming" title="Link to this heading"></a></h4>
+<p><em>When creating a new Pull Request, verify the name of the branch is
+included in the title of the PR.</em></p>
+<p>Ex.) <code class="docutils literal notranslate"><span class="pre">Merge</span> <span class="pre">sfrinaldi/sub-class-fix</span> <span class="pre">into</span> <span class="pre">develop</span></code></p>
+</section>
+<section id="pr-process">
+<span id="id5"></span><h4>PR Process<a class="headerlink" href="#pr-process" title="Link to this heading"></a></h4>
+<section id="before-review">
+<h5>Before Review<a class="headerlink" href="#before-review" title="Link to this heading"></a></h5>
+<p>With using the previous information indicated in the above sections for
+<a class="reference internal" href="#pr-naming"><span class="std std-ref">PR Naming</span></a> and general <a class="reference internal" href="#pr-info"><span class="std std-ref">Pull Requests</span></a>,
+create a new Pull Request on GitHub with using the appropriate branches
+for the <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>. <em>If</em> there is still content to be
+added to the branch, select <em>Create draft PR</em> during the PR creation
+process.</p>
+<p><em>Verify the following is done within the PR before review:</em> - [ ]
+<em>Assignees</em> are added within the PR - [ ] <em>Reviewers</em> are added within
+the PR (this can wait if needed until the PR is ready to be reviewed) -
+[ ] Related issues that are tied to the PR are indicated within the
+description of the PR - You can use keywords with the Issue # so they
+will be closed out once PR is pulled in if desired - <strong>Acceptable
+Keywords:</strong> <em>close, closes, closed, fix, fixes, fixed, resolve,
+resolves, resolved</em> - Refer to the Syntax Table provided below for more
+information if you want to use closing syntax - [ ] Relevant <em>Labels</em>
+are added to the PR - [ ] Relevant <em>Projects</em> are added to the PR with
+their Status state - [ ] Any other checks/steps indicated in PR template
+<em>(if used / available in repo)</em> are done</p>
+<p><strong>Syntax Table for guidance:</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Issue Source</p></th>
+<th class="head"><p>Syntax</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Same Repo</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ke</span>
+<span class="pre">yword</span> <span class="pre">#Issue</span></code></p></td>
+<td><p>Closes #0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Differnt Repo</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Keyword</span> <span class="pre">Owne</span>
+<span class="pre">r/Repo#Issue</span></code></p></td>
+<td><p>uasal/example-repo#0</p></td>
+</tr>
+<tr class="row-even"><td><p>Mutiple Issues</p></td>
+<td><p><em>Combine the
+previous
+syntax for
+each issue as
+needed</em></p></td>
+<td><p>Resolves #0, fixes #0, closes
+uasal/example-repo#0</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Table taken from the</em> <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue">GitHub
+Docs</a>
+<em>and modified for examples. Issue source is based in comparison to where
+the Pull Request originates from.</em></p>
+</section>
+<section id="after-review">
+<h5>After Review<a class="headerlink" href="#after-review" title="Link to this heading"></a></h5>
+<p>When Pull Request is ready for review, <em>edit</em> the PR to no longer be a
+draft and add the appropriate reviewers to the PR. A review is needed if
+you are requesting to add content to a <em>protected</em> branch such as
+<code class="docutils literal notranslate"><span class="pre">develop</span></code> or <code class="docutils literal notranslate"><span class="pre">main</span></code>. GitHub adds suggestions for reviewers if you
+are unsure within the Pull Request.</p>
+<p><strong>Make sure to notify the reviewers either by Slacking them or pinging
+them within the PR with using the &#64;username functionality when a PR is
+ready for reviewing.</strong></p>
+<p><em>Once PR is</em> <strong>approved</strong><em>, verify the following:</em> - [ ] All your
+commits are squashed in the way that is reasonable. - Ex.) Squash all
+commits that are editing the same file. - Ex.) Squash all commits that
+are tied together for the same feature / fix being added <em>(if there are
+multiple)</em>. - [ ] The <code class="docutils literal notranslate"><span class="pre">compare</span></code> branch is up to date with the <code class="docutils literal notranslate"><span class="pre">base</span></code>
+branch. - A suggestion to <em>update</em> branch will be present within the PR.
+- Local branch updating can be done instead via rebasing or merging if
+preferred. - Refer to the <a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">Git Cheat Sheet-
+GitHub</a>
+for git commands. - [ ] Edit commit message to a shorten version with
+the details of what features or edits it includes. <em>(If applicable)</em> - [
+] Verify <code class="docutils literal notranslate"><span class="pre">compare</span></code> branch is deleted after PR is successfully pulled
+to the <code class="docutils literal notranslate"><span class="pre">base</span></code> branch. - [ ] Verify / Complete any remaining steps that
+might be indicated within the PR template if a template was used for the
+PR generation.</p>
+</section>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="gitlab-overview">
+<h2>GitLab Overview<a class="headerlink" href="#gitlab-overview" title="Link to this heading"></a></h2>
+<p>Export Control repositories for UASAL will be on
+<a class="reference external" href="https://gitlab.sc.ascendingnode.tech:8443">GitLab</a> instead of
+<a class="reference external" href="https://github.com/uasal">GitHub</a> for compliance. Not all data on
+GitLab will necessary contain EC information but might have future
+intentions of doing so. Some GitHub repositories may be mirrored on
+GitLab but are only mirrored in one direction and still only have one
+source location.</p>
+<p><strong>NOTE:</strong> <a class="reference external" href="openvpn.net/client/">OpenVPN Connect</a> <em>(or equivalent)</em>
+needs to be setup and turned on first before you can access the UASAL
+GitLab projects. Additionally, Export Control Training needs to be
+completed first. Refer to the <a class="reference external" href="https://teledocs.space/docs/stp202501_0005">Onboarding New Team Member
+Guide</a> for more
+information.</p>
+<p>GitLab also has a variety of documentation available like GitHub. Refer
+to the <a class="reference external" href="https://docs.gitlab.com">GitLab Docs</a> for more information on
+anything that is already detailed / specified within this guide. Verify
+the <em>version</em> is the correct one in comparison to the <a class="reference external" href="https://gitlab.sc.ascendingnode.tech:8443/help">UASAL
+GitLab</a>. Link
+supplied above should default to the page with the current version of
+the UASAL GitLab.</p>
+<section id="merge-requests">
+<h3>Merge Requests<a class="headerlink" href="#merge-requests" title="Link to this heading"></a></h3>
+<p>Merge Requests <em>(MRs)</em> are an equivalent of Pull Requests <em>(PRs)</em> that
+is the term used with GitHub. A Merge Request is a process of requesting
+content to be merged into another branch <em>(normally a protected one)</em>.</p>
+<p><strong>NOTE:</strong> Any content change that is desired to be merged into a
+protected branch in a repository <strong>must</strong> go through a MR so content can
+be reviewed and approved.</p>
+<section id="relevant-terms">
+<h4>Relevant Terms<a class="headerlink" href="#relevant-terms" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p><strong>Target Branch:</strong> The branch you want to update content too.</p>
+<ul>
+<li><p>Typically either the dev/develop or the main/master branch.</p></li>
+<li><p>Normally a ‘<em>protected</em>’ branch but doesn’t have to be.</p></li>
+</ul>
+</li>
+<li><p><strong>Source Branch:</strong> The working branch with the content you want to
+merge into the ‘target’ branch.</p>
+<ul>
+<li><p>Normally an ‘<em>unprotected</em>’ branch but doesn’t have to be.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="image5" src="../_images/MR-example.png" /> <em>Example GitLab MR screenshot for creating a new merge
+request.</em></p>
+</section>
+<section id="mr-naming">
+<h4>MR Naming<a class="headerlink" href="#mr-naming" title="Link to this heading"></a></h4>
+<p><em>Use the details provided in the</em> <a class="reference internal" href="#pr-naming"><span class="std std-ref">PR Naming</span></a> <em>section
+for guidance on how to name a MR within GitLab.</em></p>
+</section>
+<section id="updating-source-branch">
+<h4>Updating Source Branch<a class="headerlink" href="#updating-source-branch" title="Link to this heading"></a></h4>
+<p>To keep data history consist, a branch that is being requested to be
+merged into another branch may require to be updated with any content
+that might have been pulled into target branch before the source branch
+was created.</p>
+<p>If linear git history is set in a repository, you will see the following
+warning indicating that the branch needs to be updated:</p>
+<p><img alt="image6" src="../_images/MR-behind-ex.png" /> <em>Example source branch behind notification message in MR.</em></p>
+<p>Depending if you are using a git tool such as Git Kraken or Git Desktop,
+there will be an option to <code class="docutils literal notranslate"><span class="pre">update</span> <span class="pre">branch</span></code> you can use when you have
+your source branch checked out. Or, you can select
+<code class="docutils literal notranslate"><span class="pre">merge</span> <span class="pre">current</span> <span class="pre">branch</span></code> option and select the target branch you want to
+merge into your source branch that you have checked out already.</p>
+<p><em>Refer to the</em> <a class="reference internal" href="#useful-resources"><span class="std std-ref">Useful Resources</span></a> <em>section for
+tutorials on dealing with merge conflicts.</em></p>
+<p><strong>NOTE:</strong> When in doubt, reach out to the <em>reviewers</em> you have selected
+for the MR for assistance if having issues with updating the source
+branch.</p>
+</section>
+<section id="mr-process">
+<h4>MR Process<a class="headerlink" href="#mr-process" title="Link to this heading"></a></h4>
+<p><em>Use the details provided in the</em> <a class="reference internal" href="#pr-process"><span class="std std-ref">PR Process</span></a> <em>section
+for guidance on how a PR should be done and what should be checked
+before and after review.</em></p>
+<p>For information on the <em>closing pattern syntax</em> on GitLab, refer to the
+<a class="reference external" href="https://docs.gitlab.com/user/project/issues/managing_issues/#default-closing-pattern">GitLab
+Docs</a>
+for more details.</p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+<section id="useful-resources">
+<span id="id6"></span><h2>Useful Resources<a class="headerlink" href="#useful-resources" title="Link to this heading"></a></h2>
+<section id="general">
+<h3>General<a class="headerlink" href="#general" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.freecodecamp.org/news/how-to-use-git-best-practices-for-beginners/">Git Best Practices-
+Beginners</a></p></li>
+<li><p><a class="reference external" href="https://www.datacamp.com/tutorial/how-to-resolve-merge-conflicts-in-git-tutorial">Resolving Merge
+Conflicts</a></p></li>
+<li><p><a class="reference external" href="https://teledocs.space/docs/stp202502_0005">Setting up SSH for
+GitHub</a></p></li>
+<li><p><a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">Git Cheat Sheet-
+GitHub</a></p></li>
+<li><p><a class="reference external" href="https://about.gitlab.com/images/press/git-cheat-sheet.pdf">Git Cheat Sheet-
+GitLab</a></p></li>
+<li><p><a class="reference external" href="../.github/PULL_REQUEST_TEMPLATE/pull_request_template.md">Pull Request Template
+Example</a></p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">Pull Requests- GitHub
+Docs</a></p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en">GitHub Docs</a></p></li>
+<li><p><a class="reference external" href="https://docs.gitlab.com">GitLab Docs</a></p>
+<ul>
+<li><p>Verify document version for the GitLab Docs is set to the current
+GitLab version which can be found
+<a class="reference external" href="https://gitlab.sc.ascendingnode.tech:8443/help">here</a>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="trainings">
+<h3>Trainings<a class="headerlink" href="#trainings" title="Link to this heading"></a></h3>
+<p>Refer to the <a class="reference external" href="https://github.com/uasal/lab_documents/new_team_member.md#training-guides">new_team_member</a>
+onboarding guide for a list of git related training videos.</p>
+</section>
+<section id="git-tools">
+<h3>Git Tools<a class="headerlink" href="#git-tools" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">There are a variety of git tools to utilize to make git processes a
+bit more user friendly if not experienced with git. You will have to
+have <a class="reference external" href="https://git-scm.com/downloads">git</a> installed first to used
+any git commands. - <a class="reference external" href="https://www.sourcetreeapp.com/">SourceTree</a> -
+<em>Preferred option over other tools listed</em></div>
+<div class="line">- <a class="reference external" href="https://desktop.github.com/download/">GitHub Desktop</a> -
+<a class="reference external" href="www.gitkraken.com/download/">GitKraken</a> - <strong>NOTE:</strong> Do <strong>not</strong> use
+GitKraken with Export Controlled repositories (GitLab repos) - Git
+Extension Pack (<em>VScode Extension</em>)</div>
+</div>
+<p><strong>NOTE:</strong> Other tools can be utilized as well for interfacing with git,
+<em>however</em>, verify tool is safe to use if utilizing it with Export
+Controlled repos on GitLab. Check with management / EC office if unsure.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="git.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ssh_key_tutorial.html" class="btn btn-neutral float-right" title="Setting Up SSH for GitHub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UASAL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

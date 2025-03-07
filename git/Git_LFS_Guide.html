@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using Git Large File Storage (LFS) &mdash; uasal_development_guide  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using UASAL Git LFS (hosted on stp-lfs)" href="gitlab_lfs.html" />
+    <link rel="prev" title="Setting Up SSH for GitHub" href="ssh_key_tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uasal_development_guide
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general.html">General Development Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#coding-standards">Coding Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#using-ai-in-content-development">Using AI in Content Development.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#python-packaging">Python Packaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#configuration-practices">Configuration Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#other-notes">Other Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#useful-tools">Useful tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#unit-testing">Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#loggers">Loggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#debuggers">Debuggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#git-lfs">Git LFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#uasal-configuration-management">UASAL Configuration Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#git-flow-overview">Git-Flow Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Git</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="git-flow-guide.html">Git-Flow Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Git Large File Storage (LFS)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-files-to-git-lfs-for-the-first-time">Adding files to Git LFS for the first time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-a-repo-with-lfs-support">Working with a repo with LFS support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-limitations-and-recommendations">Usage Limitations and recommendations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gitlab_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/python_package_creation.html">Python Package Creation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/configuration_management.html">UASAL Configuration Management Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uasal_development_guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="git.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Using Git Large File Storage (LFS)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/git/Git_LFS_Guide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-git-large-file-storage-lfs">
+<h1>Using Git Large File Storage (LFS)<a class="headerlink" href="#using-git-large-file-storage-lfs" title="Link to this heading"></a></h1>
+<p>Git LFS is an additional git system which can help you manage
+particularly large files. The true advantage of Git LFS comes from the
+fact that when you clone a repo, you clone the history, so if a 50 MB
+file has been modified 100 times, now you’re looking at a ~ 50 GB
+download. Git LFS allows you to store the iterations on the server,
+without overloading your machine disk space by only downloading the
+checked out version of the file, and pointers to the history. Now, you
+can absolutely just go ahead and follow instructions on the <a class="reference external" href="https://git-lfs.com/">git lfs
+website</a>. These will work, however the notes
+down here also emphasize some additional points/pitfalls so read on if
+you are installing for the first time and want to be extra cautious.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>Installation instructions <a class="reference external" href="https://github.com/git-lfs/git-lfs?utm_source=gitlfs_site&amp;utm_medium=installation_link&amp;utm_campaign=gitlfs#installing">can be found
+here</a>.
+You can also install via Conda (not explicitly mentioned anywhere) using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">git</span> <span class="n">lfs</span>
+</pre></div>
+</div>
+<p>Note: At least on linux, ‘git lfs’ and ‘git-lfs’ result in the same
+functionality.</p>
+<p>After installation, you need to initialize LFS for your git account by
+running -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">lfs</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>You only need to do this ONCE per git account on your machine. At this
+point, LFS should be installed and initialized on your machine. You can
+double check this by running <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">--version</span></code></p>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>The way LFS works is by tracking the file(s) you tell it to track,
+typically using a wildcard expression (as used in shell script) or by
+specifying individual files. These commands are tracked in the
+<code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code> file. Usually, large file tracking means you pick a
+type of file (<code class="docutils literal notranslate"><span class="pre">.fits</span></code>, <code class="docutils literal notranslate"><span class="pre">.csv</span></code>, etc…) and just track all such files
+at once. The important thing is the order you add files in and the order
+in which you enable LFS.</p>
+</section>
+<section id="adding-files-to-git-lfs-for-the-first-time">
+<h2>Adding files to Git LFS for the first time<a class="headerlink" href="#adding-files-to-git-lfs-for-the-first-time" title="Link to this heading"></a></h2>
+<p>This is a tested algorithm to initialize using Git LFS to track ALL
+files of a specific type (<code class="docutils literal notranslate"><span class="pre">*.fits</span></code> in this example) in your entire
+repo, which has previously not been initialized with LFS. For this,
+first remove all files of the type you wish to track from the repo, so
+in this case, remove all fits files from the repo.</p>
+<ol class="arabic">
+<li><p>Navigate to the git repo you would like to add LFS files to.</p></li>
+<li><p><strong>Initialize all submodules</strong> (Recursively by digging into every
+directory). This is to make sure none of these activate/create a
+.gitattributes file.</p></li>
+<li><p>Once everything is initialized, make sure there isn’t a pre-existing
+<code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code> file in the repo.</p></li>
+<li><p>Double check you aren’t tracking any files by running
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">ls-files</span></code>. This should return empty.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">track</span> <span class="pre">&quot;*.fits&quot;</span></code> to start tracking fits files. Then
+check that your tracking command has created a new
+<code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code> file, but with nothing written in it. Or, if you
+already had one, make sure no new line has been added.</p></li>
+<li><p>Add and commit the changes to your <code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code> file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span><span class="n">gitattributes</span><span class="p">;</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Some message here&quot;</span><span class="p">;</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">&lt;</span><span class="n">branch</span> <span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Now copy the fits files you want to upload to git lfs to the
+directory.</p></li>
+<li><p>If you check <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">ls-files</span></code> this should still show up empty
+since you haven’t added any files yet to your git, just the rule and
+copied untracked files. Your <code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code> file should also
+still be empty.</p></li>
+<li><p>Add your fits file to your git using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">&lt;</span><span class="n">fits_file_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Now your <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">ls-files</span></code> and <code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code> should both
+finally be tracking this file.</p>
+</li>
+<li><p>Commit and push. The top of your push block should include an LFS
+statement and look something like this -</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Uploading</span> <span class="n">LFS</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">),</span> <span class="mi">230</span> <span class="n">MB</span> <span class="o">|</span> <span class="mi">21</span> <span class="n">MB</span><span class="o">/</span><span class="n">s</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Enumerating</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">22</span> <span class="n">threads</span>
+<span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Writing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="mi">398</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="mf">398.00</span> <span class="n">KiB</span><span class="o">/</span><span class="n">s</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Total</span> <span class="mi">3</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">1</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="kn">from</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Resolving</span> <span class="n">deltas</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">),</span> <span class="n">completed</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">local</span> <span class="nb">object</span><span class="o">.</span>
+<span class="n">To</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">sanchitsabhlok</span><span class="o">/</span><span class="n">wcc_designdocs</span><span class="o">.</span><span class="n">git</span>
+<span class="mi">305</span><span class="n">b05e</span><span class="o">..</span><span class="n">cee5dfb</span>  <span class="n">develop</span> <span class="o">-&gt;</span> <span class="n">develop</span>
+</pre></div>
+</div>
+<p>And that’s it! Any future <code class="docutils literal notranslate"><span class="pre">*.fits</span></code> files that are added to git should
+be automatically tracked and handled by git lfs. If you <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> a
+directory, you should only get a pointer to the file, not the file
+itself. To download the large file you need to run -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">lfs</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<p>You’ll know this worked because it will trigger a long download. Your
+file structures will look identical, but with real data there. A final
+note, while this workflow is to add a particular type of file, it is
+applicable to individual files as well, i.e. <code class="docutils literal notranslate"><span class="pre">*.fits</span></code> can be replaced
+by something like <code class="docutils literal notranslate"><span class="pre">zodiacal.fits</span></code> to track an individual file.</p>
+</section>
+<section id="working-with-a-repo-with-lfs-support">
+<h2>Working with a repo with LFS support<a class="headerlink" href="#working-with-a-repo-with-lfs-support" title="Link to this heading"></a></h2>
+<p>If you are cloning a git repo that uses LFS from a machine, then after
+cloning the directory, you can initialize git lfs for this new repo with
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">install</span></code> and enable the lfs features for the new repo. Your
+<code class="docutils literal notranslate"><span class="pre">pull</span></code> and <code class="docutils literal notranslate"><span class="pre">commit</span></code> commands should work normally with git. If for
+whatever reason there are issues pulling LFS files, you can explicitly
+run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">lfs</span> <span class="pre">pull</span></code>. For further description, check the <a class="reference external" href="https://www.atlassian.com/git/tutorials/git-lfs#pulling-and-checking-out">Atlassian
+tutorial on Git
+LFS</a>.</p>
+</section>
+<section id="usage-limitations-and-recommendations">
+<h2>Usage Limitations and recommendations<a class="headerlink" href="#usage-limitations-and-recommendations" title="Link to this heading"></a></h2>
+<p>LFS is great but there are limits. You cannot use arbitrary large files.
+There is a <strong>total</strong> 1 GB limit to the total memory AND bandwidth usage.
+The limits depend on your github plan and <a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage">can be found
+here</a>.
+There are also further important clarifications regarding the usage, how
+different file versions are handled and the total bandwidth usage.
+<a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-storage-and-bandwidth-usage">These can be found
+here</a>.</p>
+<p>Essentially, LFS should not be used for very large files unless you have
+a billing plan. Even if you do, its worth exploring alternate options.</p>
+<p>LFS is encouraged to store files that may be required for unit tests,
+especially when you might have a large number of small files. These file
+sizes should still be minimized for faster performance. The reason here
+is due to the large number of individual processes opened for different
+versions of files when files are pulled/cloned. By using LFS, only the
+most recent files are checked out. You can also consider using LFS for
+auto generated artifact files, especially if they are regenerated often.
+This is because these files are usually not tracked and reviewed by
+humans and their size and volume can grow in the background and slow
+performance without any warnings.</p>
+<p>Git LFS can also be <a class="reference external" href="https://www.atlassian.com/git/tutorials/git-lfs#speeding-up-pulls">sped up with explicit
+calls</a>.
+Git can create a batch for large numbers of files and greatly reduce
+speed issues due to process spawning. This does require some config
+rejig -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="o">-</span><span class="n">c</span> <span class="nb">filter</span><span class="o">.</span><span class="n">lfs</span><span class="o">.</span><span class="n">smudge</span><span class="o">=</span> <span class="o">-</span><span class="n">c</span> <span class="nb">filter</span><span class="o">.</span><span class="n">lfs</span><span class="o">.</span><span class="n">required</span><span class="o">=</span><span class="n">false</span> <span class="n">pull</span> <span class="o">&amp;&amp;</span> <span class="n">git</span> <span class="n">lfs</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<p>You can create an alias for yourself for a speedy pull</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global alias.plfs &quot;\!git -c filter.lfs.smudge= -c filter.lfs.required=false pull &amp;&amp; git lfs pull&quot;
+$ git plfs
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ssh_key_tutorial.html" class="btn btn-neutral float-left" title="Setting Up SSH for GitHub" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gitlab_lfs.html" class="btn btn-neutral float-right" title="Using UASAL Git LFS (hosted on stp-lfs)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UASAL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

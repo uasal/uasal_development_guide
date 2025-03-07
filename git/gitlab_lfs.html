@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using UASAL Git LFS (hosted on stp-lfs) &mdash; uasal_development_guide  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../python/python.html" />
+    <link rel="prev" title="Using Git Large File Storage (LFS)" href="Git_LFS_Guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uasal_development_guide
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general.html">General Development Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#coding-standards">Coding Standards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#using-ai-in-content-development">Using AI in Content Development.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#python-packaging">Python Packaging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#configuration-practices">Configuration Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#other-notes">Other Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#useful-tools">Useful tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#unit-testing">Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#loggers">Loggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#debuggers">Debuggers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#git-lfs">Git LFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#uasal-configuration-management">UASAL Configuration Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html#git-flow-overview">Git-Flow Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Git</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="git-flow-guide.html">Git-Flow Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using UASAL Git LFS (hosted on stp-lfs)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-new-user-to-gitlab-with-github-login">Adding new user to gitlab with github login</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#as-user">As user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#as-admin">As admin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#linking-gitlab-lfs-to-github-repo">Linking gitlab lfs to github repo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cloning-a-repo-with-git-lfs">Cloning a repo with git-lfs</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/python_package_creation.html">Python Package Creation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/configuration_management.html">UASAL Configuration Management Summary</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uasal_development_guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="git.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Using UASAL Git LFS (hosted on stp-lfs)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/git/gitlab_lfs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-uasal-git-lfs-hosted-on-stp-lfs">
+<h1>Using UASAL Git LFS (hosted on stp-lfs)<a class="headerlink" href="#using-uasal-git-lfs-hosted-on-stp-lfs" title="Link to this heading"></a></h1>
+<section id="adding-new-user-to-gitlab-with-github-login">
+<h2>Adding new user to gitlab with github login<a class="headerlink" href="#adding-new-user-to-gitlab-with-github-login" title="Link to this heading"></a></h2>
+<section id="as-user">
+<h3>As user<a class="headerlink" href="#as-user" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>New user workflow:</p>
+<ul>
+<li><p>With the VPN active, go to “<a class="reference external" href="http://10.130.30.9/users/sign_in">http://10.130.30.9/users/sign_in</a>” and
+click on “GitHub”</p></li>
+<li><p>This will redirect to a github page asking whther you want to
+“Authorize Stp-lfs Gitlab” (and informing what personal user data it
+will use: Email addresses (read-only))</p></li>
+<li><p>Click “Authorize uasal”</p></li>
+<li><p>This will redirect back to gitlab</p></li>
+<li><p>You might get a notification saying that your account needs to be
+validated by and admin</p></li>
+<li><p>In the meantime, go to
+<a class="reference external" href="http://10.130.30.9/-/user_settings/personal_access_tokens">http://10.130.30.9/-/user_settings/personal_access_tokens</a> and click
+‘Add New Token’:</p>
+<ul>
+<li><p>Give the token a descriptive name (e.g. git-lfs token)</p></li>
+<li><p>Set the latest expiration date you can (a year from today)</p></li>
+<li><p>Scopes: select the ‘read_repository’ and ‘write_repository’ scopes</p></li>
+<li><p>Click ‘Create personal access token’</p></li>
+<li><p><strong>Save the token!</strong> You can’t access it again afterwards</p></li>
+</ul>
+</li>
+<li><p>As an aside, you can see what apps you have authorized to your
+github account under <a class="reference external" href="https://github.com/settings/applications">https://github.com/settings/applications</a> and
+revoke access to any as required.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="as-admin">
+<h3>As admin<a class="headerlink" href="#as-admin" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>An admin needs to go to 10.130.30.9/admin/users/ and check whether any
+users are waiting validation. If so, validate them.</p></li>
+<li><p>An admin also needs to add new users to the lfs/stp_lfs project:</p>
+<ul>
+<li><p>Go to <a class="reference external" href="http://10.130.30.9/lfs/stp_lfs/-/project_members">http://10.130.30.9/lfs/stp_lfs/-/project_members</a>, click on
+‘Invite members’ and type in the (GitHub) usernames of new users</p></li>
+<li><p>For each new user, select the role (e.g. Maintainer) and an optional
+expiration date for the access</p></li>
+<li><p>Click Invite</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="linking-gitlab-lfs-to-github-repo">
+<h2>Linking gitlab lfs to github repo<a class="headerlink" href="#linking-gitlab-lfs-to-github-repo" title="Link to this heading"></a></h2>
+<p>Assuming the git lfs is installed and initialized for you account
+(e.g. <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">git</span> <span class="pre">lfs</span></code> and <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">git</span> <span class="pre">lfs</span></code>)</p>
+<p>Using .fits files as an example.</p>
+<p>Assuming github repository with no existing associated large files. In
+this repository: - Add a new .lsfconfig file containing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">lfs</span><span class="p">]</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://10.130.30.9/lfs/test_stp_lfs.git/info/lfs&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>On the command line in the repository, run:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">lfs</span> <span class="n">track</span> <span class="s2">&quot;*.fits&quot;</span>
+</pre></div>
+</div>
+<p>This will create a .gitattributes file with an entry:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*.</span><span class="n">fits</span> <span class="nb">filter</span><span class="o">=</span><span class="n">lfs</span> <span class="n">diff</span><span class="o">=</span><span class="n">lfs</span> <span class="n">merge</span><span class="o">=</span><span class="n">lfs</span> <span class="o">-</span><span class="n">text</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Add the changes to staging and commit, then push e.g.:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span><span class="n">lsfconfig</span> <span class="o">.</span><span class="n">gitattributes</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Adding git lfs tracking&quot;</span>
+<span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Then add a .fits file, add it to staging and commit, then push. On
+push you will be prompted for username and password:</p>
+<ul>
+<li><p>Username: your github username</p></li>
+<li><p>Password: the personal access token you created earlier</p></li>
+</ul>
+</li>
+</ul>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<ul>
+<li><p>You need to be connected to the vpn / on the UofA network to push /
+pull tracked files, but not otherwise (for regular commits)</p></li>
+<li><p>If you try to push / pull tracked files and are not connected to the
+vpn / on the UofA network the command will hang and you’ll need to
+Ctrl+c it</p></li>
+<li><p>The credentials will not be saved by default, so you will be prompted
+for them every time you push a new lfs file. It is possible to
+configure git to used stored credentials:</p>
+<ul class="simple">
+<li><p>Install git-credential-manager</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">git</span><span class="o">-</span><span class="n">credential</span><span class="o">-</span><span class="n">manager</span>  <span class="c1"># macOS</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">git</span><span class="o">-</span><span class="n">credential</span><span class="o">-</span><span class="n">manager</span>  <span class="c1"># Ubuntu/Debian</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Enable it in git</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">credential</span><span class="o">.</span><span class="n">helper</span> <span class="n">manager</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">~/.git-credentials</span></code> add this line, replacing <code class="docutils literal notranslate"><span class="pre">USERNAME</span></code> and
+<code class="docutils literal notranslate"><span class="pre">PERSONAL_ACCESS_TOKEN</span></code></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">USERNAME</span><span class="p">:</span><span class="n">PERSONAL_ACCESS_TOKEN</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="cloning-a-repo-with-git-lfs">
+<h2>Cloning a repo with git-lfs<a class="headerlink" href="#cloning-a-repo-with-git-lfs" title="Link to this heading"></a></h2>
+<p><strong>You need to be connected to the vpn / on the UofA network</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">uasal</span><span class="o">/&lt;</span><span class="n">REPOSITORY_NAME</span><span class="o">&gt;.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>If you try to clone and are not connected to the vpn / on the UofA
+network, the non lfs file structure will get cloned but the command will
+hang and you’ll need to Ctrl+c it leaving the repository in an odd git
+state.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Git_LFS_Guide.html" class="btn btn-neutral float-left" title="Using Git Large File Storage (LFS)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../python/python.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UASAL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
