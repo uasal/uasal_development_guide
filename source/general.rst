@@ -1,10 +1,3 @@
-UASAL Python Development Guide
-==============================
-
-This guide describes the basic principals how Python software is
-structured inside UASAL. Note that much of this stems from the Pearl and
-Lazuli projects but is generally applicable across the board.
-
 General Development Practices
 -----------------------------
 
@@ -197,5 +190,49 @@ Git LFS
 -------
 
 Git LFS should be used for Large File uploads to git. For further
-information, refer to the `Git LFS
-Guide <https://github.com/uasal/lab_documents/blob/main/computing/Git_LFS_Guide.md>`__.
+information, refer to the 
+`Git LFS Guide <https://github.com/uasal/lab_documents/blob/main/computing/Git_LFS_Guide.md>`__.
+
+UASAL Configuration Management
+------------------------------
+
+Simulations and analysis tools should be structured to accept a
+configuration. In cases where the analyses need to be archived and
+repeatable (which should be the high majority of cases!) then the 
+:doc:`UASAL configuration management approach </python/configuration_management>`
+should be followed.
+
+Git-Flow Overview
+-----------------
+
+General questions relating to git-flow and order of operations can be
+founded in the :doc:`Git-Flow-Guide </git/git-flow-guide>`.
+
+*Information detailed the* :doc:`Git-Flow-Guide </git/git-flow-guide>`
+*include but are not limited to the following:*
+
+- GitHub Overview
+
+  - Pull Request Info, Usage, PR Template Example
+
+- GitLab Overview
+
+  - Merge Request Info, Usage
+
+- Git-Flow Diagram
+
+  - Branch Types Overview
+
+- Git Tools / Resources
+
+  - Applications, Training, GitDocs
+
+- Naming Standards
+
+  - Repositories, Branches, Pull Requests, Merge Requests
+
+- Repository Settings
+
+  - Default Settings to Verify
+
+- Fork Usage Information
