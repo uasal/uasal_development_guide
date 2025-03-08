@@ -4,7 +4,7 @@ Git-Flow Workflow Guide
 This document provides information of key information related to
 git-flow practices used within UASAL. This includes general repository
 standards, how to submit changes to protected branches and general git
-practices.An overview of GitHub and GitLab differences and how to create
+practices. An overview of GitHub and GitLab differences and how to create
 a Pull or Merge Request is detailed as well.
 
 General Information
@@ -23,7 +23,7 @@ A repository is a location to store and manage items such as documents,
 software, or any other type of data. Both GitHub and GitLab repositories
 allow for version controlling information to assist in traceability with
 using git. Every repository will have at least one or more ‘branches’
-with content at different stages. Refer to the :ref:`branches`
+with content at different stages. Refer to the `Branches <#branches>`__ 
 section for more information.
 
 --------------
@@ -62,7 +62,7 @@ when generating a new one within UASAL.*
 in UASAL repositories. Depending upon the usage and intention of the
 repo, they may require modification.*
 
-- ☐ Verify Default Branch is either ``main`` or ``develop`` (depending
+- Verify Default Branch is either ``main`` or ``develop`` (depending
   on repo)
 
   - If there are active adjustments that are frequent being applied, the
@@ -70,8 +70,8 @@ repo, they may require modification.*
   - If there are released stable versions for content and less active
     development, the default branch should be ``main``
 
-- ☐ Verify ``Issues`` is turned **ON**
-- ☐ Check ``Allow forking`` is either enabled or disabled depending on
+- Verify ``Issues`` is turned **ON**
+- Check ``Allow forking`` is either enabled or disabled depending on
   the intent of the repo
 
   - Generally ``Allow forking`` is disabled but dependent on purpose of
@@ -79,24 +79,26 @@ repo, they may require modification.*
   - Refer to the `Forks <#forks>`__ section for more information /
     guidance
 
-- ☐ Verify ``Discussions`` is turned **ON**
-- ☐ Verify ``Projects`` is turned **ON**
-- ☐ Verify ``Allow merge commits`` is turned **ON**
-- ☐ Verify ``Allow squash merging`` is turned **ON**
-- ☐ Verify ``Default Commit Message`` under ``Allow squash merging`` is
+- Verify ``Discussions`` is turned **ON**
+- Verify ``Projects`` is turned **ON**
+- Verify ``Allow merge commits`` is turned **ON**
+- Verify ``Allow squash merging`` is turned **ON**
+- Verify ``Default Commit Message`` under ``Allow squash merging`` is
   set to **Pull request title and commit details**.
-- ☐ Verify ``Always suggest updating pull request branches`` is turned
+- Verify ``Always suggest updating pull request branches`` is turned
   **ON**
-- ☐ Verify ``Allow auto-merge`` is turned **OFF**
-- ☐ Verify ``Automatically delete head branches`` is turned **ON**
+- Verify ``Allow auto-merge`` is turned **OFF**
+- Verify ``Automatically delete head branches`` is turned **ON**
 
   - Make sure the ``develop`` branch if being used in the repository is
     protected so it’s not impacted by this.
 
-**Branch Settings**\  *Verify branch rulesets line-up accordingly to the
-following in the ``Branches`` settings category.*
+**Branch Settings**\  
 
-- ☐ Verify a ruleset is applied to ``main`` branch
+*Verify branch rulesets line-up accordingly to the
+following in the 'Branches' settings category.*
+
+- Verify a ruleset is applied to ``main`` branch
 
   - Generally want to have ``main`` setup so a PR is *required* to push
     content too
@@ -108,7 +110,7 @@ following in the ``Branches`` settings category.*
     any content that needs to be strict on change control / versioning
     (such as requirements ), a ruleset should be applied
 
-- ☐ Verify a ruleset is applied to ``develop`` branch
+- Verify a ruleset is applied to ``develop`` branch
 
   - If the ``develop`` branch being used in the repo, a ruleset to
     require a PR to be made to update ``develop`` should be applied
@@ -118,17 +120,19 @@ following in the ``Branches`` settings category.*
     or a combination of features before impacting ``main`` so that there
     is alway a stable ``main`` or base to the repository
 
-- ☐ Verify both rulesets are ``Enabled``
-- ☐ Verify both rulesets ``Restrict deletions``
-- ☐ Verify both rulesets ``Require linear history``
-- ☐ Verify both rulesets ``Require a pull request before merging``
-- ☐ Verify both rulesets ``Block force pushes``
+- Verify both rulesets are ``Enabled``
+- Verify both rulesets ``Restrict deletions``
+- Verify both rulesets ``Require linear history``
+- Verify both rulesets ``Require a pull request before merging``
+- Verify both rulesets ``Block force pushes``
 
-**Access Settings**\  *Verify setting up access to the repo to needed
+**Access Settings**\ 
+
+Verify setting up access to the repo to needed
 team members by doing the following under the
-``Collaborators and teams`` option within settings.*
+``Collaborators and teams`` option within settings.
 
-- ☐ **Add** teams via ``Organization access`` under *Manage access* to
+- **Add** teams via ``Organization access`` under *Manage access* to
   repo as applicable.
 
   - Repo owners are encouraged to add entire teams rather than
@@ -140,8 +144,9 @@ Forks
 ~~~~~
 
 Forks are similar to clones of a repository but are mainly used for
-collaborating with external organization members. *If* you are a UASAL
-team member, then when editing or adding a new feature that will be
+collaborating with external organization members.
+
+*If* you are a UASAL team member, then when editing or adding a new feature that will be
 merged into the original repository source, you **should generally use a
 branch instead of a fork**.
 
@@ -152,19 +157,21 @@ Use the following breakdowns for considering when to use a fork over a
 branch. Note that UASAL team members are generally encouraged to use
 branches when making/proposing changes.
 
-**Branch:** - Have write access to the original repository - Applying
-quick fixes collaboratively within the same project - Applying /
-developing features collaboratively within the same project - Need to
-synchronize your code with the main repository - Need to have your
-content easily accessible / viewable for members in the same project
+**Branch:** 
 
-**Fork:** - For experimenting / testing items that do not necessary need
-to be collaboratively - *Ex.) CI workflow testing, verifying triggers
-for workflow are functional after PR/MR, etc.* - Non-critical external
-contributions to the base project - Contributing to an open-source
-project that require changes to be done independently before merging -
-For using the original project as a starting point that you are
-developing independently
+- Have write access to the original repository 
+- Applying quick fixes collaboratively within the same project 
+- Applying / developing features collaboratively within the same project 
+- Need to synchronize your code with the main repository 
+- Need to have your content easily accessible / viewable for members in the same project
+
+**Fork:**
+
+- For experimenting / testing items that do not necessary need to be collaboratively 
+- *Ex.) CI workflow testing, verifying triggers for workflow are functional after PR/MR, etc.* 
+- Non-critical external contributions to the base project 
+- Contributing to an open-source project that require changes to be done independently before merging 
+- For using the original project as a starting point that you are developing independently
 
 If more information is needed, refer to
 `Graphite <https://graphite.dev/guides/git-fork-vs-branch>`__ and a
@@ -173,20 +180,18 @@ related community post on
 breakdown between the difference between a branch and a fork and when to
 use them.
 
-Warnings
-^^^^^^^^
+**Warnings**
+^^^^^^^^^^^^
 
-**NOTES:** - You **cannot use** repo secrets if there is a CI process on
-the repository being forked. - Current workflows **will not** function
-in the fork whether inside or outside of a pull/merge request as well. -
-**Forks can become out of date!** Keep forks synced with base repository
-if a fork is needed! Refer to the `GitHub
-Docs <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork>`__
-for additional support.
+**NOTES:** 
 
-*Refer to the* `GitHub
-Docs <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks>`__
-*on Forks for more information.*
+- You **cannot use** repo secrets if there is a CI process on the repository being forked. 
+- Current workflows **will not** function in the fork whether inside or outside of a pull/merge request as well. 
+- **Forks can become out of date!** Keep forks synced with base repository if a fork is needed! 
+
+  - Refer to the `GitHub Docs <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork>`__ for additional support.
+
+*Refer to the* `GitHub Docs <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks>`__ *on Forks for more information.*
 
 --------------
 
@@ -198,7 +203,7 @@ Branches
 
 If there is active development in the repository with multiple
 contributors, there should be both a ``main`` and a ``develop`` branch.
-Refer to the :ref:`branch-types` section for more details
+Refer to the `Branch Types <#branch-types>`__  section for more details
 on the functionality / purpose of each branch type.
 
 Any content that needs to be added whether a fix or a feature needs to
@@ -217,18 +222,23 @@ Docs <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/
 Branch Naming
 ^^^^^^^^^^^^^
 
-*UASAL has adopted to the following naming convention branches:*\  -
-**``main``** instead of *master*\  - **``develop``** instead of *dev*\ 
-- **Feature Branches:** ``username/branch-description`` - **Hotfix
-Branches:** ``hotfix/fix-name``
+*UASAL has adopted to the following naming convention branches:*\  
+
+- ``main`` instead of *master*
+- ``develop`` instead of *dev* 
+- **Feature Branches:** ``username/branch-description`` 
+- **Hotfix Branches:** ``hotfix/fix-name``
 
 Do **NOT** have the character ``#`` in the branch name or any other
 special characters that are latex sensitive as this will cause issues
 when it grabs git information. Either drop the issue number call out or
 *just* have the number in the branch name.
 
-**Example Acceptable Branch Names:** - [x] ``sfrinaldi/ci-testing`` -
-[x] ``sfrinaldi/fix-publishing`` - [x] ``hotfix/ci-compile-addon``
+**Example Acceptable Branch Names:** 
+
+- ``sfrinaldi/ci-testing``
+- ``sfrinaldi/fix-publishing``
+- ``hotfix/ci-compile-addon``
 
 Naming Overview
 '''''''''''''''
@@ -260,6 +270,7 @@ Branch Types
 branches should interact with each other.*
 
 |image1|
+
 
 Main
 ''''
@@ -352,7 +363,9 @@ In a squash merge, all commits in a ``feature`` branch are squashed into
 contributor in that original ``feature`` branch are combined into
 **one** commit when merging.
 
-|image3|\  *Example diagram for a Squash Merge.*
+|image3|\  
+
+*Example diagram for a Squash Merge.*
 
 **NOTE:** Information will be lost on when specific commits / changes
 were originally made vs when the squash commit was applied. You might
@@ -412,7 +425,9 @@ the ``source`` branch for GitLab)*
 Docs <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests>`__
 *on Pull Requests for details.*
 
-|image4| *Example PR screenshot options when selecting to create a new
+|image4| 
+
+*Example PR screenshot options when selecting to create a new
 pull request on GitHub.*
 
 **NOTE:** If a Pull Request template is available in the repository,
@@ -441,24 +456,24 @@ Before Review
 '''''''''''''
 
 With using the previous information indicated in the above sections for
-:ref:`pr-naming` and general :ref:`pr-info`,
+`PR Naming <#pr-naming>`__  and general `Pull Request Info <#pull-requests>`__ ,
 create a new Pull Request on GitHub with using the appropriate branches
 for the ``base`` and ``compare``. *If* there is still content to be
 added to the branch, select *Create draft PR* during the PR creation
 process.
 
-*Verify the following is done within the PR before review:* - [ ]
-*Assignees* are added within the PR - [ ] *Reviewers* are added within
-the PR (this can wait if needed until the PR is ready to be reviewed) -
-[ ] Related issues that are tied to the PR are indicated within the
-description of the PR - You can use keywords with the Issue # so they
-will be closed out once PR is pulled in if desired - **Acceptable
-Keywords:** *close, closes, closed, fix, fixes, fixed, resolve,
-resolves, resolved* - Refer to the Syntax Table provided below for more
-information if you want to use closing syntax - [ ] Relevant *Labels*
-are added to the PR - [ ] Relevant *Projects* are added to the PR with
-their Status state - [ ] Any other checks/steps indicated in PR template
-*(if used / available in repo)* are done
+*Verify the following is done within the PR before review:*
+
+- *Assignees* are added within the PR 
+- *Reviewers* are added within the PR (this can wait if needed until the PR is ready to be reviewed)
+- Related issues that are tied to the PR are indicated within the description of the PR
+
+  - You can use keywords with the Issue # so they will be closed out once PR is pulled in if desired 
+  - **Acceptable Keywords:** *close, closes, closed, fix, fixes, fixed, resolve, resolves, resolved* 
+  - Refer to the Syntax Table provided below for more information if you want to use closing syntax 
+- Relevant *Labels* are added to the PR 
+- Relevant *Projects* are added to the PR with their Status state 
+- Any other checks/steps indicated in PR template *(if used / available in repo)* are done
 
 **Syntax Table for guidance:**
 
@@ -496,21 +511,19 @@ are unsure within the Pull Request.
 them within the PR with using the @username functionality when a PR is
 ready for reviewing.**
 
-*Once PR is* **approved**\ *, verify the following:* - [ ] All your
-commits are squashed in the way that is reasonable. - Ex.) Squash all
-commits that are editing the same file. - Ex.) Squash all commits that
-are tied together for the same feature / fix being added *(if there are
-multiple)*. - [ ] The ``compare`` branch is up to date with the ``base``
-branch. - A suggestion to *update* branch will be present within the PR.
-- Local branch updating can be done instead via rebasing or merging if
-preferred. - Refer to the `Git Cheat Sheet-
-GitHub <https://education.github.com/git-cheat-sheet-education.pdf>`__
-for git commands. - [ ] Edit commit message to a shorten version with
-the details of what features or edits it includes. *(If applicable)* - [
-] Verify ``compare`` branch is deleted after PR is successfully pulled
-to the ``base`` branch. - [ ] Verify / Complete any remaining steps that
-might be indicated within the PR template if a template was used for the
-PR generation.
+*Once PR is* **approved**\ *, verify the following:* 
+
+- All your commits are squashed in the way that is reasonable. 
+
+  - Ex.) Squash all commits that are editing the same file. 
+  - Ex.) Squash all commits that are tied together for the same feature / fix being added *(if there are multiple)*. 
+- The ``compare`` branch is up to date with the ``base`` branch. 
+  - A suggestion to *update* branch will be present within the PR.
+  - Local branch updating can be done instead via rebasing or merging if preferred. 
+  - Refer to the `Git Cheat Sheet-GitHub <https://education.github.com/git-cheat-sheet-education.pdf>`__ for git commands. 
+- Edit commit message to a shorten version with the details of what features or edits it includes. *(If applicable)* 
+- Verify ``compare`` branch is deleted after PR is successfully pulled to the ``base`` branch. 
+- Verify / Complete any remaining steps that might be indicated within the PR template if a template was used for the PR generation.
 
 --------------
 
@@ -564,13 +577,14 @@ Relevant Terms
 
   - Normally an ‘*unprotected*’ branch but doesn’t have to be.
 
-|image5| *Example GitLab MR screenshot for creating a new merge
-request.*
+|image5| 
+
+*Example GitLab MR screenshot for creating a new merge request.*
 
 MR Naming
 ^^^^^^^^^
 
-*Use the details provided in the* :ref:`pr-naming` *section
+*Use the details provided in the* `PR Naming <#pr-naming>`__  *section
 for guidance on how to name a MR within GitLab.*
 
 Updating Source Branch
@@ -592,7 +606,7 @@ your source branch checked out. Or, you can select
 ``merge current branch`` option and select the target branch you want to
 merge into your source branch that you have checked out already.
 
-*Refer to the* :ref:`useful-resources` *section for
+*Refer to the* `Useful Resources <#useful-resources>`__  *section for
 tutorials on dealing with merge conflicts.*
 
 **NOTE:** When in doubt, reach out to the *reviewers* you have selected
@@ -602,8 +616,8 @@ branch.
 MR Process
 ^^^^^^^^^^
 
-*Use the details provided in the* :ref:`pr-process` *section
-for guidance on how a PR should be done and what should be checked
+*Use the details provided in the* `PR Process <#pr-process>`__  *section
+for guidance on how a PR/MR should be done and what should be checked
 before and after review.*
 
 For information on the *closing pattern syntax* on GitLab, refer to the
@@ -655,12 +669,14 @@ Git Tools
 | There are a variety of git tools to utilize to make git processes a
   bit more user friendly if not experienced with git. You will have to
   have `git <https://git-scm.com/downloads>`__ installed first to used
-  any git commands. - `SourceTree <https://www.sourcetreeapp.com/>`__ -
-  *Preferred option over other tools listed*
-| - `GitHub Desktop <https://desktop.github.com/download/>`__ -
-  `GitKraken <www.gitkraken.com/download/>`__ - **NOTE:** Do **not** use
-  GitKraken with Export Controlled repositories (GitLab repos) - Git
-  Extension Pack (*VScode Extension*)
+  any git commands. 
+
+- `SourceTree <https://www.sourcetreeapp.com/>`__ 
+  - *Preferred option over other tools listed*
+- `GitHub Desktop <https://desktop.github.com/download/>`__ 
+- `GitKraken <www.gitkraken.com/download/>`__ 
+  - **NOTE:** Do **not** use GitKraken with Export Controlled repositories (GitLab repos) 
+- Git Extension Pack (*VScode Extension*)
 
 **NOTE:** Other tools can be utilized as well for interfacing with git,
 *however*, verify tool is safe to use if utilizing it with Export
