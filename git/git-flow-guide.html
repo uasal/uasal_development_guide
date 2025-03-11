@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Setting Up SSH for GitHub" href="ssh_key_tutorial.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="git.html" /> 
+    <link rel="prev" title="Git" href="git.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,80 +42,39 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../general.html">General Development Practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#coding-standards">Coding Standards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#using-ai-in-content-development">Using AI in Content Development.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#python-packaging">Python Packaging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#configuration-practices">Configuration Practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#other-notes">Other Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#useful-tools">Useful tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#unit-testing">Unit Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#loggers">Loggers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#debuggers">Debuggers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#git-lfs">Git LFS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#uasal-configuration-management">UASAL Configuration Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#git-flow-overview">Git-Flow Overview</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Git</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Git-Flow Workflow Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#general-information">General Information</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#repositories">Repositories</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-a-repository">Creating a Repository</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="git.html">Git</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Git-Flow Workflow Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-information">General Information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#repositories">Repositories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#forks">Forks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#branches">Branches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#merge-methods">Merge Methods</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#forks">Forks</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#fork-vs-branch">Fork vs Branch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#warnings">Warnings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github-overview">GitHub Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pull-requests">Pull Requests</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#branches">Branches</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#branch-naming">Branch Naming</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#branch-types">Branch Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gitlab-overview">GitLab Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#merge-requests">Merge Requests</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#merge-methods">Merge Methods</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#merge-commit">Merge Commit</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#squash-merging">Squash Merging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-resources">Useful Resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trainings">Trainings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#git-tools">Git Tools</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#github-overview">GitHub Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#pull-requests">Pull Requests</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pr-naming">PR Naming</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pr-process">PR Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uasal_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#gitlab-overview">GitLab Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#merge-requests">Merge Requests</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#relevant-terms">Relevant Terms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mr-naming">MR Naming</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#updating-source-branch">Updating Source Branch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mr-process">MR Process</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#useful-resources">Useful Resources</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#trainings">Trainings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#git-tools">Git Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gitlab_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Python</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../python/python_package_creation.html">Python Package Creation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/configuration_management.html">UASAL Configuration Management Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python</a></li>
 </ul>
 
         </div>
@@ -132,7 +91,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="git.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="git.html">Git</a></li>
       <li class="breadcrumb-item active">Git-Flow Workflow Guide</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/git/git-flow-guide.rst.txt" rel="nofollow"> View page source</a>
@@ -196,7 +155,7 @@ when generating a new one within UASAL.</em></p>
 in UASAL repositories. Depending upon the usage and intention of the
 repo, they may require modification.</em></p>
 <ul class="simple">
-<li><p>☐ Verify Default Branch is either <code class="docutils literal notranslate"><span class="pre">main</span></code> or <code class="docutils literal notranslate"><span class="pre">develop</span></code> (depending
+<li><p>Verify Default Branch is either <code class="docutils literal notranslate"><span class="pre">main</span></code> or <code class="docutils literal notranslate"><span class="pre">develop</span></code> (depending
 on repo)</p>
 <ul>
 <li><p>If there are active adjustments that are frequent being applied, the
@@ -205,8 +164,8 @@ default branch should be <code class="docutils literal notranslate"><span class=
 development, the default branch should be <code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
 </ul>
 </li>
-<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Issues</span></code> is turned <strong>ON</strong></p></li>
-<li><p>☐ Check <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">forking</span></code> is either enabled or disabled depending on
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">Issues</span></code> is turned <strong>ON</strong></p></li>
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">forking</span></code> is either enabled or disabled depending on
 the intent of the repo</p>
 <ul>
 <li><p>Generally <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">forking</span></code> is disabled but dependent on purpose of
@@ -215,16 +174,16 @@ repository</p></li>
 guidance</p></li>
 </ul>
 </li>
-<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Discussions</span></code> is turned <strong>ON</strong></p></li>
-<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Projects</span></code> is turned <strong>ON</strong></p></li>
-<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">merge</span> <span class="pre">commits</span></code> is turned <strong>ON</strong></p></li>
-<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">squash</span> <span class="pre">merging</span></code> is turned <strong>ON</strong></p></li>
-<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Commit</span> <span class="pre">Message</span></code> under <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">squash</span> <span class="pre">merging</span></code> is
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">Discussions</span></code> is turned <strong>ON</strong></p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">Projects</span></code> is turned <strong>ON</strong></p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">merge</span> <span class="pre">commits</span></code> is turned <strong>ON</strong></p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">squash</span> <span class="pre">merging</span></code> is turned <strong>ON</strong></p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Commit</span> <span class="pre">Message</span></code> under <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">squash</span> <span class="pre">merging</span></code> is
 set to <strong>Pull request title and commit details</strong>.</p></li>
-<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Always</span> <span class="pre">suggest</span> <span class="pre">updating</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">branches</span></code> is turned
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">Always</span> <span class="pre">suggest</span> <span class="pre">updating</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">branches</span></code> is turned
 <strong>ON</strong></p></li>
-<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">auto-merge</span></code> is turned <strong>OFF</strong></p></li>
-<li><p>☐ Verify <code class="docutils literal notranslate"><span class="pre">Automatically</span> <span class="pre">delete</span> <span class="pre">head</span> <span class="pre">branches</span></code> is turned <strong>ON</strong></p>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">auto-merge</span></code> is turned <strong>OFF</strong></p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">Automatically</span> <span class="pre">delete</span> <span class="pre">head</span> <span class="pre">branches</span></code> is turned <strong>ON</strong></p>
 <ul>
 <li><p>Make sure the <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch if being used in the repository is
 protected so it’s not impacted by this.</p></li>
@@ -234,7 +193,7 @@ protected so it’s not impacted by this.</p></li>
 <p><strong>Branch Settings</strong> <em>Verify branch rulesets line-up accordingly to the
 following in the ``Branches`` settings category.</em></p>
 <ul class="simple">
-<li><p>☐ Verify a ruleset is applied to <code class="docutils literal notranslate"><span class="pre">main</span></code> branch</p>
+<li><p>Verify a ruleset is applied to <code class="docutils literal notranslate"><span class="pre">main</span></code> branch</p>
 <ul>
 <li><p>Generally want to have <code class="docutils literal notranslate"><span class="pre">main</span></code> setup so a PR is <em>required</em> to push
 content too</p></li>
@@ -247,7 +206,7 @@ any content that needs to be strict on change control / versioning
 (such as requirements ), a ruleset should be applied</p></li>
 </ul>
 </li>
-<li><p>☐ Verify a ruleset is applied to <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch</p>
+<li><p>Verify a ruleset is applied to <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch</p>
 <ul>
 <li><p>If the <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch being used in the repo, a ruleset to
 require a PR to be made to update <code class="docutils literal notranslate"><span class="pre">develop</span></code> should be applied</p></li>
@@ -258,17 +217,17 @@ or a combination of features before impacting <code class="docutils literal notr
 is alway a stable <code class="docutils literal notranslate"><span class="pre">main</span></code> or base to the repository</p></li>
 </ul>
 </li>
-<li><p>☐ Verify both rulesets are <code class="docutils literal notranslate"><span class="pre">Enabled</span></code></p></li>
-<li><p>☐ Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Restrict</span> <span class="pre">deletions</span></code></p></li>
-<li><p>☐ Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Require</span> <span class="pre">linear</span> <span class="pre">history</span></code></p></li>
-<li><p>☐ Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Require</span> <span class="pre">a</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">before</span> <span class="pre">merging</span></code></p></li>
-<li><p>☐ Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Block</span> <span class="pre">force</span> <span class="pre">pushes</span></code></p></li>
+<li><p>Verify both rulesets are <code class="docutils literal notranslate"><span class="pre">Enabled</span></code></p></li>
+<li><p>Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Restrict</span> <span class="pre">deletions</span></code></p></li>
+<li><p>Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Require</span> <span class="pre">linear</span> <span class="pre">history</span></code></p></li>
+<li><p>Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Require</span> <span class="pre">a</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">before</span> <span class="pre">merging</span></code></p></li>
+<li><p>Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Block</span> <span class="pre">force</span> <span class="pre">pushes</span></code></p></li>
 </ul>
 <p><strong>Access Settings</strong> <em>Verify setting up access to the repo to needed
 team members by doing the following under the
 ``Collaborators and teams`` option within settings.</em></p>
 <ul class="simple">
-<li><p>☐ <strong>Add</strong> teams via <code class="docutils literal notranslate"><span class="pre">Organization</span> <span class="pre">access</span></code> under <em>Manage access</em> to
+<li><p><strong>Add</strong> teams via <code class="docutils literal notranslate"><span class="pre">Organization</span> <span class="pre">access</span></code> under <em>Manage access</em> to
 repo as applicable.</p>
 <ul>
 <li><p>Repo owners are encouraged to add entire teams rather than
@@ -756,7 +715,7 @@ Controlled repos on GitLab. Check with management / EC office if unsure.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="git.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="git.html" class="btn btn-neutral float-left" title="Git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="ssh_key_tutorial.html" class="btn btn-neutral float-right" title="Setting Up SSH for GitHub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

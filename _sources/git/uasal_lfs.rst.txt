@@ -1,8 +1,13 @@
 Using UASAL Git LFS (hosted on stp-lfs)
 =======================================
 
-Adding new user to gitlab with github login
--------------------------------------------
+**Disclaimer:** The UASAL Git LFS is managed via a GitLab instance. This
+is **NOT** the same GitLab instance as the ITAR-compliant ANT GitLab and 
+shall **NOT** be used for ITAR material, only for non-ITAR large file
+storage.
+
+Adding a new user to UASAL Git LFS with GitHub login
+-----------------------------------------------------
 
 As user
 ~~~~~~~
@@ -12,10 +17,10 @@ As user
   - With the VPN active, go to “http://10.130.30.9/users/sign_in” and
     click on “GitHub”
   - This will redirect to a github page asking whther you want to
-    “Authorize Stp-lfs Gitlab” (and informing what personal user data it
+    “Authorize Stp-lfs GitLab” (and informing what personal user data it
     will use: Email addresses (read-only))
   - Click “Authorize uasal”
-  - This will redirect back to gitlab
+  - This will redirect back to GitLab
   - You might get a notification saying that your account needs to be
     validated by and admin
   - In the meantime, go to
@@ -45,21 +50,26 @@ As admin
     expiration date for the access
   - Click Invite
 
-Linking gitlab lfs to github repo
+Linking UASAL LFS to GitHub repo
 ---------------------------------
 
 Assuming the git lfs is installed and initialized for you account
-(e.g. ``conda install git lfs`` and ``conda install git lfs``)
+(e.g. ``conda install git lfs`` and ``git lfs install``)
+
+Once you have linked your account to the UASAL LFS, an admin needs to add
+you to the relevant repositories.
 
 Using .fits files as an example.
 
 Assuming github repository with no existing associated large files. In
-this repository: - Add a new .lsfconfig file containing:
+this repository:
+
+- Add a new .lsfconfig file containing:
 
 ::
 
    [lfs]
-       url = "http://10.130.30.9/lfs/test_stp_lfs.git/info/lfs"
+       url = "http://10.130.30.9/lfs/stp_lfs.git/info/lfs"
 
 - On the command line in the repository, run:
 
@@ -86,6 +96,8 @@ This will create a .gitattributes file with an entry:
 
   - Username: your github username
   - Password: the personal access token you created earlier
+
+- The list of files tracked by Git LFS can be checked with `git lfs ls-files`
 
 Notes
 ~~~~~
@@ -119,7 +131,7 @@ Notes
 
      https://USERNAME:PERSONAL_ACCESS_TOKEN@github.com
 
-Cloning a repo with git-lfs
+Cloning a repo with Git LFS
 ---------------------------
 
 **You need to be connected to the vpn / on the UofA network**
@@ -130,5 +142,5 @@ Cloning a repo with git-lfs
 
 If you try to clone and are not connected to the vpn / on the UofA
 network, the non lfs file structure will get cloned but the command will
-hang and you’ll need to Ctrl+c it leaving the repository in an odd git
+hang and you’ll need to Ctrl+C it leaving the repository in an odd git
 state.

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; uasal_development_guide  documentation</title>
+  <title>Git &mdash; uasal_development_guide  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -42,32 +42,16 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../general.html">General Development Practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#coding-standards">Coding Standards</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#using-ai-in-content-development">Using AI in Content Development.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#python-packaging">Python Packaging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#configuration-practices">Configuration Practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#other-notes">Other Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#useful-tools">Useful tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#unit-testing">Unit Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#loggers">Loggers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#debuggers">Debuggers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#git-lfs">Git LFS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#uasal-configuration-management">UASAL Configuration Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../general.html#git-flow-overview">Git-Flow Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Git</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="git-flow-guide.html">Git-Flow Workflow Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uasal_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Git</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="git-flow-guide.html">Git-Flow Workflow Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gitlab_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Python</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../python/python_package_creation.html">Python Package Creation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python/configuration_management.html">UASAL Configuration Management Summary</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python</a></li>
 </ul>
 
         </div>
@@ -84,7 +68,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">Git</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/git/git.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,113 +78,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Git matters:</span></p>
+  <section id="git">
+<h1>Git<a class="headerlink" href="#git" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="git-flow-guide.html">Git-Flow Workflow Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git-flow-guide.html#general-information">General Information</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="git-flow-guide.html#repositories">Repositories</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#creating-a-repository">Creating a Repository</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#naming">Naming</a></li>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#settings">Settings</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="git-flow-guide.html#forks">Forks</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#fork-vs-branch">Fork vs Branch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#warnings">Warnings</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="git-flow-guide.html#branches">Branches</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#branch-naming">Branch Naming</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#naming-overview">Naming Overview</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#branch-types">Branch Types</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#main">Main</a></li>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#develop">Develop</a></li>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#feature-branches">Feature Branches</a></li>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#hotfix-branches">Hotfix Branches</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="git-flow-guide.html#merge-methods">Merge Methods</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#merge-commit">Merge Commit</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#applicable-scenarios">Applicable Scenarios</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#squash-merging">Squash Merging</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#applicable-scenarios-1">Applicable Scenarios</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="git-flow-guide.html#github-overview">GitHub Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="git-flow-guide.html#pull-requests">Pull Requests</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#pr-naming">PR Naming</a></li>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#pr-process">PR Process</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#before-review">Before Review</a></li>
-<li class="toctree-l5"><a class="reference internal" href="git-flow-guide.html#after-review">After Review</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="git-flow-guide.html#gitlab-overview">GitLab Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="git-flow-guide.html#merge-requests">Merge Requests</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#relevant-terms">Relevant Terms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#mr-naming">MR Naming</a></li>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#updating-source-branch">Updating Source Branch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="git-flow-guide.html#mr-process">MR Process</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="git-flow-guide.html#useful-resources">Useful Resources</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="git-flow-guide.html#general">General</a></li>
-<li class="toctree-l3"><a class="reference internal" href="git-flow-guide.html#trainings">Trainings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="git-flow-guide.html#git-tools">Git Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html#generate-an-ssh-key">1. Generate an SSH Key</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html#add-the-ssh-key-to-the-ssh-agent">2. Add the SSH Key to the SSH Agent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html#alternate-add-target-to-ssh-config">2. (Alternate) Add target to SSH Config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html#add-the-ssh-key-to-github">3. Add the SSH Key to GitHub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html#test-the-ssh-connection">4. Test the SSH Connection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html#troubleshooting">Troubleshooting</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Git_LFS_Guide.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Git_LFS_Guide.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Git_LFS_Guide.html#adding-files-to-git-lfs-for-the-first-time">Adding files to Git LFS for the first time</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Git_LFS_Guide.html#working-with-a-repo-with-lfs-support">Working with a repo with LFS support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Git_LFS_Guide.html#usage-limitations-and-recommendations">Usage Limitations and recommendations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="gitlab_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gitlab_lfs.html#adding-new-user-to-gitlab-with-github-login">Adding new user to gitlab with github login</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="gitlab_lfs.html#as-user">As user</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gitlab_lfs.html#as-admin">As admin</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="gitlab_lfs.html#linking-gitlab-lfs-to-github-repo">Linking gitlab lfs to github repo</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="gitlab_lfs.html#notes">Notes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="gitlab_lfs.html#cloning-a-repo-with-git-lfs">Cloning a repo with git-lfs</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="git-flow-guide.html">Git-Flow Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uasal_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
 </ul>
 </div>
+</section>
 
 
            </div>

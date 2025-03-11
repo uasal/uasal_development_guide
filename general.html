@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="git/git.html" />
+    <link rel="next" title="Git" href="git/git.html" />
     <link rel="prev" title="UASAL Python Development Guide" href="index.html" /> 
 </head>
 
@@ -43,41 +43,33 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">General Development Practices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#coding-standards">Coding Standards</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#formatting">Formatting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">General Development Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#coding-standards">Coding Standards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#formatting">Formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#using-ai-in-content-development">Using AI in Content Development.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#python-packaging">Python Packaging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#configuration-practices">Configuration Practices</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#summary-of-formats">Summary of Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-ai-in-content-development">Using AI in Content Development.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-packaging">Python Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-practices">Configuration Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary-of-formats">Summary of Formats</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#other-notes">Other Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#useful-tools">Useful tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#unit-testing">Unit Testing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#pytest">Pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-notes">Other Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-tools">Useful tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unit-testing">Unit Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pytest">Pytest</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#loggers">Loggers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#debuggers">Debuggers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#git-lfs">Git LFS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#uasal-configuration-management">UASAL Configuration Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#git-flow-overview">Git-Flow Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loggers">Loggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debuggers">Debuggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-lfs">Git LFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uasal-configuration-management">UASAL Configuration Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-flow-overview">Git-Flow Overview</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Git</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="git/git-flow-guide.html">Git-Flow Workflow Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="git/ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="git/Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="git/gitlab_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Python</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="python/python_package_creation.html">Python Package Creation Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python/configuration_management.html">UASAL Configuration Management Summary</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="git/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/python.html">Python</a></li>
 </ul>
 
         </div>
@@ -106,15 +98,14 @@
              
   <section id="general-development-practices">
 <h1>General Development Practices<a class="headerlink" href="#general-development-practices" title="Link to this heading"></a></h1>
-<p>We encourage that all code follows some basic principals: - Assume that
-one of your colleagues will be using your code in the near future - Code
-should be written as stand-alone tools with minimal dependencies - Tools
-should be handed a configuration to be used during execution -
-Parameters should not be hard-coded - Configurations, parameters and
-procedures required to reproduce results should be documented</p>
-</section>
+<p>We encourage that all code follows some basic principals:
+- Assume that one of your colleagues will be using your code in the near future
+- Code should be written as stand-alone tools with minimal dependencies
+- Tools should be handed a configuration to be used during execution
+- Parameters should not be hard-coded
+- Configurations, parameters and procedures required to reproduce results should be documented</p>
 <section id="coding-standards">
-<h1>Coding Standards<a class="headerlink" href="#coding-standards" title="Link to this heading"></a></h1>
+<h2>Coding Standards<a class="headerlink" href="#coding-standards" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>Avoid hard coding numbers and/or paths wherever possible. If
 unavoidable, define them all as constants in one block at the top of
@@ -126,7 +117,7 @@ example notebooks.</p></li>
 it again.</p></li>
 </ul>
 <section id="formatting">
-<h2>Formatting<a class="headerlink" href="#formatting" title="Link to this heading"></a></h2>
+<h3>Formatting<a class="headerlink" href="#formatting" title="Link to this heading"></a></h3>
 <p>Follow <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8</a> whenever possible.
 People have spent years developing (and arguing over) it.</p>
 <p>Variables should be <code class="docutils literal notranslate"><span class="pre">snake_case</span></code>. The naming of variables should be
@@ -144,7 +135,7 @@ requests in GitHub).</p>
 VSCode</a>).</p>
 </section>
 <section id="comments">
-<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<h3>Comments<a class="headerlink" href="#comments" title="Link to this heading"></a></h3>
 <p>Comments are useful for your future self and also the next person to use
 your code. <a class="reference external" href="https://peps.python.org/pep-0257/">docstrings</a> have been
 developed to help with this and can also be automatically parsed to
@@ -158,7 +149,7 @@ your code and double check the results to save time/effort.</p>
 </section>
 </section>
 <section id="using-ai-in-content-development">
-<h1>Using AI in Content Development.<a class="headerlink" href="#using-ai-in-content-development" title="Link to this heading"></a></h1>
+<h2>Using AI in Content Development.<a class="headerlink" href="#using-ai-in-content-development" title="Link to this heading"></a></h2>
 <p>AI offers interesting applications to increase coding efficiency and
 learn new techniques. It also presents significant security risks if
 there is export controlled content on the device. For novice programmers
@@ -175,14 +166,14 @@ content is subject to the copyrights of the AI provider and must be
 explicitly followed.</p>
 </section>
 <section id="python-packaging">
-<h1>Python Packaging<a class="headerlink" href="#python-packaging" title="Link to this heading"></a></h1>
+<h2>Python Packaging<a class="headerlink" href="#python-packaging" title="Link to this heading"></a></h2>
 <p>Python packages should use a
 <a class="reference external" href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml/">pyproject.toml</a>
 structure. A template repository (or instructions on how to make one)
 are currently being developed.</p>
 </section>
 <section id="configuration-practices">
-<h1>Configuration Practices<a class="headerlink" href="#configuration-practices" title="Link to this heading"></a></h1>
+<h2>Configuration Practices<a class="headerlink" href="#configuration-practices" title="Link to this heading"></a></h2>
 <p>Configuration files should be written using one of the standard machine
 readable table formats. This mostly includes: - TOML - YAML - CSV</p>
 <p>Whether or not configuration files live with the code that uses them is
@@ -192,7 +183,7 @@ uses them, then they should probably live in a separate repository. An
 example configuration repository with details on its usage is available
 <a class="reference external" href="https://github.com/uasal/config_tool_template">at this link</a></p>
 <section id="summary-of-formats">
-<h2>Summary of Formats<a class="headerlink" href="#summary-of-formats" title="Link to this heading"></a></h2>
+<h3>Summary of Formats<a class="headerlink" href="#summary-of-formats" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>TOML is the most-used format in UASAL and MagAOX for its ease of
 readability and use. The configuration files for most tools and
@@ -206,7 +197,7 @@ requires increased parsing and massaging to be used in code.</p></li>
 </section>
 </section>
 <section id="other-notes">
-<h1>Other Notes<a class="headerlink" href="#other-notes" title="Link to this heading"></a></h1>
+<h2>Other Notes<a class="headerlink" href="#other-notes" title="Link to this heading"></a></h2>
 <p>Many of these items result from questions or common themes are observed</p>
 <ul class="simple">
 <li><p>Do not use <a class="reference external" href="https://docs.python.org/3/library/os.html">os</a> package
@@ -216,12 +207,12 @@ superseded this and offers more functionality.</p></li>
 </ul>
 </section>
 <section id="useful-tools">
-<h1>Useful tools<a class="headerlink" href="#useful-tools" title="Link to this heading"></a></h1>
+<h2>Useful tools<a class="headerlink" href="#useful-tools" title="Link to this heading"></a></h2>
 <p>Semantic line breaks are useful when writing most documentation
 (e.g. Markdown, TeX, rST). Read about them <a class="reference external" href="https://sembr.org/">here</a></p>
 </section>
 <section id="unit-testing">
-<h1>Unit Testing<a class="headerlink" href="#unit-testing" title="Link to this heading"></a></h1>
+<h2>Unit Testing<a class="headerlink" href="#unit-testing" title="Link to this heading"></a></h2>
 <p>Unit testing and practicing <a class="reference external" href="https://en.wikipedia.org/wiki/Test-driven_development">test-driven
 development</a>
 is encouraged for multiple reasons. People are encouraged to read up on
@@ -233,7 +224,7 @@ integration (CI) frameworks.</p>
 standard package is generally used most frequently but others are
 available.</p>
 <section id="pytest">
-<h2>Pytest<a class="headerlink" href="#pytest" title="Link to this heading"></a></h2>
+<h3>Pytest<a class="headerlink" href="#pytest" title="Link to this heading"></a></h3>
 <p>The use of <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> offers some
 nice conveniences.</p>
 <p>Once installed, the following commands are useful:</p>
@@ -255,13 +246,13 @@ pretty format if a logger is being used.</p></li>
 </section>
 </section>
 <section id="loggers">
-<h1>Loggers<a class="headerlink" href="#loggers" title="Link to this heading"></a></h1>
+<h2>Loggers<a class="headerlink" href="#loggers" title="Link to this heading"></a></h2>
 <p>Logging is useful and is more powerful than peppering your code with
 print statements. Examples on how to incorporating logging is at <a class="reference external" href="https://docs.python.org/3/howto/logging.html">this
 link</a>.</p>
 </section>
 <section id="debuggers">
-<h1>Debuggers<a class="headerlink" href="#debuggers" title="Link to this heading"></a></h1>
+<h2>Debuggers<a class="headerlink" href="#debuggers" title="Link to this heading"></a></h2>
 <p>Debuggers are a useful way of finding and fixing errors and bugs in your
 code.</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/pdb.html">Pdb</a> comes built-in to
@@ -271,13 +262,13 @@ extension. An example on how to set it up is provided
 <a class="reference external" href="https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger">here</a>.</p>
 </section>
 <section id="git-lfs">
-<h1>Git LFS<a class="headerlink" href="#git-lfs" title="Link to this heading"></a></h1>
+<h2>Git LFS<a class="headerlink" href="#git-lfs" title="Link to this heading"></a></h2>
 <p>Git LFS should be used for Large File uploads to git. For further
 information, refer to the
-<a class="reference external" href="https://github.com/uasal/lab_documents/blob/main/computing/Git_LFS_Guide.md">Git LFS Guide</a>.</p>
+<a class="reference internal" href="git/Git_LFS_Guide.html"><span class="doc">Git LFS Guide</span></a> and the <a class="reference internal" href="git/uasal_lfs.html"><span class="doc">UASAL Git LFS Guide</span></a>.</p>
 </section>
 <section id="uasal-configuration-management">
-<h1>UASAL Configuration Management<a class="headerlink" href="#uasal-configuration-management" title="Link to this heading"></a></h1>
+<h2>UASAL Configuration Management<a class="headerlink" href="#uasal-configuration-management" title="Link to this heading"></a></h2>
 <p>Simulations and analysis tools should be structured to accept a
 configuration. In cases where the analyses need to be archived and
 repeatable (which should be the high majority of cases!) then the
@@ -285,7 +276,7 @@ repeatable (which should be the high majority of cases!) then the
 should be followed.</p>
 </section>
 <section id="git-flow-overview">
-<h1>Git-Flow Overview<a class="headerlink" href="#git-flow-overview" title="Link to this heading"></a></h1>
+<h2>Git-Flow Overview<a class="headerlink" href="#git-flow-overview" title="Link to this heading"></a></h2>
 <p>General questions relating to git-flow and order of operations can be
 founded in the <a class="reference internal" href="git/git-flow-guide.html"><span class="doc">Git-Flow-Guide</span></a>.</p>
 <p><em>Information detailed the</em> <a class="reference internal" href="git/git-flow-guide.html"><span class="doc">Git-Flow-Guide</span></a>
@@ -324,13 +315,14 @@ founded in the <a class="reference internal" href="git/git-flow-guide.html"><spa
 <li><p>Fork Usage Information</p></li>
 </ul>
 </section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="UASAL Python Development Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="git/git.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="git/git.html" class="btn btn-neutral float-right" title="Git" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
