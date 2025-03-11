@@ -97,9 +97,6 @@ repo, they may require modification.*
 
 **Branch Settings** 
 
-*Verify branch rulesets line-up accordingly to the
-following in the 'Branches' settings category.*
-
 - Verify a ruleset is applied to ``main`` branch
 
   - Generally want to have ``main`` setup so a PR is *required* to push

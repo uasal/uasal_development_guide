@@ -14,7 +14,9 @@ into the various details and advanced settings/configurations one can
 get into. This is a very basic overview of the process. For a slightly
 deeper dive, a bit more automation see
 `LINCC <https://lincc-ppt.readthedocs.io/en/stable/source/new_project.html>`__
-(Caution: May be for intermediate - advanced users). 1. Create your
+(Caution: May be for intermediate - advanced users).
+
+1. Create your
 directory structure. I’ve created one that looks like this -
 
 ::
