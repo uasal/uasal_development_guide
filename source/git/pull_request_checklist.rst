@@ -20,7 +20,6 @@ Pull Request under a repository.*
 
 - |uncheck| Open Pull Request as *draft*
 - |uncheck| Add assignees
-- |uncheck| Add reviewers
 - |uncheck| Add relevant tags and projects
 
    -  This includes setting a status for the PR if you add a project
@@ -39,12 +38,16 @@ Marking for Review
 *List of steps for when PR is ready for reviewing and what to check
 after approval has been received.*
 
+- |uncheck| Add reviewers
 - |uncheck| Select ‘ready for review’ to change Pull Request out of draft state
 - |uncheck| Notify reviewers PR is ready
 
    -  If you think the reviewer may not already be aware, it is
       sometimes helpful to notify them the PR is ready by `@`-ing them
       within the PR to inform them.
+
+After Review
+-------------
 
 - |uncheck| Verify all open / unresolved conversations are closed out (if
    applicable).
@@ -64,6 +67,7 @@ after approval has been received.*
 - |uncheck| Update Source/Feature branch *if applicable* for linear history
 - |uncheck| Remove feature / ‘working’ branch after PR is complete *if* no
    longer being used
+
 
 **Note:** *Refer to the
 `git-flow-guide <git-flow-guide.rst>`__ for additional
