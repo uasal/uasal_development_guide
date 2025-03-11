@@ -456,6 +456,8 @@ Ex.) ``Merge sfrinaldi/sub-class-fix into develop``
 PR Process
 ^^^^^^^^^^
 
+*For an abridged version, refer to the `Pull Request Checklist <pull_request_checklist.rst>`__ instead.*
+
 Before Review
 '''''''''''''
 
@@ -647,6 +649,7 @@ General
   Conflicts <https://www.datacamp.com/tutorial/how-to-resolve-merge-conflicts-in-git-tutorial>`__
 - `Setting up SSH for
   GitHub <https://teledocs.space/docs/stp202502_0005>`__
+- `Pull Request Checklist <pull_request_checklist.rst>`__
 - `Git Cheat Sheet-
   GitHub <https://education.github.com/git-cheat-sheet-education.pdf>`__
 - `Git Cheat Sheet-
