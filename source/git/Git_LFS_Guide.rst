@@ -1,5 +1,5 @@
 Using Git Large File Storage (LFS)
-----------------------------------
+==================================
 
 Git LFS is an additional git system which can help you manage
 particularly large files. The true advantage of Git LFS comes from the

@@ -15,15 +15,5 @@ Lazuli projects but is generally applicable across the board.
    :maxdepth: 1
 
    general
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Git
-   
    git/git
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Python
-   
    python/python

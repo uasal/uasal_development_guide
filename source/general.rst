@@ -1,12 +1,12 @@
 General Development Practices
------------------------------
+==============================
 
-We encourage that all code follows some basic principals: - Assume that
-one of your colleagues will be using your code in the near future - Code
-should be written as stand-alone tools with minimal dependencies - Tools
-should be handed a configuration to be used during execution -
-Parameters should not be hard-coded - Configurations, parameters and
-procedures required to reproduce results should be documented
+We encourage that all code follows some basic principals:
+- Assume that one of your colleagues will be using your code in the near future
+- Code should be written as stand-alone tools with minimal dependencies
+- Tools should be handed a configuration to be used during execution
+- Parameters should not be hard-coded
+- Configurations, parameters and procedures required to reproduce results should be documented
 
 Coding Standards
 ----------------
@@ -191,7 +191,7 @@ Git LFS
 
 Git LFS should be used for Large File uploads to git. For further
 information, refer to the 
-`Git LFS Guide <https://github.com/uasal/lab_documents/blob/main/computing/Git_LFS_Guide.md>`__.
+:doc:`Git LFS Guide </git/Git_LFS_Guide>` and the :doc:`UASAL Git LFS Guide </git/uasal_lfs>`.
 
 UASAL Configuration Management
 ------------------------------

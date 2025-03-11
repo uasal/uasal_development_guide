@@ -1,5 +1,8 @@
+Python
+==============================
+
 .. toctree::
-   :caption: Git matters:
+   :maxdepth: 1
 
    python_package_creation
    configuration_management

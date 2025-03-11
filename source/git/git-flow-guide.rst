@@ -62,7 +62,7 @@ when generating a new one within UASAL.*
 in UASAL repositories. Depending upon the usage and intention of the
 repo, they may require modification.*
 
-- ☐ Verify Default Branch is either ``main`` or ``develop`` (depending
+- Verify Default Branch is either ``main`` or ``develop`` (depending
   on repo)
 
   - If there are active adjustments that are frequent being applied, the
@@ -70,8 +70,8 @@ repo, they may require modification.*
   - If there are released stable versions for content and less active
     development, the default branch should be ``main``
 
-- ☐ Verify ``Issues`` is turned **ON**
-- ☐ Check ``Allow forking`` is either enabled or disabled depending on
+- Verify ``Issues`` is turned **ON**
+- Check ``Allow forking`` is either enabled or disabled depending on
   the intent of the repo
 
   - Generally ``Allow forking`` is disabled but dependent on purpose of
@@ -79,16 +79,16 @@ repo, they may require modification.*
   - Refer to the `Forks <#forks>`__ section for more information /
     guidance
 
-- ☐ Verify ``Discussions`` is turned **ON**
-- ☐ Verify ``Projects`` is turned **ON**
-- ☐ Verify ``Allow merge commits`` is turned **ON**
-- ☐ Verify ``Allow squash merging`` is turned **ON**
-- ☐ Verify ``Default Commit Message`` under ``Allow squash merging`` is
+- Verify ``Discussions`` is turned **ON**
+- Verify ``Projects`` is turned **ON**
+- Verify ``Allow merge commits`` is turned **ON**
+- Verify ``Allow squash merging`` is turned **ON**
+- Verify ``Default Commit Message`` under ``Allow squash merging`` is
   set to **Pull request title and commit details**.
-- ☐ Verify ``Always suggest updating pull request branches`` is turned
+- Verify ``Always suggest updating pull request branches`` is turned
   **ON**
-- ☐ Verify ``Allow auto-merge`` is turned **OFF**
-- ☐ Verify ``Automatically delete head branches`` is turned **ON**
+- Verify ``Allow auto-merge`` is turned **OFF**
+- Verify ``Automatically delete head branches`` is turned **ON**
 
   - Make sure the ``develop`` branch if being used in the repository is
     protected so it’s not impacted by this.
@@ -96,7 +96,7 @@ repo, they may require modification.*
 **Branch Settings**\  *Verify branch rulesets line-up accordingly to the
 following in the ``Branches`` settings category.*
 
-- ☐ Verify a ruleset is applied to ``main`` branch
+- Verify a ruleset is applied to ``main`` branch
 
   - Generally want to have ``main`` setup so a PR is *required* to push
     content too
@@ -108,7 +108,7 @@ following in the ``Branches`` settings category.*
     any content that needs to be strict on change control / versioning
     (such as requirements ), a ruleset should be applied
 
-- ☐ Verify a ruleset is applied to ``develop`` branch
+- Verify a ruleset is applied to ``develop`` branch
 
   - If the ``develop`` branch being used in the repo, a ruleset to
     require a PR to be made to update ``develop`` should be applied
@@ -118,17 +118,17 @@ following in the ``Branches`` settings category.*
     or a combination of features before impacting ``main`` so that there
     is alway a stable ``main`` or base to the repository
 
-- ☐ Verify both rulesets are ``Enabled``
-- ☐ Verify both rulesets ``Restrict deletions``
-- ☐ Verify both rulesets ``Require linear history``
-- ☐ Verify both rulesets ``Require a pull request before merging``
-- ☐ Verify both rulesets ``Block force pushes``
+- Verify both rulesets are ``Enabled``
+- Verify both rulesets ``Restrict deletions``
+- Verify both rulesets ``Require linear history``
+- Verify both rulesets ``Require a pull request before merging``
+- Verify both rulesets ``Block force pushes``
 
 **Access Settings**\  *Verify setting up access to the repo to needed
 team members by doing the following under the
 ``Collaborators and teams`` option within settings.*
 
-- ☐ **Add** teams via ``Organization access`` under *Manage access* to
+- **Add** teams via ``Organization access`` under *Manage access* to
   repo as applicable.
 
   - Repo owners are encouraged to add entire teams rather than
