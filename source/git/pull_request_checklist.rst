@@ -61,5 +61,5 @@ After Review
 |uncheck| Remove feature / ‘working’ branch after PR is complete *if* no longer being used |br|
 
 
-**Note:**/ *Refer to the :doc:`Git-Flow-Guide <git-flow-guide>`/ for additional assistance as needed.*/
+**Note:** Refer to the :doc:`Git-Flow-Guide <git-flow-guide>` for additional assistance as needed.
 

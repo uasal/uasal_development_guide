@@ -453,7 +453,7 @@ Ex.) ``Merge sfrinaldi/sub-class-fix into develop``
 PR Process
 ^^^^^^^^^^
 
-*For an abridged version, refer to the :doc:`Pull Request Checklist <pull_request_checklist>`__ instead.*\
+For an abridged version, refer to the :doc:`Pull Request Checklist <pull_request_checklist>` instead.
 
 Before Review
 '''''''''''''
@@ -646,7 +646,7 @@ General
   Conflicts <https://www.datacamp.com/tutorial/how-to-resolve-merge-conflicts-in-git-tutorial>`__
 - `Setting up SSH for
   GitHub <https://teledocs.space/docs/stp202502_0005>`__
-- :doc:`Pull Request Checklist <pull_request_checklist>``__
+- :doc:`Pull Request Checklist <pull_request_checklist>`
 - `Git Cheat Sheet-
   GitHub <https://education.github.com/git-cheat-sheet-education.pdf>`__
 - `Git Cheat Sheet-
@@ -679,11 +679,11 @@ Git Tools
 - `SourceTree <https://www.sourcetreeapp.com/>`__ 
   - *Preferred option over other tools listed*
 - `GitHub Desktop <https://desktop.github.com/download/>`__ 
-- `GitKraken <www.gitkraken.com/download/>`__ 
-  - **NOTE:**\ Do **not**\ use GitKraken with Export Controlled repositories (GitLab repos) 
+- `GitKraken <www.gitkraken.com/download/>`__ |br|
+  - **NOTE:**\  Do **not**\  use GitKraken with Export Controlled repositories (GitLab repos) 
 - Git Extension Pack (*VScode Extension*)
 
-**NOTE:**\ Other tools can be utilized as well for interfacing with git,
+**NOTE:**\  Other tools can be utilized as well for interfacing with git,
 *however*, verify tool is safe to use if utilizing it with Export
 Controlled repos on GitLab. Check with management / EC office if unsure.
 
@@ -693,3 +693,6 @@ Controlled repos on GitLab. Check with management / EC office if unsure.
 .. |image4| image:: /_static/PR-example.png
 .. |image5| image:: /_static/MR-example.png
 .. |image6| image:: /_static/MR-behind-ex.png
+.. |br| raw:: html
+
+  <br>
