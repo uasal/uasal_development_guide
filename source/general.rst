@@ -225,7 +225,7 @@ founded in the :doc:`Git-Flow-Guide </git/git-flow-guide>`.
 
 - Git Tools / Resources
 
-  - Applications, Training, GitDocs
+  - Applications, Training, GitDocs, Checklists
 
 - Naming Standards
 
