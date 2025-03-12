@@ -456,7 +456,7 @@ Ex.) ``Merge sfrinaldi/sub-class-fix into develop``
 PR Process
 ^^^^^^^^^^
 
-*For an abridged version, refer to the `Pull Request Checklist <pull_request_checklist.rst>`__ instead.*
+*For an abridged version, refer to the :doc:`Pull Request Checklist <pull_request_checklist>`__ instead.*\
 
 Before Review
 '''''''''''''
@@ -543,7 +543,7 @@ intentions of doing so. Some GitHub repositories may be mirrored on
 GitLab but are only mirrored in one direction and still only have one
 source location.
 
-**NOTE:**\ `OpenVPN Connect <openvpn.net/client/>`__ *(or equivalent)*
+**NOTE:**\  `OpenVPN Connect <openvpn.net/client/>`__ *(or equivalent)*
 needs to be setup and turned on first before you can access the UASAL
 GitLab projects. Additionally, Export Control Training needs to be
 completed first. Refer to the `Onboarding New Team Member
@@ -649,7 +649,7 @@ General
   Conflicts <https://www.datacamp.com/tutorial/how-to-resolve-merge-conflicts-in-git-tutorial>`__
 - `Setting up SSH for
   GitHub <https://teledocs.space/docs/stp202502_0005>`__
-- `Pull Request Checklist <pull_request_checklist.rst>`__
+- :doc:`Pull Request Checklist <pull_request_checklist>``__
 - `Git Cheat Sheet-
   GitHub <https://education.github.com/git-cheat-sheet-education.pdf>`__
 - `Git Cheat Sheet-
