@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Setting Up SSH for GitHub" href="ssh_key_tutorial.html" />
+    <link rel="next" title="Pull Request Checklist" href="pull_request_checklist.html" />
     <link rel="prev" title="Git" href="git.html" /> 
 </head>
 
@@ -69,6 +69,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="pull_request_checklist.html">Pull Request Checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uasal_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
@@ -107,7 +108,7 @@
 <p>This document provides information of key information related to
 git-flow practices used within UASAL. This includes general repository
 standards, how to submit changes to protected branches and general git
-practices.An overview of GitHub and GitLab differences and how to create
+practices. An overview of GitHub and GitLab differences and how to create
 a Pull or Merge Request is detailed as well.</p>
 <section id="general-information">
 <h2>General Information<a class="headerlink" href="#general-information" title="Link to this heading"></a></h2>
@@ -121,8 +122,8 @@ usage of a repository.</em></p>
 software, or any other type of data. Both GitHub and GitLab repositories
 allow for version controlling information to assist in traceability with
 using git. Every repository will have at least one or more ‘branches’
-with content at different stages. Refer to the <a class="reference internal" href="#branches"><span class="std std-ref">Branches</span></a>
-section for more information.</p>
+with content at different stages. Refer to the <a class="reference internal" href="#branches"><span class="std std-ref">Branches</span></a> section
+for more information.</p>
 <hr class="docutils" />
 <section id="creating-a-repository">
 <h4>Creating a Repository<a class="headerlink" href="#creating-a-repository" title="Link to this heading"></a></h4>
@@ -151,7 +152,8 @@ what the repo contains.</p></li>
 and or be based from template repositories (if applicable / available).
 If not, verify the following settings are enabled within the repository
 when generating a new one within UASAL.</em></p>
-<p><strong>General Settings</strong> <em>The following are general settings that are used
+<p><strong>General Settings</strong></p>
+<p><em>The following are general settings that are used
 in UASAL repositories. Depending upon the usage and intention of the
 repo, they may require modification.</em></p>
 <ul class="simple">
@@ -190,8 +192,7 @@ protected so it’s not impacted by this.</p></li>
 </ul>
 </li>
 </ul>
-<p><strong>Branch Settings</strong> <em>Verify branch rulesets line-up accordingly to the
-following in the ``Branches`` settings category.</em></p>
+<p><strong>Branch Settings</strong></p>
 <ul class="simple">
 <li><p>Verify a ruleset is applied to <code class="docutils literal notranslate"><span class="pre">main</span></code> branch</p>
 <ul>
@@ -223,9 +224,10 @@ is alway a stable <code class="docutils literal notranslate"><span class="pre">m
 <li><p>Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Require</span> <span class="pre">a</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">before</span> <span class="pre">merging</span></code></p></li>
 <li><p>Verify both rulesets <code class="docutils literal notranslate"><span class="pre">Block</span> <span class="pre">force</span> <span class="pre">pushes</span></code></p></li>
 </ul>
-<p><strong>Access Settings</strong> <em>Verify setting up access to the repo to needed
+<p><strong>Access Settings</strong></p>
+<p>Verify setting up access to the repo to needed
 team members by doing the following under the
-``Collaborators and teams`` option within settings.</em></p>
+<code class="docutils literal notranslate"><span class="pre">Collaborators</span> <span class="pre">and</span> <span class="pre">teams</span></code> option within settings.</p>
 <ul class="simple">
 <li><p><strong>Add</strong> teams via <code class="docutils literal notranslate"><span class="pre">Organization</span> <span class="pre">access</span></code> under <em>Manage access</em> to
 repo as applicable.</p>
@@ -242,8 +244,8 @@ individual members.</p></li>
 <section id="forks">
 <h3>Forks<a class="headerlink" href="#forks" title="Link to this heading"></a></h3>
 <p>Forks are similar to clones of a repository but are mainly used for
-collaborating with external organization members. <em>If</em> you are a UASAL
-team member, then when editing or adding a new feature that will be
+collaborating with external organization members.</p>
+<p><em>If</em> you are a UASAL team member, then when editing or adding a new feature that will be
 merged into the original repository source, you <strong>should generally use a
 branch instead of a fork</strong>.</p>
 <section id="fork-vs-branch">
@@ -251,18 +253,22 @@ branch instead of a fork</strong>.</p>
 <p>Use the following breakdowns for considering when to use a fork over a
 branch. Note that UASAL team members are generally encouraged to use
 branches when making/proposing changes.</p>
-<p><strong>Branch:</strong> - Have write access to the original repository - Applying
-quick fixes collaboratively within the same project - Applying /
-developing features collaboratively within the same project - Need to
-synchronize your code with the main repository - Need to have your
-content easily accessible / viewable for members in the same project</p>
-<p><strong>Fork:</strong> - For experimenting / testing items that do not necessary need
-to be collaboratively - <em>Ex.) CI workflow testing, verifying triggers
-for workflow are functional after PR/MR, etc.</em> - Non-critical external
-contributions to the base project - Contributing to an open-source
-project that require changes to be done independently before merging -
-For using the original project as a starting point that you are
-developing independently</p>
+<p><strong>Branch:</strong></p>
+<ul class="simple">
+<li><p>Have write access to the original repository</p></li>
+<li><p>Applying quick fixes collaboratively within the same project</p></li>
+<li><p>Applying / developing features collaboratively within the same project</p></li>
+<li><p>Need to synchronize your code with the main repository</p></li>
+<li><p>Need to have your content easily accessible / viewable for members in the same project</p></li>
+</ul>
+<p><strong>Fork:</strong></p>
+<ul class="simple">
+<li><p>For experimenting / testing items that do not necessary need to be collaboratively</p></li>
+<li><p><em>Ex.) CI workflow testing, verifying triggers for workflow are functional after PR/MR, etc.</em></p></li>
+<li><p>Non-critical external contributions to the base project</p></li>
+<li><p>Contributing to an open-source project that require changes to be done independently before merging</p></li>
+<li><p>For using the original project as a starting point that you are developing independently</p></li>
+</ul>
 <p>If more information is needed, refer to
 <a class="reference external" href="https://graphite.dev/guides/git-fork-vs-branch">Graphite</a> and a
 related community post on
@@ -271,17 +277,18 @@ breakdown between the difference between a branch and a fork and when to
 use them.</p>
 </section>
 <section id="warnings">
-<h4>Warnings<a class="headerlink" href="#warnings" title="Link to this heading"></a></h4>
-<p><strong>NOTES:</strong> - You <strong>cannot use</strong> repo secrets if there is a CI process on
-the repository being forked. - Current workflows <strong>will not</strong> function
-in the fork whether inside or outside of a pull/merge request as well. -
-<strong>Forks can become out of date!</strong> Keep forks synced with base repository
-if a fork is needed! Refer to the <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork">GitHub
-Docs</a>
-for additional support.</p>
-<p><em>Refer to the</em> <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks">GitHub
-Docs</a>
-<em>on Forks for more information.</em></p>
+<h4><strong>Warnings</strong><a class="headerlink" href="#warnings" title="Link to this heading"></a></h4>
+<p><strong>NOTES:</strong></p>
+<ul class="simple">
+<li><p>You <strong>cannot use</strong> repo secrets if there is a CI process on the repository being forked.</p></li>
+<li><p>Current workflows <strong>will not</strong> function in the fork whether inside or outside of a pull/merge request as well.</p></li>
+<li><p><strong>Forks can become out of date!</strong> Keep forks synced with base repository if a fork is needed!</p>
+<ul>
+<li><p>Refer to the <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork">GitHub Docs</a> for additional support.</p></li>
+</ul>
+</li>
+</ul>
+<p><em>Refer to the</em> <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks">GitHub Docs</a> <em>on Forks for more information.</em></p>
 <hr class="docutils" />
 </section>
 </section>
@@ -289,8 +296,8 @@ Docs</a>
 <span id="id1"></span><h3>Branches<a class="headerlink" href="#branches" title="Link to this heading"></a></h3>
 <p>If there is active development in the repository with multiple
 contributors, there should be both a <code class="docutils literal notranslate"><span class="pre">main</span></code> and a <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch.
-Refer to the <a class="reference internal" href="#branch-types"><span class="std std-ref">Branch Types</span></a> section for more details
-on the functionality / purpose of each branch type.</p>
+Refer to the <a class="reference internal" href="#branch-types"><span class="std std-ref">Branch Types</span></a> section for more details on the
+functionality / purpose of each branch type.</p>
 <p>Any content that needs to be added whether a fix or a feature needs to
 start on its own branch <strong>before</strong> its merged into develop and/or main
 via a Pull or a Merge Request (<em>depending on if its GitHub or GitLab</em>).
@@ -303,15 +310,23 @@ Docs</a>
 <hr class="docutils" />
 <section id="branch-naming">
 <h4>Branch Naming<a class="headerlink" href="#branch-naming" title="Link to this heading"></a></h4>
-<p><em>UASAL has adopted to the following naming convention branches:</em> -
-<strong>``main``</strong> instead of <em>master</em> - <strong>``develop``</strong> instead of <em>dev</em>- <strong>Feature Branches:</strong> <code class="docutils literal notranslate"><span class="pre">username/branch-description</span></code> - <strong>Hotfix
-Branches:</strong> <code class="docutils literal notranslate"><span class="pre">hotfix/fix-name</span></code></p>
+<p><em>UASAL has adopted to the following naming convention branches:</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">main</span></code>instead of <em>master</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">develop</span></code>instead of <em>dev</em></p></li>
+<li><p><strong>Feature Branches:</strong><code class="docutils literal notranslate"><span class="pre">username/branch-description</span></code></p></li>
+<li><p><strong>Hotfix Branches:</strong><code class="docutils literal notranslate"><span class="pre">hotfix/fix-name</span></code></p></li>
+</ul>
 <p>Do <strong>NOT</strong> have the character <code class="docutils literal notranslate"><span class="pre">#</span></code> in the branch name or any other
 special characters that are latex sensitive as this will cause issues
 when it grabs git information. Either drop the issue number call out or
 <em>just</em> have the number in the branch name.</p>
-<p><strong>Example Acceptable Branch Names:</strong> - [x] <code class="docutils literal notranslate"><span class="pre">sfrinaldi/ci-testing</span></code> -
-[x] <code class="docutils literal notranslate"><span class="pre">sfrinaldi/fix-publishing</span></code> - [x] <code class="docutils literal notranslate"><span class="pre">hotfix/ci-compile-addon</span></code></p>
+<p><strong>Example Acceptable Branch Names:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sfrinaldi/ci-testing</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sfrinaldi/fix-publishing</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hotfix/ci-compile-addon</span></code></p></li>
+</ul>
 <section id="naming-overview">
 <h5>Naming Overview<a class="headerlink" href="#naming-overview" title="Link to this heading"></a></h5>
 <p>Some of the following rules are already imposed with git but are listed
@@ -324,7 +339,7 @@ seeing.</p></li>
 <li><p><strong>Use</strong> lower-cased letter for branch names</p></li>
 <li><p><strong>Use</strong> dashes over underscores whenever possible</p></li>
 <li><p><strong>Use</strong> main as the main branch / not master</p></li>
-<li><p><strong>Use</strong> develop as the develop branch / not dev_</p></li>
+<li><p><strong>Use</strong> develop as the develop branch / not dev</p></li>
 <li><p><strong>Never</strong> have duplicate main or develop branches</p></li>
 <li><p><strong>Never</strong> use reserved names for branches</p>
 <ol class="arabic simple">
@@ -385,11 +400,12 @@ impacts the git history differently and have their usage.</p>
 Request and a Merge Request. <strong>All</strong> commits from the <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch
 will be added to the <code class="docutils literal notranslate"><span class="pre">base</span></code> branch that is specified within the Pull /
 Merge Request.</p>
-<p><img alt="image2" src="../_images/merge-commit.drawio.png" /> <em>Example diagram for a Merge Commit.</em></p>
+<p><img alt="image2" src="../_images/merge-commit.drawio.png" /></p>
+<p><em>Example diagram for a Merge Commit.</em></p>
 <p>It is best to ‘<em>pre-squash</em>’ commits that are similar with each other in
 the original <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch before doing a merge commit to keep the
 git history clean / relevant at the top level.</p>
-<p><strong>NOTE:</strong> Notice in the reference diagram for visualizing a merge
+<p><strong>NOTE:</strong>Notice in the reference diagram for visualizing a merge
 commit, a direct reference to the original <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch that ‘C’
 and ‘D’ came from is not specified.</p>
 <section id="applicable-scenarios">
@@ -421,7 +437,8 @@ edited is highly recommended.</p>
 <strong>one</strong> commit. This means the individual commit messages from each
 contributor in that original <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch are combined into
 <strong>one</strong> commit when merging.</p>
-<p><img alt="image3" src="../_images/squash-merge.drawio.png" /> <em>Example diagram for a Squash Merge.</em></p>
+<p><img alt="image3" src="../_images/squash-merge.drawio.png" /></p>
+<p><em>Example diagram for a Squash Merge.</em></p>
 <p><strong>NOTE:</strong> Information will be lost on when specific commits / changes
 were originally made vs when the squash commit was applied. You might
 run into conflict issues if you continue to work on the <code class="docutils literal notranslate"><span class="pre">feature</span></code>
@@ -471,7 +488,8 @@ the ``source`` branch for GitLab)</em></p>
 <p><em>For more information, please refer to the</em> <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">GitHub
 Docs</a>
 <em>on Pull Requests for details.</em></p>
-<p><img alt="image4" src="../_images/PR-example.png" /> <em>Example PR screenshot options when selecting to create a new
+<p><img alt="image4" src="../_images/PR-example.png" /></p>
+<p><em>Example PR screenshot options when selecting to create a new
 pull request on GitHub.</em></p>
 <p><strong>NOTE:</strong> If a Pull Request template is available in the repository,
 always select an appropriate template whenever possible over no template
@@ -485,26 +503,29 @@ included in the title of the PR.</em></p>
 </section>
 <section id="pr-process">
 <span id="id5"></span><h4>PR Process<a class="headerlink" href="#pr-process" title="Link to this heading"></a></h4>
+<p>For an abridged version, refer to the <a class="reference internal" href="pull_request_checklist.html"><span class="doc">Pull Request Checklist</span></a> instead.</p>
 <section id="before-review">
 <h5>Before Review<a class="headerlink" href="#before-review" title="Link to this heading"></a></h5>
 <p>With using the previous information indicated in the above sections for
-<a class="reference internal" href="#pr-naming"><span class="std std-ref">PR Naming</span></a> and general <a class="reference internal" href="#pr-info"><span class="std std-ref">Pull Requests</span></a>,
-create a new Pull Request on GitHub with using the appropriate branches
-for the <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>. <em>If</em> there is still content to be
-added to the branch, select <em>Create draft PR</em> during the PR creation
-process.</p>
-<p><em>Verify the following is done within the PR before review:</em> - [ ]
-<em>Assignees</em> are added within the PR - [ ] <em>Reviewers</em> are added within
-the PR (this can wait if needed until the PR is ready to be reviewed) -
-[ ] Related issues that are tied to the PR are indicated within the
-description of the PR - You can use keywords with the Issue # so they
-will be closed out once PR is pulled in if desired - <strong>Acceptable
-Keywords:</strong> <em>close, closes, closed, fix, fixes, fixed, resolve,
-resolves, resolved</em> - Refer to the Syntax Table provided below for more
-information if you want to use closing syntax - [ ] Relevant <em>Labels</em>
-are added to the PR - [ ] Relevant <em>Projects</em> are added to the PR with
-their Status state - [ ] Any other checks/steps indicated in PR template
-<em>(if used / available in repo)</em> are done</p>
+<a class="reference internal" href="#pr-naming"><span class="std std-ref">PR Naming</span></a> and general <a class="reference internal" href="#pr-info"><span class="std std-ref">Pull Requests</span></a>, create a new Pull Request
+on GitHub with using the appropriate branches for the <code class="docutils literal notranslate"><span class="pre">base</span></code> and
+<code class="docutils literal notranslate"><span class="pre">compare</span></code>. <em>If</em> there is still content to be added to the branch,
+select <em>Create draft PR</em> during the PR creation process.</p>
+<p><em>Verify the following is done within the PR before review:</em></p>
+<ul class="simple">
+<li><p><em>Assignees</em> are added within the PR</p></li>
+<li><p><em>Reviewers</em> are added within the PR (this can wait if needed until the PR is ready to be reviewed)</p></li>
+<li><p>Related issues that are tied to the PR are indicated within the description of the PR</p>
+<ul>
+<li><p>You can use keywords with the Issue # so they will be closed out once PR is pulled in if desired</p></li>
+<li><p><strong>Acceptable Keywords:</strong> <em>close, closes, closed, fix, fixes, fixed, resolve, resolves, resolved</em></p></li>
+<li><p>Refer to the Syntax Table provided below for more information if you want to use closing syntax</p></li>
+</ul>
+</li>
+<li><p>Relevant <em>Labels</em> are added to the PR</p></li>
+<li><p>Relevant <em>Projects</em> are added to the PR with their Status state</p></li>
+<li><p>Any other checks/steps indicated in PR template <em>(if used / available in repo)</em> are done</p></li>
+</ul>
 <p><strong>Syntax Table for guidance:</strong></p>
 <table class="docutils align-default">
 <thead>
@@ -519,7 +540,7 @@ their Status state - [ ] Any other checks/steps indicated in PR template
 <span class="pre">yword</span> <span class="pre">#Issue</span></code></p></td>
 <td><p>Closes #0</p></td>
 </tr>
-<tr class="row-odd"><td><p>Differnt Repo</p></td>
+<tr class="row-odd"><td><p>Different Repo</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Keyword</span> <span class="pre">Owne</span>
 <span class="pre">r/Repo#Issue</span></code></p></td>
 <td><p>uasal/example-repo#0</p></td>
@@ -550,21 +571,22 @@ are unsure within the Pull Request.</p>
 <p><strong>Make sure to notify the reviewers either by Slacking them or pinging
 them within the PR with using the &#64;username functionality when a PR is
 ready for reviewing.</strong></p>
-<p><em>Once PR is</em> <strong>approved</strong><em>, verify the following:</em> - [ ] All your
-commits are squashed in the way that is reasonable. - Ex.) Squash all
-commits that are editing the same file. - Ex.) Squash all commits that
-are tied together for the same feature / fix being added <em>(if there are
-multiple)</em>. - [ ] The <code class="docutils literal notranslate"><span class="pre">compare</span></code> branch is up to date with the <code class="docutils literal notranslate"><span class="pre">base</span></code>
-branch. - A suggestion to <em>update</em> branch will be present within the PR.
-- Local branch updating can be done instead via rebasing or merging if
-preferred. - Refer to the <a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">Git Cheat Sheet-
-GitHub</a>
-for git commands. - [ ] Edit commit message to a shorten version with
-the details of what features or edits it includes. <em>(If applicable)</em> - [
-] Verify <code class="docutils literal notranslate"><span class="pre">compare</span></code> branch is deleted after PR is successfully pulled
-to the <code class="docutils literal notranslate"><span class="pre">base</span></code> branch. - [ ] Verify / Complete any remaining steps that
-might be indicated within the PR template if a template was used for the
-PR generation.</p>
+<p><em>Once PR is</em> <strong>approved</strong><em>, verify the following:</em></p>
+<ul class="simple">
+<li><p>All your commits are squashed in the way that is reasonable.</p>
+<ul>
+<li><p>Ex.) Squash all commits that are editing the same file.</p></li>
+<li><p>Ex.) Squash all commits that are tied together for the same feature / fix being added <em>(if there are multiple)</em>.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">compare</span></code> branch is up to date with the <code class="docutils literal notranslate"><span class="pre">base</span></code> branch.
+- A suggestion to <em>update</em> branch will be present within the PR.
+- Local branch updating can be done instead via rebasing or merging if preferred.
+- Refer to the <a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">Git Cheat Sheet-GitHub</a> for git commands.</p></li>
+<li><p>Edit commit message to a shorten version with the details of what features or edits it includes. <em>(If applicable)</em></p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">compare</span></code> branch is deleted after PR is successfully pulled to the <code class="docutils literal notranslate"><span class="pre">base</span></code> branch.</p></li>
+<li><p>Verify / Complete any remaining steps that might be indicated within the PR template if a template was used for the PR generation.</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -616,8 +638,8 @@ merge into the ‘target’ branch.</p>
 </ul>
 </li>
 </ul>
-<p><img alt="image5" src="../_images/MR-example.png" /> <em>Example GitLab MR screenshot for creating a new merge
-request.</em></p>
+<p><img alt="image5" src="../_images/MR-example.png" /></p>
+<p><em>Example GitLab MR screenshot for creating a new merge request.</em></p>
 </section>
 <section id="mr-naming">
 <h4>MR Naming<a class="headerlink" href="#mr-naming" title="Link to this heading"></a></h4>
@@ -632,13 +654,14 @@ that might have been pulled into target branch before the source branch
 was created.</p>
 <p>If linear git history is set in a repository, you will see the following
 warning indicating that the branch needs to be updated:</p>
-<p><img alt="image6" src="../_images/MR-behind-ex.png" /> <em>Example source branch behind notification message in MR.</em></p>
+<p><img alt="image6" src="../_images/MR-behind-ex.png" /></p>
+<p><em>Example source branch behind notification message in MR.</em></p>
 <p>Depending if you are using a git tool such as Git Kraken or Git Desktop,
 there will be an option to <code class="docutils literal notranslate"><span class="pre">update</span> <span class="pre">branch</span></code> you can use when you have
 your source branch checked out. Or, you can select
 <code class="docutils literal notranslate"><span class="pre">merge</span> <span class="pre">current</span> <span class="pre">branch</span></code> option and select the target branch you want to
 merge into your source branch that you have checked out already.</p>
-<p><em>Refer to the</em> <a class="reference internal" href="#useful-resources"><span class="std std-ref">Useful Resources</span></a> <em>section for
+<p><em>Refer to the</em> <a class="reference internal" href="#useful-resources"><span class="std std-ref">Useful Resources</span></a>  <em>section for
 tutorials on dealing with merge conflicts.</em></p>
 <p><strong>NOTE:</strong> When in doubt, reach out to the <em>reviewers</em> you have selected
 for the MR for assistance if having issues with updating the source
@@ -647,7 +670,7 @@ branch.</p>
 <section id="mr-process">
 <h4>MR Process<a class="headerlink" href="#mr-process" title="Link to this heading"></a></h4>
 <p><em>Use the details provided in the</em> <a class="reference internal" href="#pr-process"><span class="std std-ref">PR Process</span></a> <em>section
-for guidance on how a PR should be done and what should be checked
+for guidance on how a PR/MR should be done and what should be checked
 before and after review.</em></p>
 <p>For information on the <em>closing pattern syntax</em> on GitLab, refer to the
 <a class="reference external" href="https://docs.gitlab.com/user/project/issues/managing_issues/#default-closing-pattern">GitLab
@@ -668,11 +691,12 @@ Beginners</a></p></li>
 Conflicts</a></p></li>
 <li><p><a class="reference external" href="https://teledocs.space/docs/stp202502_0005">Setting up SSH for
 GitHub</a></p></li>
+<li><p><a class="reference internal" href="pull_request_checklist.html"><span class="doc">Pull Request Checklist</span></a></p></li>
 <li><p><a class="reference external" href="https://education.github.com/git-cheat-sheet-education.pdf">Git Cheat Sheet-
 GitHub</a></p></li>
 <li><p><a class="reference external" href="https://about.gitlab.com/images/press/git-cheat-sheet.pdf">Git Cheat Sheet-
 GitLab</a></p></li>
-<li><p><a class="reference external" href="../.github/PULL_REQUEST_TEMPLATE/pull_request_template.md">Pull Request Template
+<li><p><a class="reference external" href="https://github.com/uasal/lab_documents/blob/main/.github/PULL_REQUEST_TEMPLATE/pull_request_template.md">Pull Request Template
 Example</a></p></li>
 <li><p><a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">Pull Requests- GitHub
 Docs</a></p></li>
@@ -697,13 +721,16 @@ onboarding guide for a list of git related training videos.</p>
 <div class="line">There are a variety of git tools to utilize to make git processes a
 bit more user friendly if not experienced with git. You will have to
 have <a class="reference external" href="https://git-scm.com/downloads">git</a> installed first to used
-any git commands. - <a class="reference external" href="https://www.sourcetreeapp.com/">SourceTree</a> -
-<em>Preferred option over other tools listed</em></div>
-<div class="line">- <a class="reference external" href="https://desktop.github.com/download/">GitHub Desktop</a> -
-<a class="reference external" href="www.gitkraken.com/download/">GitKraken</a> - <strong>NOTE:</strong> Do <strong>not</strong> use
-GitKraken with Export Controlled repositories (GitLab repos) - Git
-Extension Pack (<em>VScode Extension</em>)</div>
+any git commands.</div>
 </div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sourcetreeapp.com/">SourceTree</a>
+- <em>Preferred option over other tools listed</em></p></li>
+<li><p><a class="reference external" href="https://desktop.github.com/download/">GitHub Desktop</a></p></li>
+<li><p><a class="reference external" href="www.gitkraken.com/download/">GitKraken</a> <br>
+- <strong>NOTE:</strong> Do <strong>not</strong> use GitKraken with Export Controlled repositories (GitLab repos)</p></li>
+<li><p>Git Extension Pack (<em>VScode Extension</em>)</p></li>
+</ul>
 <p><strong>NOTE:</strong> Other tools can be utilized as well for interfacing with git,
 <em>however</em>, verify tool is safe to use if utilizing it with Export
 Controlled repos on GitLab. Check with management / EC office if unsure.</p>
@@ -716,7 +743,7 @@ Controlled repos on GitLab. Check with management / EC office if unsure.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="git.html" class="btn btn-neutral float-left" title="Git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ssh_key_tutorial.html" class="btn btn-neutral float-right" title="Setting Up SSH for GitHub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pull_request_checklist.html" class="btn btn-neutral float-right" title="Pull Request Checklist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
