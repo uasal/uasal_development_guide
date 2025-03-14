@@ -270,7 +270,6 @@ branches should interact with each other.*
 
 |image1|
 
-
 Main
 ''''
 
