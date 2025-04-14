@@ -26,7 +26,22 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'sphinx_rtd_theme'
 # html_static_path = ['_static']
 html_static_path = []
-
+html_theme_options = {
+    # --- IMPORTANT SETTINGS FOR REPOSITORY LINKS ---
+    # Add the name of the GitHub organisation/user.
+    'github_user': 'uasal',
+    # Add the name of the Git repository.
+    'github_repo': 'uasal_development_guide',
+    # Which branch to link to? ('master' or 'main' is common)
+    'github_version': 'main',
+    # **Crucially, specify the path FROM the repository root TO the directory
+    # containing your conf.py file.** It usually needs leading/trailing slashes.
+    'conf_py_path': '/source/',
+    # Set 'vcs_pageview_mode' to 'blob' or 'edit' to enable the link
+    'vcs_pageview_mode': 'blob', # 'blob' shows the file view, 'edit' shows the edit view
+    # 'display_github': True, # Deprecated in newer versions, use vcs_pageview_mode
+}
+    
 _source_suffix = locals().get('source_suffix', '.rst') # Get source_suffix if defined
 
 # --- SETTINGS FOR REPO LINK ---
