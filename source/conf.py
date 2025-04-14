@@ -41,7 +41,7 @@ github_version = 'main'
 # (Relative path from repo root to the directory containing conf.py)
 # CHECK THIS: Use '/docs/' if conf.py is in a 'docs' folder at the root
 # Use '/' if conf.py is directly in the repository root.
-conf_py_path = '/docs/'
+conf_py_path = '/source/'
 
 html_context = {
     # Enable "Edit on GitHub" link:
