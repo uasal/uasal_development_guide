@@ -433,7 +433,7 @@ pull request on GitHub.*
 **NOTE:** If a Pull Request template is available in the repository,
 always select an appropriate template whenever possible over no template
 if it applies. An example PR template can be found here:
-`pull_request_template.md <https://github.com/uasal/lab_documents/.github/PULL_REQUEST_TEMPLATE/pull_request_template.md>`__
+`pull_request_template.md <https://github.com/uasal/lab_documents/blob/main/.github/PULL_REQUEST_TEMPLATE/pull_request_template.md>`__
 
 
 .. _pr-naming:
@@ -664,7 +664,7 @@ General
 Trainings
 ~~~~~~~~~
 
-Refer to the `new_team_member <https://github.com/uasal/lab_documents/new_team_member.md#training-guides>`__
+Refer to the `new_team_member <https://github.com/uasal/lab_documents/blob/main/new_team_member.md#training-guides>`__
 onboarding guide for a list of git related training videos.
 
 Git Tools
