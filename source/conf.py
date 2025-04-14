@@ -27,17 +27,6 @@ html_theme = 'sphinx_rtd_theme'
 # html_static_path = ['_static']
 html_static_path = []
 html_theme_options = {
-    # --- IMPORTANT SETTINGS FOR REPOSITORY LINKS ---
-    # Add the name of the GitHub organisation/user.
-    'github_user': 'uasal',
-    # Add the name of the Git repository.
-    'github_repo': 'uasal_development_guide',
-    # Which branch to link to? ('master' or 'main' is common)
-    'github_version': 'main',
-    # **Crucially, specify the path FROM the repository root TO the directory
-    # containing your conf.py file.** It usually needs leading/trailing slashes.
-    'conf_py_path': '/source/',
-    # Set 'vcs_pageview_mode' to 'blob' or 'edit' to enable the link
     'vcs_pageview_mode': 'blob', # 'blob' shows the file view, 'edit' shows the edit view
     # 'display_github': True, # Deprecated in newer versions, use vcs_pageview_mode
 }
@@ -47,16 +36,16 @@ _source_suffix = locals().get('source_suffix', '.rst') # Get source_suffix if de
 # --- SETTINGS FOR REPO LINK ---
 
 # GitHub username or organization name
-github_user = 'uasal'
+github_user = "uasal"
 # Repository name
-github_repo = 'uasal_development_guide'
+github_repo = "uasal_development_guide"
 # Default branch name (CHECK THIS on GitHub: usually 'main' or 'master')
-github_version = 'main'
+github_version = "main"
 # Path in the repository root where your documentation lives
 # (Relative path from repo root to the directory containing conf.py)
 # CHECK THIS: Use '/docs/' if conf.py is in a 'docs' folder at the root
 # Use '/' if conf.py is directly in the repository root.
-conf_py_path = '/source/'
+conf_py_path = "/source/"
 
 html_context = {
     # Enable "Edit on GitHub" link:
