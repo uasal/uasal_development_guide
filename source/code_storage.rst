@@ -41,7 +41,7 @@ Inside your analysis directory, which you will create, it is important to genera
 - Details regarding the environment in which it was run. This could be showing the key installed package/repository versions from within a notebook, by supplying the details of a conda environment, or by providing a manual write-up.  
 - The code to run the analysis (e.g. a python script, jupyter notebook)
 - A report of the final results, including any limitations, or impact to requirements/budgets etc.
-   - If including a figure, high-resolution versions that support transparancy (e.g. PNG) are preferred.
+   - If including a figure, high-resolution versions that support transparency (e.g. PNG) are preferred.
 
 Areas of analyses storage are as follows:
 
