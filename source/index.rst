@@ -12,8 +12,9 @@ Lazuli projects but is generally applicable across the board.
 
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly: 
+   :glob:
 
-   general
    git/git
    python/python
+   *
