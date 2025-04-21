@@ -1,0 +1,156 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code and Analysis Storage &mdash; uasal_development_guide  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="General Development Practices" href="general.html" />
+    <link rel="prev" title="UASAL Configuration Management Summary" href="python/configuration_management.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            uasal_development_guide
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="git/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/python.html">Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Code and Analysis Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general.html">General Development Practices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">uasal_development_guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Code and Analysis Storage</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/uasal/uasal_development_guide/blob/main/source/code_storage.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="code-and-analysis-storage">
+<h1>Code and Analysis Storage<a class="headerlink" href="#code-and-analysis-storage" title="Link to this heading"></a></h1>
+<p>When developing tools and/or analyses that are to be used by people within the group, the code should be stored within a repository in the UASAL group.
+This is to ensure that code is not stored in personal repositories where access is controlled by only a single person.
+It also promotes contributions from your colleagues via the healthy development practices discussed in this guide.</p>
+<section id="notebooks">
+<h2>Notebooks<a class="headerlink" href="#notebooks" title="Link to this heading"></a></h2>
+<p>Notebooks are powerful tools and are especially useful for generating code and reports under a common file.
+However, when developing a more formal tool or package, the notebooks contained within that package (in a <cite>notebooks</cite> folder) are to be example notebooks only, and not the code repo itself.</p>
+</section>
+<section id="analysis-storage">
+<h2>Analysis Storage<a class="headerlink" href="#analysis-storage" title="Link to this heading"></a></h2>
+<p>So where should your analyses go? It depends upon the situation.</p>
+<p>If writing a paper, then the code can be included in the git repository that contains the latex files.
+This is encouraged as then the people you share the paper with will have access to the code as well (assuming you’re using Overleaf).</p>
+</section>
+<section id="analysis-storage-for-the-space-telescope-project">
+<h2>Analysis Storage for the Space Telescope Project<a class="headerlink" href="#analysis-storage-for-the-space-telescope-project" title="Link to this heading"></a></h2>
+<p>For those of us working on the Space Telescope Project, a scheme has been developed to put the analyses into documentation.</p>
+<p>The following flow chart indicates how a location should be chosen.
+It also provides guidance on where to create the ticket.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/artifacttree.drawio.png"><img alt="How to determine a place to store your analysis." src="_images/artifacttree.drawio.png" style="width: 665.5px; height: 508.0px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Follow this chart to determine where to make an issue and how to store your artifact</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Inside your analysis directory, which you will create, it is important to generate the following files:</p>
+<ul class="simple">
+<li><p><cite>README.md</cite> - This is to explain the contents of the directory, the reason for performing the analysis, and what it affects. A description of key input and output files is also encouraged. Also helpful is how long it takes the code to run and on which hardware.</p></li>
+<li><p>Details regarding the environment in which it was run. This could be showing the key installed package/repository versions from within a notebook, by supplying the details of a conda environment, or by providing a manual write-up.</p></li>
+<li><p>The code to run the analysis (e.g. a python script, jupyter notebook)</p></li>
+<li><dl class="simple">
+<dt>A report of the final results, including any limitations, or impact to requirements/budgets etc.</dt><dd><ul>
+<li><p>If including a figure, high-resolution versions that support transparency (e.g. PNG) are preferred.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Areas of analyses storage are as follows:</p>
+<ul class="simple">
+<li><p>[ESC related analyses](<a class="reference external" href="https://github.com/uasal/spacecoron_design_docs/tree/develop/Analysis">https://github.com/uasal/spacecoron_design_docs/tree/develop/Analysis</a>)</p></li>
+<li><p>[WCC related analyses])(<a class="reference external" href="https://github.com/uasal/wcc_designdocs/tree/develop/Analysis">https://github.com/uasal/wcc_designdocs/tree/develop/Analysis</a>)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python/configuration_management.html" class="btn btn-neutral float-left" title="UASAL Configuration Management Summary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="general.html" class="btn btn-neutral float-right" title="General Development Practices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UASAL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
