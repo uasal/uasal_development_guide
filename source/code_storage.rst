@@ -6,14 +6,13 @@ This is to ensure that code is not stored in personal repositories where access 
 It also promotes contributions from your colleagues via the healthy development practices discussed in this guide.
 
 Notebooks
-=========
-
+---------
 Notebooks are powerful tools and are especially useful for generating code and reports under a common file. 
 However, when developing a more formal tool or package, the notebooks contained within that package (in a `notebooks` folder) are to be example notebooks only, and not the code repo itself.
 
 
 Analysis Storage
-================
+----------------
 
 So where should your analyses go? It depends upon the situation.
 
@@ -21,7 +20,7 @@ If writing a paper, then the code can be included in the git repository that con
 This is encouraged as then the people you share the paper with will have access to the code as well (assuming you're using Overleaf). 
 
 Analysis Storage for the Space Telescope Project
-================================================
+------------------------------------------------
 
 For those of us working on the Space Telescope Project, a scheme has been developed to put the analyses into documentation.
 
