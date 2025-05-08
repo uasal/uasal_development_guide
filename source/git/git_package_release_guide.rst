@@ -1,7 +1,7 @@
 Releasing a Package on Github
 =============================
 
-This guide details the checks to undertake before releasing a package on github, the UASAL guidelines on releasing the package, and the actual release process on github. The guide requires no prior knowledge of creating software releases on Github. While this guide is developed for Github, the ideas themselves can be applied to releases on other git management systems (such as Gitlab).
+This guide details the pre release checks to undertake before releasing a package on github, and the actual release process on github. The guide requires no prior knowledge of creating software releases on Github. While this guide is developed for Github, the ideas themselves can be applied to releases on other git management systems (such as Gitlab).
 
 Preliminaries
 ~~~~~~~~~~~~~
@@ -9,6 +9,7 @@ Preliminaries
 The release version of the package is created by creating a stable self-contained version of the package (called a *Release*), tagging it with a version and creating accompanying metadata such as Release Notes and Changelogs. Depending on the development environment, Changelogs and version tags can be automated. Release notes are targeted at the end user, highlighting the features of the new release, whereas a Changelog is usually a detailed description of all changes since the last release version.
 
 The standard convention for naming versions (also known as `Semantic Versioning <https://semver.org/>`__) is to tag a release as MAJOR.MINOR.PATCH where
+
 1. MAJOR refers to an update to the whole package that is backwards incompatible with the previous versions.
 2. MINOR refers to either new features, functional updates, or a large number of bundled bug fixes.
 3. PATCH refers to small bug fixes, hotfixes, or minor changes in the code. 
