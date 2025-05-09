@@ -9,3 +9,4 @@ Git
    ssh_key_tutorial
    Git_LFS_Guide
    uasal_lfs
+   setup_env_variables
