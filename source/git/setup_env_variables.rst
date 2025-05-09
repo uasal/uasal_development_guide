@@ -90,7 +90,7 @@ Windows
 
 .. |image1| image:: /_static/windows_env_1.png
 .. |image2| image:: /_static/windows_env_2.png
-.. |image3| image:: /_static/womdpws_env_3.png
+.. |image3| image:: /_static/windows_env_3.png
 .. |br| raw:: html
 
   <br>
