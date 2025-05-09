@@ -65,17 +65,11 @@ Windows
 
 3. **Permanently add the environment variable**
 
-   - Search **"Environment Variables"** in the Start Menu
-   |image1|
-   
-   - Open **"Edit the system environment variables"** and click **"Environment Variables..."**
-   |image2|
-   
+   - Search **"Environment Variables"** in the Start Menu |image1|
+   - Open **"Edit the system environment variables"** and click **"Environment Variables..."** |image2|
    - Under **User variables** or **System variables**, click **New**:
      - **Name**: ``ENV_VARIABLE``
-     - **Value**: ``\\path\to\server``
-   |image3|
-     
+     - **Value**: ``\\path\to\server`` |image3|
    - Click OK to save.
 
 
