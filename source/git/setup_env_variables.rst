@@ -1,5 +1,5 @@
 Setting up environment variables
-=========================
+================================
 
 Several UASAL repositories and/or python packages require environment variables to be configured
 in order to read in a configuration correctly. In context of configuration repos such as
@@ -7,7 +7,7 @@ config_stp or config_um, the environment variable is set to a remote file server
 on package usage, the path to the file server is automatically expanded.
 
 Environment Variable Setup
-==========================
+--------------------------
 
 Linux / macOS
 -------------
