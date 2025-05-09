@@ -57,7 +57,7 @@ Windows
 
 2. **Temporarily add the variable for the current Command Prompt session**
 
-   .. code-block:: cmd
+   .. code-block:: bash
 
       set ENV_VARIABLE=\\path\to\server
 
@@ -77,7 +77,7 @@ Windows
 
    Open a new Command Prompt or PowerShell window and run:
 
-   .. code-block:: cmd
+   .. code-block:: bash
 
       echo %ENV_VARIABLE%
 
