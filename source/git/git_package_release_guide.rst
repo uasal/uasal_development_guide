@@ -24,7 +24,7 @@ Pre-release, release branches and archiving releases
 
 Note that the tagging of `v0.MINOR.PATCH<alpha>` is not the same as creating a Pre-release on GitHub, as tagging a commit is not the same as creating a release. UASAL organization preference is to *NOT utilize the Pre-release* functionality in GitHub. This is primarily to simplify the release process. This may be revisited in the future, especially if software with a large user base develops.
 
-UASAL organization preference is to create a release from the main branch. Prior to release, all feature branches should be merged into a develop branch, and then these changes should be merged to the main branch.
+UASAL organization preference is to create a release from the main branch. Prior to release, all desired feature branches should be merged into a develop branch, and then these changes should be merged to the main branch.
 
 When releasing code alongside a paper, a user can archive a copy of the GitHub code on Zenodo. Zenodo usually generates two DOIs for each archived code, one for the code as a whole, and one for the specific release tag. So, creating a release tag will create a new snapshot of the archived code on Zenodo. Thus, in future papers, authors can choose to reference the package as a whole, or specific versions of code that were used for analysis, provided they were tagged as a GitHub release to trigger the Zenodo archiving process.
 
