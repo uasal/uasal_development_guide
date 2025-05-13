@@ -36,7 +36,7 @@ Prior to release, consider the following checks on your GitHub repo:
 1. Do all the tests pass?
 2. Does the release version have any dependencies/links to local files that are not in the repo? 
 3. Are the installation instructions detailed, with the pre-requisites specified in the pyproject.toml file?
-4. Does the code have any TODO or FIXME tags that need to be addressed before the release?
+4. Does the code have any TODO or FIXME tags that need to be addressed before the release? In general, production code should not contain either of these tags. Issues can be created to capture this work that is to be incorporated in a future release.
 5. If using docstrings to create documentation, have all the docstrings been created/updated?
 6. Does the README or other documentation need to be updated?
 7. Do the installation instructions need to be updated?
