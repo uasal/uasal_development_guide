@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setting up environment variables &mdash; uasal_development_guide  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python" href="../python/python.html" />
+    <link rel="prev" title="Using UASAL Git LFS (hosted on stp-lfs)" href="uasal_lfs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uasal_development_guide
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="git.html">Git</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="git-flow-guide.html">Git-Flow Workflow Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pull_request_checklist.html">Pull Request Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uasal_lfs.html">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up environment variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_storage.html">Code and Analysis Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general.html">General Development Practices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uasal_development_guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="git.html">Git</a></li>
+      <li class="breadcrumb-item active">Setting up environment variables</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/uasal/uasal_development_guide/blob/main/source/git/setup_env_variables.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setting-up-environment-variables">
+<h1>Setting up environment variables<a class="headerlink" href="#setting-up-environment-variables" title="Link to this heading"></a></h1>
+<p>Several UASAL repositories and/or python packages require environment variables to be configured
+in order to read in a configuration correctly. In context of configuration repos such as
+config_stp or config_um, the environment variable is set to a remote file server so that
+on package usage, the path to the file server is automatically expanded.</p>
+<section id="environment-variable-setup">
+<h2>Environment Variable Setup<a class="headerlink" href="#environment-variable-setup" title="Link to this heading"></a></h2>
+</section>
+<section id="linux-macos">
+<h2>Linux / macOS<a class="headerlink" href="#linux-macos" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p><strong>Check which environment variable your configuration repository is using</strong></p>
+<p>Reference the README or inspect the config files for paths prepended by <code class="docutils literal notranslate"><span class="pre">$</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">$SERVER</span></code>.</p>
+</li>
+<li><p><strong>Temporarily add the environment variable to your session</strong></p>
+<p>In a terminal, type the following and press Enter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ENV_VARIABLE</span><span class="o">=</span>/path/to/server
+</pre></div>
+</div>
+</li>
+<li><p><strong>Permanently add the environment variable</strong></p>
+<p>Add the <cite>export</cite> command above to one of your shell config files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.zshrc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.profile</span></code></p></li>
+</ul>
+<p>Then apply the changes with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</pre></div>
+</div>
+</li>
+<li><p><strong>Verify the environment variable</strong></p>
+<p>Open a new terminal and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$ENV_VARIABLE</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p><strong>Check which environment variable the configuration repository is using</strong></p>
+<p>Reference the README or inspect the config files for paths prepended by <code class="docutils literal notranslate"><span class="pre">$</span></code>.</p>
+</li>
+<li><p><strong>Temporarily add the variable for the current Command Prompt session</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="w"> </span><span class="nv">ENV_VARIABLE</span><span class="o">=</span><span class="se">\\</span>path<span class="se">\t</span>o<span class="se">\s</span>erver
+</pre></div>
+</div>
+<p>Replace with the actual UNC path to your network location.</p>
+</li>
+<li><p><strong>Permanently add the environment variable</strong></p>
+<ul class="simple">
+<li><p>Search <strong>“Environment Variables”</strong> in the Start Menu <img alt="image1" src="../_images/windows_env_1.png" /></p></li>
+<li><p>Open <strong>“Edit the system environment variables”</strong> and click <strong>“Environment Variables…”</strong> <img alt="image2" src="../_images/windows_env_2.png" /></p></li>
+<li><p>Under <strong>User variables</strong> or <strong>System variables</strong>, click <strong>New</strong>:
+- <strong>Name</strong>: <code class="docutils literal notranslate"><span class="pre">ENV_VARIABLE</span></code>
+- <strong>Value</strong>: <code class="docutils literal notranslate"><span class="pre">\\path\to\server</span></code> <img alt="image3" src="../_images/windows_env_3.png" /></p></li>
+<li><p>Click OK to save.</p></li>
+</ul>
+</li>
+<li><p><strong>Verify the environment variable</strong></p>
+<p>Open a new Command Prompt or PowerShell window and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>%ENV_VARIABLE%
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="uasal_lfs.html" class="btn btn-neutral float-left" title="Using UASAL Git LFS (hosted on stp-lfs)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../python/python.html" class="btn btn-neutral float-right" title="Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UASAL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
