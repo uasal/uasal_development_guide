@@ -532,14 +532,14 @@ GitLab Overview
 ---------------
 
 Export Control repositories for UASAL will be on
-`GitLab <https://gitlab.sc.ascendingnode.tech:8443>`__ instead of
-`GitHub <https://github.com/uasal>`__ for compliance. Not all data on
+`GitLab <https://gitlab.sc.ascendingnode.tech:8443>`_ instead of
+`GitHub <https://github.com/uasal>`_ for compliance. Not all data on
 GitLab will necessary contain EC information but might have future
 intentions of doing so. Some GitHub repositories may be mirrored on
 GitLab but are only mirrored in one direction and still only have one
 source location.
 
-**NOTE:**\  `OpenVPN Connect <openvpn.net/client/>`__ *(or equivalent)*
+**NOTE:**\  `OpenVPN Connect <https://openvpn.net/client/>`_ *(or equivalent)*
 needs to be setup and turned on first before you can access the UASAL
 GitLab projects. Additionally, Export Control Training needs to be
 completed first. Refer to the `Onboarding New Team Member
@@ -678,7 +678,7 @@ Git Tools
 - `SourceTree <https://www.sourcetreeapp.com/>`__ 
   - *Preferred option over other tools listed*
 - `GitHub Desktop <https://desktop.github.com/download/>`__ 
-- `GitKraken <www.gitkraken.com/download/>`__ |br|
+- `GitKraken <https://www.gitkraken.com/download>`__ |br|
   - **NOTE:**\  Do **not**\  use GitKraken with Export Controlled repositories (GitLab repos) 
 - Git Extension Pack (*VScode Extension*)
 

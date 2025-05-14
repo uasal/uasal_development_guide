@@ -97,7 +97,7 @@ dependent upon the application. If multiple people are using the tool,
 and configurations are being updated independent of the software that
 uses them, then they should probably live in a separate repository. An
 example configuration repository with details on its usage is available
-`at this link <https://github.com/uasal/config_tool_template>`__
+`at this link <https://github.com/uasal/config_project_template>`__
 
 Summary of Formats
 ~~~~~~~~~~~~~~~~~~

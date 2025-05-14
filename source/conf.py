@@ -58,3 +58,24 @@ html_context = {
     # Set the source file suffix (for edit links)
     'source_suffix': _source_suffix,
 }
+
+# Parameters for the link checking
+linkcheck_allowed_redirects = {
+# All HTTP redirections from the source URI to
+# the canonical URI will be treated as "working".
+    r'https://Duck.ai': r'https://duckduckgo.com*',
+    r'http://10.130.30.9/*': r'http://10.130.30.9/users/sign_in',
+    r'https://github.com/settings/*':r'https://github.com/login*'
+}
+
+
+# Ignore links that are private repos or require VPN
+linkcheck_ignore = [
+   'https://github.com/uasal/spacecoron_design_docs/*',
+   'https://github.com/uasal/wcc_designdocs/*',
+   'https://gitlab.sc.ascendingnode.tech*',
+   'https://github.com/uasal/lab_documents*'
+]
+
+# Sites where the anchoring doesn't work correctly (often a redirect issue)
+linkcheck_anchors_ignore_for_url = ['https://github.com/git-lfs/git-lfs*']
