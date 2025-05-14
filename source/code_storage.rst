@@ -44,5 +44,5 @@ Inside your analysis directory, which you will create, it is important to genera
 
 Areas of analyses storage are as follows:
 
-- [ESC related analyses](https://github.com/uasal/spacecoron_design_docs/tree/develop/Analysis)
-- [WCC related analyses])(https://github.com/uasal/wcc_designdocs/tree/develop/Analysis)
+- `ESC related analyses <https://github.com/uasal/spacecoron_design_docs/tree/develop/Analysis>`_
+- `WCC related analyses <https://github.com/uasal/wcc_designdocs/tree/develop/Analysis>`_

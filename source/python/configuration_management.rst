@@ -110,8 +110,8 @@ Configuration repositories all follow the same naming convention,
 notably ``config_project_element``. So a hypothetical example could be
 ``config_hubble_acs``. The ``config_`` prefix indicates it’s a
 configuration, the ``project`` indicates which
-observatory/telescope/project it is applied to (e.g. STP (aka Pearl), UM
-(ultramarine, aka Lazuli)), and the ``element`` indicates the instrument
+observatory/telescope/project it is applied to (e.g. STP (Space Telescope Pathfinder) or UM
+(Ultramarine)), and the ``element`` indicates the instrument
 which it is applied to. It is not required that an instrument name be
 used as the element, but to date it has been the only element to be
 used.
@@ -133,8 +133,8 @@ Expanding configuration to other systems
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The current set of configuration repositories are focused on the Space
-Telescope Pathfinder (STP, aka Pearl) mission. It is anticipated that a
-new set will be created for the Ultramarine (aka Lazuli) mission that
+Telescope Pathfinder (STP) mission. It is anticipated that a
+new set will be created for the Ultramarine mission that
 will follow the same structure. However, it is important to note that
 the infrastructure is easily expandable to other projects and also local
 hardware setups. Examples include the phase retrieval testbench or

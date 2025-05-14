@@ -9,7 +9,7 @@ download. Git LFS allows you to store the iterations on the server,
 without overloading your machine disk space by only downloading the
 checked out version of the file, and pointers to the history. Now, you
 can absolutely just go ahead and follow instructions on the `git lfs
-website <https://git-lfs.com/>`__. These will work, however the notes
+website <https://git-lfs.com/>`_. These will work, however the notes
 down here also emphasize some additional points/pitfalls so read on if
 you are installing for the first time and want to be extra cautious.
 
@@ -17,7 +17,7 @@ Installation
 ~~~~~~~~~~~~
 
 Installation instructions `can be found
-here <https://github.com/git-lfs/git-lfs?utm_source=gitlfs_site&utm_medium=installation_link&utm_campaign=gitlfs#installing>`__.
+here <https://github.com/git-lfs/git-lfs?utm_source=gitlfs_site&utm_medium=installation_link&utm_campaign=gitlfs#installing>`_.
 You can also install via Conda (not explicitly mentioned anywhere) using
 
 ::
