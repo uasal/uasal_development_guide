@@ -20,7 +20,7 @@ you are installing for the first time and want to be extra cautious.
 Installation
 ~~~~~~~~~~~~
 
-Installation instructions `can be found here <https://github.com/git-lfs/git-lfs?tab=readme-ov-file#installing>`_.
+Installation instructions `can be found here <https://github.com/git-lfs/git-lfs?tab=readme-ov-file#installing>`__.
 You can also install via Conda (not explicitly mentioned anywhere) using
 
 ::
