@@ -69,8 +69,8 @@ linkcheck_allowed_redirects = {
 # the canonical URI will be treated as "working".
     r'https://Duck.ai': r'https://duckduckgo.com*',
     r'http://10.130.30.9/*': r'http://10.130.30.9/users/sign_in',
-    r'https://github.com/settings/*':r'https://github.com/login*'
-    r'https://github.com/git-lfs/git-lfs#installing*': r'https://github.com/git-lfs/git-lfs?tab=readme-ov-file#installing'
+    r'https://github.com/settings/*':r'https://github.com/login*',
+    r'https://github.com/git-lfs/git-lfs#installing*': r'https://github.com/git-lfs/git-lfs?tab=readme-ov-file#installing*'
 }
 
 
