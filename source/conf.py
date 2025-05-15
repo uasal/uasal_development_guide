@@ -58,7 +58,7 @@ html_context = {
 }
 
 linkcheck_request_headers = {
-    r'https://docs.github.com/': {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux i686; '
+    r'https://www.datacamp.com/': {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux i686; '
                                                 'rv:24.0) Gecko/20100101 Firefox/24.0'}
 }
 
@@ -70,6 +70,7 @@ linkcheck_allowed_redirects = {
     r'https://Duck.ai': r'https://duckduckgo.com*',
     r'http://10.130.30.9/*': r'http://10.130.30.9/users/sign_in',
     r'https://github.com/settings/*':r'https://github.com/login*'
+    r'https://github.com/git-lfs/git-lfs#installing*': r'https://github.com/git-lfs/git-lfs?tab=readme-ov-file#installing'
 }
 
 
