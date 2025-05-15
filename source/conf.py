@@ -57,6 +57,13 @@ html_context = {
     'source_suffix': _source_suffix,
 }
 
+linkcheck_request_headers = {
+    r'https://www.datacamp.com/*': {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux i686; '
+                                                'rv:24.0) Gecko/20100101 Firefox/24.0'}                                        
+}
+
+user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0'
+
 # Parameters for the linking and link checking
 
 linkcheck_allowed_redirects = {
@@ -64,7 +71,7 @@ linkcheck_allowed_redirects = {
 # the canonical URI will be treated as "working".
     r'https://Duck.ai': r'https://duckduckgo.com*',
     r'http://10.130.30.9/*': r'http://10.130.30.9/users/sign_in',
-    r'https://github.com/settings/*':r'https://github.com/login*'
+    r'https://github.com/settings/*':r'https://github.com/login*',
 }
 
 
