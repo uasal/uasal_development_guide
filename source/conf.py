@@ -70,6 +70,7 @@ linkcheck_allowed_redirects = {
 
 # Ignore links that are private repos or require VPN
 linkcheck_ignore = [
+   'http://10.130.30.9/*',
    'https://github.com/uasal/spacecoron_design_docs/*',
    'https://github.com/uasal/wcc_designdocs/*',
    'https://gitlab.sc.ascendingnode.tech*',
