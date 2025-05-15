@@ -18,8 +18,6 @@ extensions = []
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-
-
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
@@ -59,7 +57,8 @@ html_context = {
     'source_suffix': _source_suffix,
 }
 
-# Parameters for the link checking
+# Parameters for the linking and link checking
+
 linkcheck_allowed_redirects = {
 # All HTTP redirections from the source URI to
 # the canonical URI will be treated as "working".
@@ -74,7 +73,8 @@ linkcheck_ignore = [
    'https://github.com/uasal/spacecoron_design_docs/*',
    'https://github.com/uasal/wcc_designdocs/*',
    'https://gitlab.sc.ascendingnode.tech*',
-   'https://github.com/uasal/lab_documents*'
+   'https://github.com/uasal/lab_documents*',
+   'https://github.com/uasal/uasal_archive'
 ]
 
 # Sites where the anchoring doesn't work correctly (often a redirect issue)

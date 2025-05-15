@@ -186,15 +186,12 @@ configuration repos, is found at
 Performing an Analysis with Existing Tools
 ------------------------------------------
 
-An `example
-notebook <https://github.com/uasal/config_project_template/blob/main/docs/example.ipynb>`__
-is provided in the
-`config_project_template <https://github.com/uasal/config_project_template>`__
-that (very roughly) demonstrates how an analysis can be written that
-utilizes a tool that is provided a configuration.
+An `example notebook <https://github.com/uasal/config_project_template/blob/main/notebooks/example.ipynb>`__ is provided in the `config_project_template <https://github.com/uasal/config_project_template>`__ that provides a high-level demonstration on how an analysis can be written that utilizes a tool that is provided a configuration.
 
-A more representative example `is in
-development <https://github.com/uasal/wcc_designdocs/issues/188>`__.
+It also demonstrates :ref:`env_variables`, specifically in regards to the UASAL archive.
+
+
+.. _config-FAQ:
 
 Configuration FAQ
 -----------------

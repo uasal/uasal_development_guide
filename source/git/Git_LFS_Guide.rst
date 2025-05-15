@@ -13,6 +13,10 @@ website <https://git-lfs.com/>`_. These will work, however the notes
 down here also emphasize some additional points/pitfalls so read on if
 you are installing for the first time and want to be extra cautious.
 
+.. note::
+    This is not to be confused with the :ref:`uasal_archive <uasal_archive>` which also uses an analogous LFS functionality that is *not* hosted by GitHub. 
+
+
 Installation
 ~~~~~~~~~~~~
 
