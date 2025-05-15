@@ -1,5 +1,18 @@
-Using UASAL Git LFS (hosted on stp-lfs)
-=======================================
+.. _uasal_archive:
+
+Using the UASAL_Archive 
+========================
+
+We have setup an large-file service (LFS) that is independent of GitHub LFS primarily due to storage and bandwidth costs which balloon over time.
+
+The `uasal_archive <https://github.com/uasal/uasal_archive>`__ is an area where the team can place files that are required for simulations but do not belong inside a specific repository.
+This sometimes includes references to files that are too large to host in a configuration repo, or change frequently. 
+It is also the place to store files that are used by multiple parties and/or analyses.
+If unclear on when to use the archive or not, please ask in the #computing Slack channel or reach out to Patrick Ingraham.
+
+.. note::
+  There are times where these files are referenced from inside a configuration file via an environment variable that must be setup locally. An example of this can be found in the `config_project_template example notebook <https://github.com/uasal/config_project_template/blob/main/notebooks/example.ipynb>`_. See also details on :ref:`env_variables`.
+
 
 **Disclaimer:** The UASAL Git LFS is managed via a GitLab instance. This
 is **NOT** the same GitLab instance as the ITAR-compliant ANT GitLab and 

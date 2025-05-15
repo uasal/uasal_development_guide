@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using UASAL Git LFS (hosted on stp-lfs) &mdash; uasal_development_guide  documentation</title>
+  <title>Using the UASAL_Archive &mdash; uasal_development_guide  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
@@ -49,7 +49,7 @@
 <li class="toctree-l2"><a class="reference internal" href="git_package_release_guide.html">Releasing a Package on GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ssh_key_tutorial.html">Setting Up SSH for GitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Git_LFS_Guide.html">Using Git Large File Storage (LFS)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using UASAL Git LFS (hosted on stp-lfs)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using the UASAL_Archive</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup_env_variables.html">Setting up environment variables</a></li>
 </ul>
 </li>
@@ -73,7 +73,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="git.html">Git</a></li>
-      <li class="breadcrumb-item active">Using UASAL Git LFS (hosted on stp-lfs)</li>
+      <li class="breadcrumb-item active">Using the UASAL_Archive</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/uasal/uasal_development_guide/blob/main/source/git/uasal_lfs.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -83,8 +83,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="using-uasal-git-lfs-hosted-on-stp-lfs">
-<h1>Using UASAL Git LFS (hosted on stp-lfs)<a class="headerlink" href="#using-uasal-git-lfs-hosted-on-stp-lfs" title="Link to this heading"></a></h1>
+  <section id="using-the-uasal-archive">
+<span id="uasal-archive"></span><h1>Using the UASAL_Archive<a class="headerlink" href="#using-the-uasal-archive" title="Link to this heading"></a></h1>
+<p>We have setup an large-file service (LFS) that is independent of GitHub LFS primarily due to storage and bandwidth costs which balloon over time.</p>
+<p>The <a class="reference external" href="https://github.com/uasal/uasal_archive">uasal_archive</a> is an area where the team can place files that are required for simulations but do not belong inside a specific repository.
+This sometimes includes references to files that are too large to host in a configuration repo, or change frequently.
+It is also the place to store files that are used by multiple parties and/or analyses.
+If unclear on when to use the archive or not, please ask in the #computing Slack channel or reach out to Patrick Ingraham.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are times where these files are referenced from inside a configuration file via an environment variable that must be setup locally. An example of this can be found in the <a class="reference external" href="https://github.com/uasal/config_project_template/blob/main/notebooks/example.ipynb">config_project_template example notebook</a>. See also details on <a class="reference internal" href="setup_env_variables.html#env-variables"><span class="std std-ref">Setting up environment variables</span></a>.</p>
+</div>
 <p><strong>Disclaimer:</strong> The UASAL Git LFS is managed via a GitLab instance. This
 is <strong>NOT</strong> the same GitLab instance as the ITAR-compliant ANT GitLab and
 shall <strong>NOT</strong> be used for ITAR material, only for non-ITAR large file

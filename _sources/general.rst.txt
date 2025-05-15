@@ -70,7 +70,7 @@ habits and/or slow down the learning process. However, AI may be useful
 for developing initial docstrings or potential unit tests. In all cases,
 the content must be thoroughly reviewed by the programmer. To avoid risk
 of unintentional sharing data or copyright issues with responses we
-recommend copy/pasting into `duck.ai <duck.ai>`__ where the data is
+recommend copy/pasting into `duck.ai <https://Duck.ai>`_ where the data is
 anonymous and the prompt and output are owned by user.
 
 Note that all AI generated content should be disclosed in the file
@@ -97,7 +97,7 @@ dependent upon the application. If multiple people are using the tool,
 and configurations are being updated independent of the software that
 uses them, then they should probably live in a separate repository. An
 example configuration repository with details on its usage is available
-`at this link <https://github.com/uasal/config_tool_template>`__
+`at this link <https://github.com/uasal/config_project_template>`__
 
 Summary of Formats
 ~~~~~~~~~~~~~~~~~~

@@ -176,8 +176,8 @@ and implementation.</p>
 notably <code class="docutils literal notranslate"><span class="pre">config_project_element</span></code>. So a hypothetical example could be
 <code class="docutils literal notranslate"><span class="pre">config_hubble_acs</span></code>. The <code class="docutils literal notranslate"><span class="pre">config_</span></code> prefix indicates it’s a
 configuration, the <code class="docutils literal notranslate"><span class="pre">project</span></code> indicates which
-observatory/telescope/project it is applied to (e.g. STP (aka Pearl), UM
-(ultramarine, aka Lazuli)), and the <code class="docutils literal notranslate"><span class="pre">element</span></code> indicates the instrument
+observatory/telescope/project it is applied to (e.g. STP (Space Telescope Pathfinder) or UM
+(Ultramarine)), and the <code class="docutils literal notranslate"><span class="pre">element</span></code> indicates the instrument
 which it is applied to. It is not required that an instrument name be
 used as the element, but to date it has been the only element to be
 used.</p>
@@ -194,8 +194,8 @@ link</a>.</p>
 <section id="expanding-configuration-to-other-systems">
 <h4>Expanding configuration to other systems<a class="headerlink" href="#expanding-configuration-to-other-systems" title="Link to this heading"></a></h4>
 <p>The current set of configuration repositories are focused on the Space
-Telescope Pathfinder (STP, aka Pearl) mission. It is anticipated that a
-new set will be created for the Ultramarine (aka Lazuli) mission that
+Telescope Pathfinder (STP) mission. It is anticipated that a
+new set will be created for the Ultramarine mission that
 will follow the same structure. However, it is important to note that
 the infrastructure is easily expandable to other projects and also local
 hardware setups. Examples include the phase retrieval testbench or
@@ -245,17 +245,11 @@ configuration repos, is found at
 </section>
 <section id="performing-an-analysis-with-existing-tools">
 <h2>Performing an Analysis with Existing Tools<a class="headerlink" href="#performing-an-analysis-with-existing-tools" title="Link to this heading"></a></h2>
-<p>An <a class="reference external" href="https://github.com/uasal/config_project_template/blob/main/docs/example.ipynb">example
-notebook</a>
-is provided in the
-<a class="reference external" href="https://github.com/uasal/config_project_template">config_project_template</a>
-that (very roughly) demonstrates how an analysis can be written that
-utilizes a tool that is provided a configuration.</p>
-<p>A more representative example <a class="reference external" href="https://github.com/uasal/wcc_designdocs/issues/188">is in
-development</a>.</p>
+<p>An <a class="reference external" href="https://github.com/uasal/config_project_template/blob/main/notebooks/example.ipynb">example notebook</a> is provided in the <a class="reference external" href="https://github.com/uasal/config_project_template">config_project_template</a> that provides a high-level demonstration on how an analysis can be written that utilizes a tool that is provided a configuration.</p>
+<p>It also demonstrates <a class="reference internal" href="../git/setup_env_variables.html#env-variables"><span class="std std-ref">Setting up environment variables</span></a>, specifically in regards to the UASAL archive.</p>
 </section>
 <section id="configuration-faq">
-<h2>Configuration FAQ<a class="headerlink" href="#configuration-faq" title="Link to this heading"></a></h2>
+<span id="config-faq"></span><h2>Configuration FAQ<a class="headerlink" href="#configuration-faq" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>How do I find all the configuration repositories?</p>
 <ul class="simple">

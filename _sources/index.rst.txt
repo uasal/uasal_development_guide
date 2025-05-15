@@ -7,8 +7,7 @@ UASAL Python Development Guide
 ==============================
 
 This guide describes the basic principals how Python software is
-structured inside UASAL. Note that much of this stems from the Pearl and
-Lazuli projects but is generally applicable across the board.
+structured inside UASAL. Note that much of this stems from the Space Telescope Pathfinder projects but is generally applicable across the board.
 
 
 .. toctree::
