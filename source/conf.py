@@ -75,7 +75,8 @@ linkcheck_ignore = [
    'https://github.com/uasal/wcc_designdocs/*',
    'https://gitlab.sc.ascendingnode.tech*',
    'https://github.com/uasal/lab_documents*',
-   'https://github.com/uasal/uasal_archive'
+   'https://github.com/uasal/uasal_archive',
+   'https://www.datacamp.com/tutorial/how-to-resolve-merge-conflicts-in-git-tutorial', # passes locally but site appears to handle traffic from GH actions differently.
 ]
 
 # Sites where the anchoring doesn't work correctly (often a redirect issue)
