@@ -3,11 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-UASAL  Development Guide
+UASAL Development Guide
 ==============================
 
-This guide describes the basic principals how  software is
-develop inside UASAL.
+This guide describes the basic principals how software is developed inside UASAL.
 
 Note that much of this stems from the space instrumentation and space observatory projects but is generally applicable across the board.
 
