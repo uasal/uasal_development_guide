@@ -2,6 +2,7 @@ General Development Practices
 ==============================
 
 We encourage that all code follows some basic principals:
+
 - Assume that one of your colleagues will be using your code in the near future
 - Code should be written as stand-alone tools with minimal dependencies
 - Tools should be handed a configuration to be used during execution
@@ -52,7 +53,7 @@ developed to help with this and can also be automatically parsed to
 generate documentation in html format.
 
 Several styles of documenting code are common (e.g. some examples
-`here <https://www.geeksforgeeks.org/python-docstrings/>`__). For
+`here <https://www.geeksforgeeks.org/python/python-docstrings/>`__). For
 consistency across UASAL code, we encourage the use of `Numpy
 style <https://numpydoc.readthedocs.io/en/latest/format.html>`__.
 
