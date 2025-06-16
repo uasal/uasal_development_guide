@@ -2,6 +2,7 @@ General Development Practices
 ==============================
 
 We encourage that all code follows some basic principals:
+
 - Assume that one of your colleagues will be using your code in the near future
 - Code should be written as stand-alone tools with minimal dependencies
 - Tools should be handed a configuration to be used during execution
