@@ -266,7 +266,6 @@ Configuration FAQ
 
 8. When should the configuration version be augmented?
 
-   - configuration versions are not currently tracked.
    - Normally, when the code is no longer backwards compatible and the
      format for the file no longer applies. This occurs when either
      additional mandatory keywords are required or removed. This cannot
