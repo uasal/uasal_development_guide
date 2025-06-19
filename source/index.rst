@@ -15,8 +15,8 @@ Note that much of this stems from the space instrumentation and space observator
    :titlesonly: 
    :glob:
    
+   general
    git/git
    python/python
-   C/C
-   general/general
+   c++/c++
    *
