@@ -8,8 +8,8 @@ This is an intermediate level guide, written for people who may not have experie
 
 Users are encouraged to look at the `Logging HOWTO <https://docs.python.org/3/howto/logging.html>`__ tutorial on the python website. If you have already been there and there is way too much information, and you would like a streamlined version of logging for your needs, this guide will reproduce some material from the tutorial, and add additional guidelines and suggestions specifically for UASAL package development.
 
-Quickstart
-==========
+Basic Usage
+===========
 
 To get started with logging, the user needs to add a logger to their UASAL package/script. The basic logger usage is fairly straightforward and can be seen in `this gist <https://gist.github.com/sfrinaldi/df1f2711b70e209a161321231adf1d58>`__ ::
 
