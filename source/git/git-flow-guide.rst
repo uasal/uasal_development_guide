@@ -686,12 +686,12 @@ Git Tools
 *however*, verify tool is safe to use if utilizing it with Export
 Controlled repos on GitLab. Check with management / EC office if unsure.
 
-.. |image1| image:: /_static/git-flow.drawio.png
-.. |image2| image:: /_static/merge-commit.drawio.png
-.. |image3| image:: /_static/squash-merge.drawio.png
-.. |image4| image:: /_static/PR-example.png
-.. |image5| image:: /_static/MR-example.png
-.. |image6| image:: /_static/MR-behind-ex.png
+.. |image1| image:: ../_static/git-flow.drawio.png
+.. |image2| image:: ../_static/merge-commit.drawio.png
+.. |image3| image:: ../_static/squash-merge.drawio.png
+.. |image4| image:: ../_static/PR-example.png
+.. |image5| image:: ../_static/MR-example.png
+.. |image6| image:: ../_static/MR-behind-ex.png
 .. |br| raw:: html
 
   <br>
