@@ -11,7 +11,7 @@ Users are encouraged to look at the `Logging HOWTO <https://docs.python.org/3/ho
 Basic Usage
 ===========
 
-To get started with logging, the user needs to add a logger to their UASAL package/script. This output will go to the terminal. The options to change where the output logs go is discussed further in the :ref:`Where do the log messages go?` Section. The basic logger usage is fairly straightforward and can be seen in `this gist <https://gist.github.com/sfrinaldi/df1f2711b70e209a161321231adf1d58>`__ ::
+To get started with logging, the user needs to add a logger to their UASAL package/script. This output will go to the terminal. The options to change where the output logs go is discussed further in the `Where do the log messages go? <#Where do the log messages go?>`__ Section. The basic logger usage is fairly straightforward and can be seen in `this gist <https://gist.github.com/sfrinaldi/df1f2711b70e209a161321231adf1d58>`__ ::
 
 	import logging
 	logger = logging.getLogger(__name__)
