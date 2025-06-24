@@ -208,4 +208,4 @@ Once the loggers have been set up using a dedicated class for the entirety of th
 
 The notebook/script can have its own dedicated logger object, which can be specified in a similar manner to that for the package above by importing a class, or by defining a logger explicitly from within the script/notebook including the corresponding format and handlers.
 
-.. |image1| image:: /_static/logger_workflow.png
+.. |image1| image:: ../_static/logger_workflow.png
