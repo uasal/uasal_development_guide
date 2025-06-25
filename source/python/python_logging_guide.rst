@@ -11,7 +11,7 @@ Users are encouraged to look at the `Logging HOWTO <https://docs.python.org/3/ho
 Basic Usage
 ===========
 
-To get started with logging, the user needs to add a logger to their UASAL package/script. This output will go to the terminal. The options to change where the output logs go is discussed further in the `Where do the log messages go? <#where-do-the-log-messages-go>`__ Section. The basic logger usage is fairly straightforward and can be seen in `this gist <https://gist.github.com/sfrinaldi/df1f2711b70e209a161321231adf1d58>`__ ::
+To get started with logging, the user needs to add a logger to their UASAL package/script. This output will go to the terminal. The options to change where the output logs go is discussed further in the `Where do the log messages go? <#where-do-the-log-messages-go>`__ Section. The basic logger usage is fairly straightforward and can be seen in the `Basic Logger Code <#basic-logger-code-example>`__ ::
 
 	import logging
 	logger = logging.getLogger(__name__)
@@ -185,17 +185,71 @@ We have a `DEFAULT_LEVEL` for the root logger, an `INFO` level for the `StreamHa
 Guidelines for use of loggers in notebooks/scripts
 ##################################################
 
-Once the loggers have been set up using a dedicated class for the entirety of the package, they can be called individually. For example, if we import `package1` and `package2`, which both have a `.log` attribute, containing a logger object, with the specified defaults as shown in the gist code, then individual loggers can be manipulated by calling logging methods for the `package1.log` and `package2.log` objects. 
+Once the loggers have been set up using a dedicated class for the entirety of the package, they can be called individually. For example, if we import `package1` and `package2`, which both have a `.log` attribute, containing a logger object, then individual loggers can be manipulated by calling logging methods for the `package1.log` and `package2.log` objects. 
 
 The notebook/script can have its own dedicated logger object, which can be specified in a similar manner to that for the package above by importing a class, or by defining a logger explicitly from within the script/notebook including the corresponding format and handlers.
 
-##########################################
-Adding your own custom logger to a package
-##########################################
+#########################
+Basic Logger Code Example
+#########################
 
-Here we outline the suggested practice if one decides to incorporate a custom logger into a UASAL package. 
+::
 
-A complete code snippet that can be copy-pasted into a package can be found `here <https://gist.github.com/sfrinaldi/ae2155aac8acbc6d6cc1ec750610022a>`__. 
+	# Example logger import / setup statements
+	# To be added within the script you are running
+
+	from package-name.logger import Logger # Replace package-name with the python package name
+
+	# Logger setup / call (min setup / uses defaults in logger.py)
+	log = Logger(__name__)
+
+	# Logger setup Example w/changes to default values
+	## This changes the overall base min level for stream & logging to messages that are 
+	## at the warning level and above and change the log output file name
+	log_test = Logger("test-case",level='warn',log_file='log_test.log')
+
+
+	# Test log statements --------------------------------------------------------------
+	print("Running logger example with log setup that uses default values from class...")
+	print("Should output logs >= info, output to package-name.log for logs >=debug")
+	log.debug("Testing log debugs")
+	log.warning("Testing log warnings")
+	log.info("Testing log info")
+	log.error("Testing log errors")
+	log.critical("Testing log criticals")
+
+	# Test log_test statements
+	print("Running logger example with log_test setup with adjust values from class...")
+	print("Messages that are above warn should be shown below and output to log_test.log")
+	log_test.debug("Testing log debugs")
+	log_test.warning("Testing log warnings")
+	log_test.info("Testing log info")
+	log_test.error("Testing log errors")
+	log_test.critical("Testing log criticals")
+
+	# Examples of adjusting levels for logger after initializing -----------------------
+	print("Demonstrating methods for changing file and stream levels for logger...")
+	log_test.editFileLevel('crit') # Change min file level required for outputs
+	log_test.editStreamLevel('debug') # Change min level for recording to stream/console
+	# Note: Since the min base level for the same logger was set to a level above the stream level,
+	# it will still only show messages that are above the 'warn' level for the logger.
+
+	print("Running logger example with log_test setup w/mid line changes to logger values...")
+	print("Console should only show message >='info' & record to log_test.log at 'crit' level")
+	log_test.debug("Testing log debugs")
+	log_test.warning("Testing log warnings")
+	log_test.info("Testing log info")
+	log_test.error("Testing log errors")
+	log_test.critical("Testing log criticals")
+
+	# Remove log testing statements / only need the import and initial log = Logger(__name__)
+	# Other lines are for additional examples / test examples if running with logger.py locally
+
+###################
+Custom logger class
+###################
+
+Here we outline the suggested practice if one decides to incorporate a custom logger into a UASAL package. Given your package tree 
 ::
 
    ├── docs
@@ -213,7 +267,70 @@ A complete code snippet that can be copy-pasted into a package can be found `her
    └── tests
        └── test.py
 
-Create a new file `logger.py` in the `src/package_name` directory. Inside this file, import the code from `the gist here <https://gist.github.com/sfrinaldi/ae2155aac8acbc6d6cc1ec750610022a>`__. Modify the default parameters to suit the needs of your package. Once this has been added, inside the `source_code.py` file, add ::
+Create a new file `logger.py` in the `src/package_name` directory. Inside this file, add the following code block. 
+::
+
+	# Example Logger Class for Python 
+	# Refer to https://docs.python.org/3/library/logging.html for more information on loggers
+
+	import logging
+
+	# Variable defaults for Logger Class
+	DEFAULT_LOGFILE = 'package-name.log' # Optional / Use `package-name.log` naming convention when possible
+	DEFAULT_LEVEL = 'debug' # Min level for logger to use for log handlers
+	STREAM_LEVEL = 'info' # Min Level for the log stream handlers
+	FILE_LEVEL = 'debug' # Min level for recording to file
+
+	class Logger(logging.Logger):
+
+		# Level relations / quicker reference
+		levels = {
+		    'debug': logging.DEBUG,
+		    'info': logging.INFO,
+		    'warn': logging.WARNING, # Supporting user input for old and new format
+		    'warning': logging.WARNING, # Supporting user input for old and new format
+		    'error': logging.ERROR,
+		    'crit': logging.CRITICAL,
+		    'critical': logging.CRITICAL, # Catching potential user error case
+		}
+
+		def __init__(
+		        self,
+		        name,
+		        level=DEFAULT_LEVEL, # Used to set the base min level for logging
+		        stream_level=STREAM_LEVEL, # Level for console reporting
+		        file_level=FILE_LEVEL, # Level for printing to log file
+		        log_file=DEFAULT_LOGFILE, # Log File output name
+		        format="%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s - %(message)s", # Format for log messages
+		):
+		    super().__init__(name)
+		    self.setLevel(self.levels.get(level)) # Sets the lowest level allowed for all logger handlers 
+		    formatter = logging.Formatter(format) 
+
+		    # Setup Handlers -------------------------------------------------
+		    ## Writes to the Stream  / Setup Format
+		    self.ch = logging.StreamHandler() 
+		    self.ch.setLevel(self.levels.get(stream_level)) # Sets the level you want to be output to the terminal / stream
+		    self.ch.setFormatter(formatter)
+
+		    ## Writes to a log file using FileHandler (basic handler)
+		    self.fh = logging.FileHandler(filename=log_file, mode='a', encoding='utf-8', delay=False, errors=None)
+		    self.fh.setLevel(self.levels.get(file_level)) # Sets the level you want to be recorded within the log file
+		    self.fh.setFormatter(formatter)
+
+		    # Add Handlers
+		    self.addHandler(self.fh)
+		    self.addHandler(self.ch)
+
+		def editStreamLevel(self, level):
+		    self.ch.setLevel(self.levels.get(level))
+		    return print(f'Changed stream / console logger level to',level,'...')
+		
+		def editFileLevel(self, level):
+		    self.fh.setLevel(self.levels.get(level))
+		    return print(f'Changed file / logging level to',level,'...')
+
+Modify the default parameters to suit the needs of your package. Once this has been added, inside the `source_code.py` file, add ::
 
 	from logger import logger
 	
