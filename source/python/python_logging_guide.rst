@@ -4,9 +4,9 @@ Python Logging Guide
 Introduction
 ============
 
-This is an intermediate level guide, written for people who may not have experience in logging, but have some experience with python, object oriented programming and package development. This guide will discuss the `logger` module in python specifically, and the suggested practices for implementing logging when developing packages at UASAL. 
+This is an intermediate level guide, written for people who may not have experience in logging, but have some experience with Python, object oriented programming and package development. This guide will discuss the `logger` module in Python specifically, and the suggested practices for implementing logging when developing packages at UASAL. 
 
-Users are encouraged to look at the `Logging HOWTO <https://docs.python.org/3/howto/logging.html>`__ tutorial on the python website. If you have already been there and there is way too much information, and you would like a streamlined version of logging for your needs, this guide will reproduce some material from the tutorial, and add additional guidelines and suggestions specifically for UASAL package development.
+Users are encouraged to look at the `Logging HOWTO <https://docs.python.org/3/howto/logging.html>`__ tutorial on the Python website. If you have already been there and there is way too much information, and you would like a streamlined version of logging for your needs, this guide will reproduce some material from the tutorial, and add additional guidelines and suggestions specifically for UASAL package development.
 
 Basic Usage
 ===========
@@ -34,7 +34,7 @@ A really simple question to ask is: *Why do I want to use a logger and not simpl
 This is a reasonable question and the answer depends on your use case. There are logistical and scientific reasons for logging instead of printing. If you are managing a relatively simple script, maybe a print statement is in fact the best way to go. But, if you are working with a complicated package, peppering the code with print statements to debug a problem has three main issues: 
 
 1. Cleanup overhead - you probably have to go back and comment out most statements as you will not want them once the code starts to work. 
-2. Lack of context - a print statement does not contain information about the line of code/date/time that triggered it, unless explicitly specified.
+2. Lack of context - a print statement does not contain information the originating method, line of code, date, time that triggered it etc, unless explicitly specified.
 3. Noise when debugging - a large number of print statements is often redundant when debugging, since we are usually interested in the last few statements before something breaks, requiring the user to sift through a number of print statements to identify the important one. 
 
 Loggers are a strong way of circumventing these problems: 
@@ -72,36 +72,7 @@ A standard logger workflow is illustrated in the following flowchart -
 
 |image1|
 
-While convenient to quickly use the logger defined above in a short script, when developing a package, it is useful to define a separate logger class to be used by the package with a number of pre-set default values that configure the logger. Here we outline the suggested practice for incorporating a custom logger into a UASAL package.
-
-A complete code snippet that can be copy-pasted into a package can be found `here <https://gist.github.com/sfrinaldi/ae2155aac8acbc6d6cc1ec750610022a>`__. 
-::
-
-   ├── docs
-   ├── notebooks
-   │   ├── sample_notebook.ipynb
-   ├── pyproject.toml
-   ├── README.md 
-   ├── src
-   │   ├── package_name
-   │   │   ├── source_code.py
-   │   │   ├── __init__.py
-   │   │   ├── packaged_directory
-   │   │   │   └── data.csv
-   │   │   └── _version.py
-   └── tests
-       └── test.py
-
-Create a new file `logger.py` in the `src/package_name` directory. Inside this file, import the code from `the gist here <https://gist.github.com/sfrinaldi/ae2155aac8acbc6d6cc1ec750610022a>`__. Modify the default parameters to suit the needs of your package. Once this has been added, inside the `source_code.py` file, add ::
-
-	from logger import logger
-	
-	class foo:
-		def __init__(self):
-			self.log = logger()
-
-
-When importing a package that implements its own custom logger, the logger is automatically referenced as `foo.log` and all logging methods can be used with this object. 
+While convenient to quickly use the logger defined above in a short script, when developing a package, one may find it useful to define a separate logger class to be used by the package with a number of pre-set default values that configure the logger. 
 
 ######################
 What is a log handler?
@@ -149,7 +120,7 @@ The keywords accepted by the log formatter (`levelname`, `message`, etc..) are c
 Where do the log messages go?
 #############################
 
-This depends on the handler and the general setup. If you boot up a standard python console, this is the result of the log commands
+This depends on the handler and the general setup. If you boot up a standard Python console, this is the result of the log commands
 ::
 
 	>>> import logging
@@ -217,5 +188,40 @@ Guidelines for use of loggers in notebooks/scripts
 Once the loggers have been set up using a dedicated class for the entirety of the package, they can be called individually. For example, if we import `package1` and `package2`, which both have a `.log` attribute, containing a logger object, with the specified defaults as shown in the gist code, then individual loggers can be manipulated by calling logging methods for the `package1.log` and `package2.log` objects. 
 
 The notebook/script can have its own dedicated logger object, which can be specified in a similar manner to that for the package above by importing a class, or by defining a logger explicitly from within the script/notebook including the corresponding format and handlers.
+
+##########################################
+Adding your own custom logger to a package
+##########################################
+
+Here we outline the suggested practice if one decides to incorporate a custom logger into a UASAL package. 
+
+A complete code snippet that can be copy-pasted into a package can be found `here <https://gist.github.com/sfrinaldi/ae2155aac8acbc6d6cc1ec750610022a>`__. 
+::
+
+   ├── docs
+   ├── notebooks
+   │   ├── sample_notebook.ipynb
+   ├── pyproject.toml
+   ├── README.md 
+   ├── src
+   │   ├── package_name
+   │   │   ├── source_code.py
+   │   │   ├── __init__.py
+   │   │   ├── packaged_directory
+   │   │   │   └── data.csv
+   │   │   └── _version.py
+   └── tests
+       └── test.py
+
+Create a new file `logger.py` in the `src/package_name` directory. Inside this file, import the code from `the gist here <https://gist.github.com/sfrinaldi/ae2155aac8acbc6d6cc1ec750610022a>`__. Modify the default parameters to suit the needs of your package. Once this has been added, inside the `source_code.py` file, add ::
+
+	from logger import logger
+	
+	class foo:
+		def __init__(self):
+			self.log = logger()
+
+When importing a package that implements its own custom logger, the logger is automatically referenced as `foo.log` and all logging methods can be used with this object.
+
 
 .. |image1| image:: ../_static/logger_workflow.png
