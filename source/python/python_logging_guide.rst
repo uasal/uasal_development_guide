@@ -143,23 +143,8 @@ Root Logger Level, Handler Level and throughput
 Loggers are effectively a chain of communication. The chain starts with the `logger` object, which then usually hands it off to one of the Handlers, or multiple handlers. The important thing to note is that *ALL OF THESE OBJECTS CAN SET THEIR OWN LEVEL*. In these circumstances, it is advisable to set the root logger's default level as Debug, so that all logged messages are passed on to the handlers. The handler levels can then be set to filter out a certain set of messages. For example, in this setup 
 ::
 
-	import logging
-
-	# Variable defaults for Logger Class
-	DEFAULT_LOGFILE = 'package-name.log' # Optional / Use `package-name.log` naming convention when possible
-	DEFAULT_LEVEL = logging.DEBUG # Min level for logger to use for log handlers
-	STREAM_LEVEL = logging.INFO # Min Level for the log stream handlers
-	FILE_LEVEL = logging.DEBUG # Min level for recording to file
-
-	class Logger:
-
-		def __init__(
-		        self,
-		        level=DEFAULT_LEVEL, # Used to set min level for log
-		        format="%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s - %(message)s", # Format for log messages
-		):
-		    self.logger = logging.getLogger()
-		    self.logger.setLevel(DEFAULT_LEVEL) # Sets the lowest level allowed for all logger handlers 
+		    logger = logging.getLogger()
+		    logger.setLevel(DEFAULT_LEVEL) # Sets the lowest level allowed for all logger handlers 
 		    formatter = logging.Formatter(format) 
 
 		    # Setup Handlers -------------------------------------------------
@@ -174,8 +159,8 @@ Loggers are effectively a chain of communication. The chain starts with the `log
 		    fh.setFormatter(formatter)
 
 		    # Add Handlers
-		    self.logger.addHandler(fh)
-		    self.logger.addHandler(ch)
+		    logger.addHandler(fh)
+		    logger.addHandler(ch)
 
 We have a `DEFAULT_LEVEL` for the root logger, an `INFO` level for the `StreamHandler`, which outputs logs to the screen, and a `DEBUG` level for the `FileHandler`. Now, as written, all logs will go to the file but only `INFO` and above will be shown on screen. However, in this case if we change the `DEFAULT_LEVEL` to `INFO`, now the root logger no longer accepts/logs `DEBUG` messages, and even though the `FileHandler` is configured to accept `DEBUG` messages, no such messages are coming from Root, and thus no `DEBUG` messages will be seen in the written log! 
 
