@@ -8,7 +8,7 @@ is applicable to any C++ code development within UASAL more generally.
 There are many resources that cover testing in general and test writing in C++ in particular, so this
 document is not intended as an introduction to testing, but it will highlight several basic concepts
 in order to establish a common language and starting point. To skip this and refer only to the specific guidelines
-for writing tests, refer to section :ref:`_guidelines`.``
+for writing tests, refer to section :ref:`_guidelines` .``
 
 
 Testing primer
