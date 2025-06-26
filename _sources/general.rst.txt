@@ -27,5 +27,3 @@ Test Case Documentation
 
 For embedded software and firmware, test cases shall be defined as part of the verification and validation process. Code under test shall be version controlled as well as input test products. Code reviewer shall review test cases to ensure that...
 
-Git Flow
---------
