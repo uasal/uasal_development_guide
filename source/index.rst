@@ -18,5 +18,5 @@ Note that much of this stems from the space instrumentation and space observator
    general
    git/git
    python/python
-   c++/c++
+   C++/C++
    *
