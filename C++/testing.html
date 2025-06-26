@@ -1,0 +1,232 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing Guidelines &mdash; uasal_development_guide  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Code and Analysis Storage" href="../code_storage.html" />
+    <link rel="prev" title="C++ Documentation Guidelines" href="documentation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uasal_development_guide
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general.html">General Development Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="C%2B%2B.html">C++</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="general.html">C++ Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html">C++ Documentation Guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Testing Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_storage.html">Code and Analysis Storage</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uasal_development_guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="C%2B%2B.html">C++</a></li>
+      <li class="breadcrumb-item active">Testing Guidelines</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/uasal/uasal_development_guide/blob/main/source/C++/testing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="testing-guidelines">
+<h1>Testing Guidelines<a class="headerlink" href="#testing-guidelines" title="Link to this heading"></a></h1>
+<p>This document provides an overview of the standards for writing tests in the MagAOX, MagAOX-scoob
+and the XWCTk codebases to ensure code quality, reliability, and maintainability, but
+is applicable to any C++ code development within UASAL more generally.</p>
+<p>There are many resources that cover testing in general and test writing in C++ in particular, so this
+document is not intended as an introduction to testing, but it will highlight several basic concepts
+in order to establish a common language and starting point. To skip this and refer only to the specific guidelines
+for writing tests, refer to the Guidelines section below.</p>
+<section id="testing-primer">
+<h2>Testing primer<a class="headerlink" href="#testing-primer" title="Link to this heading"></a></h2>
+<section id="what-is-the-point-of-testing">
+<h3>What is the point of testing?<a class="headerlink" href="#what-is-the-point-of-testing" title="Link to this heading"></a></h3>
+<p>Testing is one pillar of software validation, alongside formal verification and code review.
+In C++, hidden issues such as undefined behavior, memory leaks, and pointer errors make systematic testing essential.
+Software testing is hard because:</p>
+<ul class="simple">
+<li><p>The space of potential inputs and states grows combinatorially.</p></li>
+<li><p>Failures often occur at discrete boundaries (overflow, null pointers).</p></li>
+<li><p>Random or ad-hoc tests miss corner cases.</p></li>
+</ul>
+<p>The goal of a tester is to find inputs and conditions that break the code, not merely to show it works.</p>
+</section>
+<section id="test-first-programming">
+<h3>Test first programming<a class="headerlink" href="#test-first-programming" title="Link to this heading"></a></h3>
+<p>Aspirationally, one should aim to write tests before writing the code they are testing.
+This is known as Test-Driven Development (TDD).
+TDD encourages you to think about the requirements and expected behavior of your code before implementation,
+leading to better-designed and more maintainable code.</p>
+<p>However, in practice, this is often not feasible for all code.
+Instead, test early and often, aim to write tests as soon as possible after writing the code.
+It is far more pleasant to test your code as you develop it, than once you have a large untested codebase.</p>
+</section>
+<section id="coverage">
+<h3>Coverage<a class="headerlink" href="#coverage" title="Link to this heading"></a></h3>
+<p>Coverage aims to be an objective measures of how thoroughly a set of tests exercise the code.
+Three common coverage metrics are:</p>
+<ul class="simple">
+<li><p><strong>Statement coverage</strong>: Has every line of code been executed at least once?</p></li>
+<li><p><strong>Branch coverage</strong>: For each conditional (<code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">switch</span></code>, <code class="docutils literal notranslate"><span class="pre">ternary</span></code>), have all branches been taken?</p></li>
+<li><p><strong>Path coverage</strong>: Have all possible sequences of branches been traversed?</p></li>
+</ul>
+<p>Path coverage quickly becomes infeasible for all but tiny functions,
+but aiming for at least 80 percent statement coverage on newly written code is a practical baseline.</p>
+<p>The two most wide-spread coverage analysis tools for C++ are GNU gcov/lcov toolchain and LLVM’s llvm-cov.
+We adopt and support the GNU gcov/lcov toolchain for coverage analysis within UASAL.</p>
+</section>
+<section id="types-of-tests">
+<h3>Types of tests<a class="headerlink" href="#types-of-tests" title="Link to this heading"></a></h3>
+<p>Many different types of tests exist, a ballanced test suite includes at least:</p>
+<ul class="simple">
+<li><p><strong>Unit Tests</strong>: verify single classes or functions in isolation.</p></li>
+<li><p><strong>Integration Tests</strong>: exercise multiple modules together, catching interface mismatches or system-level failures.</p></li>
+<li><p><strong>Performance Tests</strong>: benchmark critical code paths for throughput and latency (this can be done with, for example, Google Benchmark).</p></li>
+</ul>
+</section>
+<section id="stubs-and-mocks">
+<h3>Stubs and mocks<a class="headerlink" href="#stubs-and-mocks" title="Link to this heading"></a></h3>
+<p>For testing in general, but for unit tests, in particular, it is important to isolate the code under test from its dependencies.
+To isolate units under test, replace real dependencies with test doubles:</p>
+<ul class="simple">
+<li><p><strong>Stubs</strong>: simple implementations that return fixed data.</p></li>
+<li><p><strong>Mocks</strong>: programmable objects that record calls, enforce interaction expectations, and simulate errors.</p></li>
+</ul>
+<p>Using stubs and mocks ensures that failures point directly at the code under test, not at external dependencies.</p>
+</section>
+<section id="test-automation-and-continuous-integration">
+<h3>Test automation and Continuous Integration<a class="headerlink" href="#test-automation-and-continuous-integration" title="Link to this heading"></a></h3>
+<p>Manual testing is error-prone and slow.
+A robust project automatically compiles and executes the entire test suite with a single command.
+This can be done locally or integrated into a Continuous Integration (CI) pipeline, such that every change to the codebase triggers a full test run.
+CI systems such as GitHub Actions, or GitLab CI pick up every pushed change,
+run the full test suite, collect coverage reports, and enforce coverage thresholds before allowing new code to merge.
+Regression testing is baked into this pipeline: every time a previously passing test fails,
+the CI issues an alert, ensuring new changes do not allow old bugs from creeping back.</p>
+</section>
+</section>
+<section id="guidelines">
+<span id="id1"></span><h2>Guidelines<a class="headerlink" href="#guidelines" title="Link to this heading"></a></h2>
+<ul>
+<li><p>We adopt and support the Catch2 framework.</p></li>
+<li><p>Write tests for new functionality using the Catch2 framework.</p></li>
+<li><p>Place test files in the corresponding <code class="docutils literal notranslate"><span class="pre">tests</span></code> directory for the module or application being tested.</p></li>
+<li><p>Test files should follow the naming convention <code class="docutils literal notranslate"><span class="pre">&lt;module_name&gt;_test.cpp</span></code> (e.g fsmCtrl_test.cpp for the fsmCtrl module).</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">SCENARIO</span></code> structure provided by Catch2 for Behavior-Driven Development (BDD) style tests:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GIVEN</span></code>: Sets up the initial conditions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHEN</span></code>: Describes the action being tested.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">THEN</span></code>: Specifies the expected outcome.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">REQUIRE</span></code> for critical assertions that must pass.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">CHECK</span></code> for non-critical assertions that provide additional information.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">SCENARIO</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;xxxx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[template]&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GIVEN</span><span class="p">(</span><span class="s">&quot;xxxxx&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">rv</span><span class="p">;</span>
+<span class="w">        </span><span class="n">WHEN</span><span class="p">(</span><span class="s">&quot;xxxx&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">some</span><span class="w"> </span><span class="n">test</span><span class="p">];</span>
+<span class="w">            </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">rv</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="generating-coverage-analysis-reports">
+<h3>Generating coverage analysis reports<a class="headerlink" href="#generating-coverage-analysis-reports" title="Link to this heading"></a></h3>
+<p>Todo</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="documentation.html" class="btn btn-neutral float-left" title="C++ Documentation Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../code_storage.html" class="btn btn-neutral float-right" title="Code and Analysis Storage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UASAL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

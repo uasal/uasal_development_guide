@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>General Development Practices &mdash; uasal_development_guide  documentation</title>
+  <title>General Development Guide &mdash; uasal_development_guide  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,7 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Code and Analysis Storage" href="code_storage.html" /> 
+    <link rel="next" title="Git" href="git/git.html" />
+    <link rel="prev" title="UASAL Development Guide" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,10 +43,11 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">General Development Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git/git.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python/python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="C%2B%2B/C%2B%2B.html">C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code_storage.html">Code and Analysis Storage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">General Development Practices</a></li>
 </ul>
 
         </div>
@@ -62,7 +64,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">General Development Practices</li>
+      <li class="breadcrumb-item active">General Development Guide</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/uasal/uasal_development_guide/blob/main/source/general.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -72,226 +74,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="general-development-practices">
-<h1>General Development Practices<a class="headerlink" href="#general-development-practices" title="Link to this heading"></a></h1>
-<p>We encourage that all code follows some basic principals:</p>
-<ul class="simple">
-<li><p>Assume that one of your colleagues will be using your code in the near future</p></li>
-<li><p>Code should be written as stand-alone tools with minimal dependencies</p></li>
-<li><p>Tools should be handed a configuration to be used during execution</p></li>
-<li><p>Parameters should not be hard-coded</p></li>
-<li><p>Configurations, parameters and procedures required to reproduce results should be documented</p></li>
-</ul>
-<section id="coding-standards">
-<h2>Coding Standards<a class="headerlink" href="#coding-standards" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Avoid hard coding numbers and/or paths wherever possible. If
-unavoidable, define them all as constants in one block at the top of
-the module (as per
-<a class="reference external" href="https://peps.python.org/pep-0008/#constants">PEP8</a>)</p></li>
-<li><p>Avoid re-using/clobbering the same variable names in scripts or
-example notebooks.</p></li>
-<li><p>Avoid copy-pasting code wherever possible. Write a function and call
-it again.</p></li>
-</ul>
-<section id="formatting">
-<h3>Formatting<a class="headerlink" href="#formatting" title="Link to this heading"></a></h3>
-<p>Follow <a class="reference external" href="https://peps.python.org/pep-0008/">PEP8</a> whenever possible.
-People have spent years developing (and arguing over) it.</p>
-<p>Variables should be <code class="docutils literal notranslate"><span class="pre">snake_case</span></code>. The naming of variables should be
-sufficiently long to provide information into the content of the
-variable, but not so long as to take a sizable fraction of the line
-length. Arrange the variable name to aid in grouping and tab completion
-(e.g. <code class="docutils literal notranslate"><span class="pre">inst1_config</span></code> and <code class="docutils literal notranslate"><span class="pre">inst2_config</span></code> should be <code class="docutils literal notranslate"><span class="pre">config_inst1</span></code>
-and <code class="docutils literal notranslate"><span class="pre">config_inst2</span></code>)</p>
-<p>Autoformatters are your friend: - black - flake8 - ruff</p>
-<p>Setting up pre-commit hooks are useful for maintaining readable code and
-assisting with evaluating changes in merge requests (called pull
-requests in GitHub).</p>
-<p>IDEs like VSCode also have plugins that can apply autoformatting on save
-(e.g. <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff">ruff plugin for
-VSCode</a>).</p>
+  <section id="general-development-guide">
+<h1>General Development Guide<a class="headerlink" href="#general-development-guide" title="Link to this heading"></a></h1>
+<p>This guide applies generally to all UASAL development but should be followed for any critical software.</p>
+<section id="definition-of-criticality">
+<h2>Definition of criticality<a class="headerlink" href="#definition-of-criticality" title="Link to this heading"></a></h2>
+<p>Herein criticality is defined as an essential functionality for the safety or minimum operation of an instrument.</p>
+<p><strong>This guide is not intended for human safety software and if any life or facility safety functionality is required additional guidance should be sought.</strong></p>
+<p>Either modeling of critical functionality of a simulation or critical function for an instrument.</p>
 </section>
-<section id="comments">
-<h3>Comments<a class="headerlink" href="#comments" title="Link to this heading"></a></h3>
-<p>Comments are useful for your future self and also the next person to use
-your code. <a class="reference external" href="https://peps.python.org/pep-0257/">docstrings</a> have been
-developed to help with this and can also be automatically parsed to
-generate documentation in html format.</p>
-<p>Several styles of documenting code are common (e.g. some examples
-<a class="reference external" href="https://www.geeksforgeeks.org/python/python-docstrings/">here</a>). For
-consistency across UASAL code, we encourage the use of <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">Numpy
-style</a>.</p>
-<p>Tip: You can ask an online AI model to generate comments/docstrings for
-your code and double check the results to save time/effort.</p>
+<section id="code-reviews">
+<h2>Code Reviews<a class="headerlink" href="#code-reviews" title="Link to this heading"></a></h2>
+<p>For any critical code required for essential functionality, updates should be reviewed following the <a class="reference external" href="https://google.github.io/eng-practices/review/reviewer/">Google Code Review Guidelines</a>.</p>
 </section>
+<section id="release-documentation">
+<h2>Release documentation<a class="headerlink" href="#release-documentation" title="Link to this heading"></a></h2>
+<p>In the Forge environment and within the code itself, release notes on what was changed, by whom, and the reviewers shall be captured.</p>
 </section>
-<section id="using-ai-in-content-development">
-<h2>Using AI in Content Development.<a class="headerlink" href="#using-ai-in-content-development" title="Link to this heading"></a></h2>
-<p>AI offers interesting applications to increase coding efficiency and
-learn new techniques. It also presents significant security risks if
-there is export controlled content on the device. For novice programmers
-we recommend that AI is not used to generate code as it can develop poor
-habits and/or slow down the learning process. However, AI may be useful
-for developing initial docstrings or potential unit tests. In all cases,
-the content must be thoroughly reviewed by the programmer. To avoid risk
-of unintentional sharing data or copyright issues with responses we
-recommend copy/pasting into <a class="reference external" href="https://Duck.ai">duck.ai</a> where the data is
-anonymous and the prompt and output are owned by user.</p>
-<p>Note that all AI generated content should be disclosed in the file
-containing the content. This includes the AI system that was used. All
-content is subject to the copyrights of the AI provider and must be
-explicitly followed.</p>
+<section id="test-case-documentation">
+<h2>Test Case Documentation<a class="headerlink" href="#test-case-documentation" title="Link to this heading"></a></h2>
+<p>For embedded software and firmware, test cases shall be defined as part of the verification and validation process. Code under test shall be version controlled as well as input test products. Code reviewer shall review test cases to ensure that…</p>
 </section>
-<section id="python-packaging">
-<h2>Python Packaging<a class="headerlink" href="#python-packaging" title="Link to this heading"></a></h2>
-<p>Python packages should use a
-<a class="reference external" href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml/">pyproject.toml</a>
-structure. A template repository (or instructions on how to make one)
-are currently being developed.</p>
-</section>
-<section id="configuration-practices">
-<h2>Configuration Practices<a class="headerlink" href="#configuration-practices" title="Link to this heading"></a></h2>
-<p>Configuration files should be written using one of the standard machine
-readable table formats. This mostly includes: - TOML - YAML - CSV</p>
-<p>Whether or not configuration files live with the code that uses them is
-dependent upon the application. If multiple people are using the tool,
-and configurations are being updated independent of the software that
-uses them, then they should probably live in a separate repository. An
-example configuration repository with details on its usage is available
-<a class="reference external" href="https://github.com/uasal/config_project_template">at this link</a></p>
-<section id="summary-of-formats">
-<h3>Summary of Formats<a class="headerlink" href="#summary-of-formats" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p>TOML is the most-used format in UASAL and MagAOX for its ease of
-readability and use. The configuration files for most tools and
-calculators utilize TOML.</p></li>
-<li><p>YAML is a superset of both TOML and JSON and is best suited for more
-complicated and detailed tables. The budgets utilize YAML.</p></li>
-<li><p>CSV is what gets exported from Excel and other tools (e.g. Zemax)
-which is why it gets significant use. It is machine readable but
-requires increased parsing and massaging to be used in code.</p></li>
-</ul>
-</section>
-</section>
-<section id="other-notes">
-<h2>Other Notes<a class="headerlink" href="#other-notes" title="Link to this heading"></a></h2>
-<p>Many of these items result from questions or common themes are observed</p>
-<ul class="simple">
-<li><p>Do not use <a class="reference external" href="https://docs.python.org/3/library/os.html">os</a> package
-for path management.
-<a class="reference external" href="https://docs.python.org/3/library/pathlib.html">pathlib</a> has
-superseded this and offers more functionality.</p></li>
-</ul>
-</section>
-<section id="useful-tools">
-<h2>Useful tools<a class="headerlink" href="#useful-tools" title="Link to this heading"></a></h2>
-<p>Semantic line breaks are useful when writing most documentation
-(e.g. Markdown, TeX, rST). Read about them <a class="reference external" href="https://sembr.org/">here</a></p>
-</section>
-<section id="unit-testing">
-<h2>Unit Testing<a class="headerlink" href="#unit-testing" title="Link to this heading"></a></h2>
-<p>Unit testing and practicing <a class="reference external" href="https://en.wikipedia.org/wiki/Test-driven_development">test-driven
-development</a>
-is encouraged for multiple reasons. People are encouraged to read up on
-the advantages of both.</p>
-<p>To date, unit tests have not been widely used but we’re shifting to
-include them both as standalone checks and as part of continuous
-integration (CI) frameworks.</p>
-<p>The <a class="reference external" href="https://docs.python.org/3/library/unittest.html">unittest</a>
-standard package is generally used most frequently but others are
-available.</p>
-<section id="pytest">
-<h3>Pytest<a class="headerlink" href="#pytest" title="Link to this heading"></a></h3>
-<p>The use of <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> offers some
-nice conveniences.</p>
-<p>Once installed, the following commands are useful:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">-vsx</span></code> - Runs in verbose (v), no-capture standard output (s),
-and fail-first (x) mode. This will scan for an run all tests,
-outputting print statements to the terminal and will exit as soon as a
-test is failed.</p></li>
-</ul>
-<p>You can add a filename at the end to have only a subset of tests run
-such as: -
-<code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">-vsx</span> <span class="pre">tests/test_maintel_disable_m1m3_balance_system.py</span></code></p>
-<p>Or a specific test via supplying a filename and the regular expression -
-<code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">-vsx</span> <span class="pre">tests/test_maintel_disable_m1m3_balance_system.py</span> <span class="pre">-k</span> <span class="pre">test_executable</span></code></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">-vsx</span> <span class="pre">--log-cli-level</span> <span class="pre">DEBUG</span></code> will show log messages in a
-pretty format if a logger is being used.</p></li>
-</ul>
-</section>
-</section>
-<section id="loggers">
-<h2>Loggers<a class="headerlink" href="#loggers" title="Link to this heading"></a></h2>
-<p>Logging is useful and is more powerful than peppering your code with
-print statements. Examples on how to incorporating logging is at <a class="reference external" href="https://docs.python.org/3/howto/logging.html">this
-link</a>.</p>
-</section>
-<section id="debuggers">
-<h2>Debuggers<a class="headerlink" href="#debuggers" title="Link to this heading"></a></h2>
-<p>Debuggers are a useful way of finding and fixing errors and bugs in your
-code.</p>
-<p><a class="reference external" href="https://docs.python.org/3/library/pdb.html">Pdb</a> comes built-in to
-the Python standard library and is a widely used command-line debugger.</p>
-<p>An alternative with more GUI integration, is VSCode’s Python Debugger
-extension. An example on how to set it up is provided
-<a class="reference external" href="https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger">here</a>.</p>
-</section>
-<section id="git-lfs">
-<h2>Git LFS<a class="headerlink" href="#git-lfs" title="Link to this heading"></a></h2>
-<p>Git LFS should be used for Large File uploads to git. For further
-information, refer to the
-<a class="reference internal" href="git/Git_LFS_Guide.html"><span class="doc">Git LFS Guide</span></a> and the <a class="reference internal" href="git/uasal_lfs.html"><span class="doc">UASAL Git LFS Guide</span></a>.</p>
-</section>
-<section id="uasal-configuration-management">
-<h2>UASAL Configuration Management<a class="headerlink" href="#uasal-configuration-management" title="Link to this heading"></a></h2>
-<p>Simulations and analysis tools should be structured to accept a
-configuration. In cases where the analyses need to be archived and
-repeatable (which should be the high majority of cases!) then the
-<a class="reference internal" href="python/configuration_management.html"><span class="doc">UASAL configuration management approach</span></a>
-should be followed.</p>
-</section>
-<section id="git-flow-overview">
-<h2>Git-Flow Overview<a class="headerlink" href="#git-flow-overview" title="Link to this heading"></a></h2>
-<p>General questions relating to git-flow and order of operations can be
-founded in the <a class="reference internal" href="git/git-flow-guide.html"><span class="doc">Git-Flow-Guide</span></a>.</p>
-<p><em>Information detailed the</em> <a class="reference internal" href="git/git-flow-guide.html"><span class="doc">Git-Flow-Guide</span></a>
-<em>include but are not limited to the following:</em></p>
-<ul class="simple">
-<li><p>GitHub Overview</p>
-<ul>
-<li><p>Pull Request Info, Usage, PR Template Example</p></li>
-</ul>
-</li>
-<li><p>GitLab Overview</p>
-<ul>
-<li><p>Merge Request Info, Usage</p></li>
-</ul>
-</li>
-<li><p>Git-Flow Diagram</p>
-<ul>
-<li><p>Branch Types Overview</p></li>
-</ul>
-</li>
-<li><p>Git Tools / Resources</p>
-<ul>
-<li><p>Applications, Training, GitDocs, Checklists</p></li>
-</ul>
-</li>
-<li><p>Naming Standards</p>
-<ul>
-<li><p>Repositories, Branches, Pull Requests, Merge Requests</p></li>
-</ul>
-</li>
-<li><p>Repository Settings</p>
-<ul>
-<li><p>Default Settings to Verify</p></li>
-</ul>
-</li>
-<li><p>Fork Usage Information</p></li>
-</ul>
+<section id="git-flow">
+<h2>Git Flow<a class="headerlink" href="#git-flow" title="Link to this heading"></a></h2>
 </section>
 </section>
 
@@ -299,7 +104,8 @@ founded in the <a class="reference internal" href="git/git-flow-guide.html"><spa
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="code_storage.html" class="btn btn-neutral float-left" title="Code and Analysis Storage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="UASAL Development Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="git/git.html" class="btn btn-neutral float-right" title="Git" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

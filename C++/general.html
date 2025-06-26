@@ -1,0 +1,245 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C++ Development &mdash; uasal_development_guide  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C++ Documentation Guidelines" href="documentation.html" />
+    <link rel="prev" title="C++" href="C%2B%2B.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uasal_development_guide
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general.html">General Development Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="C%2B%2B.html">C++</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">C++ Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation.html">C++ Documentation Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_storage.html">Code and Analysis Storage</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uasal_development_guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="C%2B%2B.html">C++</a></li>
+      <li class="breadcrumb-item active">C++ Development</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/uasal/uasal_development_guide/blob/main/source/C++/general.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="c-development">
+<h1>C++ Development<a class="headerlink" href="#c-development" title="Link to this heading"></a></h1>
+<p>This document provides an overview of the standards and practice for contributing C++ code to the MagAOX, MagAOX-scoob
+and the XWCTk codebases to ensure consistency, maintainability, and adherence to project standards, but
+is applicable to any C++ code development within UASAL more generally. Familiarity with C++ is assumed.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/magao-x/MagAOX">MagAOX</a> is a framework designed for adaptive optics control on the MagAO-X ExAO system.
+<a class="reference external" href="https://github.com/uasal/MagAOX-scoob">MagAOX-scoob</a> is a fork of the MagAOX framework, tailored for the Scoob testbed.
+<a class="reference external" href="https://github.com/uasal/XWCToolkit">XWCTk</a> is a stand-alone framework that encapsulates the core functionalities of MagAOX,
+designed for general-purpose adaptive optics control.</p>
+<p>The MagAOX API documentation is available <a class="reference external" href="https://magao-x.org/docs/api/index.html">here</a>.
+Particularly relevant are the steps for adding <a class="reference external" href="https://magao-x.org/docs/api/page_module_appadd.html">a new application</a>.</p>
+</section>
+<section id="general-coding-standards">
+<h2>General Coding Standards<a class="headerlink" href="#general-coding-standards" title="Link to this heading"></a></h2>
+<section id="language-version">
+<h3>Language Version<a class="headerlink" href="#language-version" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use C++17 for all new code contributions.</p></li>
+<li><p>Avoid deprecated features and prefer modern C++ idioms (e.g., <code class="docutils literal notranslate"><span class="pre">std::unique_ptr</span></code> over raw pointers).</p></li>
+</ul>
+</section>
+<section id="formatting-and-style">
+<h3>Formatting and Style<a class="headerlink" href="#formatting-and-style" title="Link to this heading"></a></h3>
+<p>Follow <a class="reference external" href="https://google.github.io/styleguide/cppguide.html">Google C++ Style Guide</a> for general formatting rules, with the following project-specific adjustments:
+- Indentation: Use 4 spaces for indentation. Do not use tabs.
+- Line Length: Limit lines to 120 characters.
+- Braces: Always use braces for control structures, even for single-line blocks.
+- Naming Conventions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Classes: <code class="docutils literal notranslate"><span class="pre">camelCase</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">MagAOXApp</span></code>, <code class="docutils literal notranslate"><span class="pre">dmCtrl</span></code>)</p></li>
+<li><p>Constants: Uppercase <code class="docutils literal notranslate"><span class="pre">snake_case</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">DM_MAX_ACTUATORS</span></code>)</p></li>
+<li><p>Member variables: <code class="docutils literal notranslate"><span class="pre">camelCase</span></code> prefixed with <code class="docutils literal notranslate"><span class="pre">m_</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">m_configName</span></code>)</p></li>
+<li><p>Accessors: Avoid prefixes like <code class="docutils literal notranslate"><span class="pre">get</span></code> or <code class="docutils literal notranslate"><span class="pre">is</span></code>; use the member variable name without the <code class="docutils literal notranslate"><span class="pre">m_</span></code> prefix (e.g., <code class="docutils literal notranslate"><span class="pre">configName</span></code>)</p></li>
+<li><p>Functions: <code class="docutils literal notranslate"><span class="pre">camelCase</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">sendArray</span></code>, <code class="docutils literal notranslate"><span class="pre">getArrayToActuatorMapping</span></code>)</p></li>
+<li><p>Local variables: <code class="docutils literal notranslate"><span class="pre">snake_case</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">loop_pause</span></code>, <code class="docutils literal notranslate"><span class="pre">config_dir</span></code>)</p></li>
+<li><p>Namespaces: <code class="docutils literal notranslate"><span class="pre">camelCase</span></code>, apart from the top-level namespace which is capitalized as <code class="docutils literal notranslate"><span class="pre">MagAOX</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">MagAOX::app</span></code>, <code class="docutils literal notranslate"><span class="pre">MagAOX::logger</span></code>)</p></li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p>Header Files:</p>
+<blockquote>
+<div><ul>
+<li><p>Use include guards (<code class="docutils literal notranslate"><span class="pre">#ifndef</span></code> / <code class="docutils literal notranslate"><span class="pre">#define</span></code>) or <code class="docutils literal notranslate"><span class="pre">#pragma</span></code> once to prevent multiple inclusions.</p></li>
+<li><p>Group includes logically:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>System / standard library headers</p></li>
+<li><p>Third-party library headers.</p></li>
+<li><p>Project-specific headers.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Namespaces:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Subdivide namespaces for specific larger modules (e.g., <code class="docutils literal notranslate"><span class="pre">MagAOX::app</span></code>, <code class="docutils literal notranslate"><span class="pre">MagAOX::logger</span></code>), but not for individual apps.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Avoid manual memory management (<code class="docutils literal notranslate"><span class="pre">new</span></code> / <code class="docutils literal notranslate"><span class="pre">delete</span></code>) unless absolutely necessary.</p></li>
+</ul>
+</section>
+<section id="auto-formatting-tools">
+<h3>Auto-formatting Tools<a class="headerlink" href="#auto-formatting-tools" title="Link to this heading"></a></h3>
+<p>To ensure consistent formatting across the codebase, the use of auto-formatting tools is strongly encouraged.
+Integrating these tools into your workflow, reduces manual formatting effort and ensures that the project’s style guidelines
+are consistently implemented. For C++ projects <code class="docutils literal notranslate"><span class="pre">clang-format</span></code> is recommended and for multiple-language projects, <code class="docutils literal notranslate"><span class="pre">.editorconfig</span></code>.
+- <a class="reference external" href="https://clang.llvm.org/docs/ClangFormat.html">clang-format</a>: A <code class="docutils literal notranslate"><span class="pre">.clang-format</span></code> file defines the project’s formatting rules for C++ files.
+<code class="docutils literal notranslate"><span class="pre">clang-format</span></code> can be used either through your IDE of choice or the command line.
+An example of a <cite>.clang-format</cite> file can be found <a class="reference external" href="https://github.com/magao-x/MagAOX/blob/dev/.clang-format">here</a>
+- <a class="reference external" href="https://editorconfig.org/">.editorconfig</a>: An <cite>.editorconfig</cite> file provides additional rules for general text files,
+Python scripts, Markdown files, and Makefiles. Most modern IDEs and text editors support .editorconfig for enforcing these rules.
+An example of a <cite>.editorconfig</cite> file can be found <a class="reference external" href="https://github.com/magao-x/MagAOX/blob/dev/.editorconfig">here</a></p>
+</section>
+<section id="including-new-libraries">
+<h3>Including New Libraries<a class="headerlink" href="#including-new-libraries" title="Link to this heading"></a></h3>
+<p>Before deciding to include a new library, it’s reliability and long-term viability should first be evaluated.
+A “serious” library should demonstrate stability and a clear maintenance track record.
+This assessment helps ensure that the library can be trusted without introducing unnecessary risks to the project.
+Items to consider are:
+- Ensure the library addresses a specific problem that cannot be addressed with existing code or libraries.
+- Ensure the library is compatible with the project’s licensing.
+- Assess how frequently the library is updated and maintained.
+- Evaluate the library’s documentation for clarity and completenss.
+- Evaluate the library’s performance and its impact on the project.
+- Research alternative libraries to ensure the best option is chosen.</p>
+<p>If a new library is deemed necessary, update the dependency list in the project’s documentation and README installation instructions.</p>
+</section>
+<section id="comments-and-documentation">
+<h3>Comments and Documentation<a class="headerlink" href="#comments-and-documentation" title="Link to this heading"></a></h3>
+<p>For more details refer to the <a class="reference internal" href="documentation.html"><span class="doc">Documentation</span></a> page, but in general:
+- Use Markdown files (<code class="docutils literal notranslate"><span class="pre">*.md</span></code>) for high-level documentation, such as README files.
+- Use Doxygen-style comments for all files, classes and methods.
+- Use inline comments to outline logic, paying particular attention to complex logic.
+- Avoid redundant comments that merely restate the code.</p>
+</section>
+<section id="error-handling">
+<h3>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use exceptions for critical errors that cannot be recovered.</p></li>
+<li><p>For recoverable errors, use logging mechanisms (<code class="docutils literal notranslate"><span class="pre">log&lt;software_error&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">log&lt;text_log&gt;</span></code> etc.).</p></li>
+<li><p>Avoid using <code class="docutils literal notranslate"><span class="pre">assert</span></code> in production code.</p></li>
+</ul>
+</section>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
+<p>For more details refer to the <a class="reference internal" href="testing.html"><span class="doc">Testing</span></a> page, but in general:
+- Write tests for new functionality using the Catch2 framework.
+- Place test files in the app’s corresponding tests directory (see the adding (a new application)[<a class="reference external" href="https://magao-x.org/docs/api/page_module_appadd.html">https://magao-x.org/docs/api/page_module_appadd.html</a>] section in the API documentation).
+- Use the <code class="docutils literal notranslate"><span class="pre">SCENARIO</span></code> structure for Behavior-Driven Development (BDD) style tests; e.g.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">SCENARIO</span><span class="p">(</span><span class="s">&quot;Testing sendArray with valid inputs&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[dmCtrl]&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">GIVEN</span><span class="p">(</span><span class="s">&quot;A valid input vector and mode&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">WHEN</span><span class="p">(</span><span class="s">&quot;sendArray is called&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">THEN</span><span class="p">(</span><span class="s">&quot;It should return 0 and send the correct payload&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="C%2B%2B.html" class="btn btn-neutral float-left" title="C++" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="documentation.html" class="btn btn-neutral float-right" title="C++ Documentation Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UASAL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

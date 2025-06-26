@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C++ Documentation Guidelines &mdash; uasal_development_guide  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Testing Guidelines" href="testing.html" />
+    <link rel="prev" title="C++ Development" href="general.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            uasal_development_guide
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general.html">General Development Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/python.html">Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="C%2B%2B.html">C++</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="general.html">C++ Development</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">C++ Documentation Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_storage.html">Code and Analysis Storage</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">uasal_development_guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="C%2B%2B.html">C++</a></li>
+      <li class="breadcrumb-item active">C++ Documentation Guidelines</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/uasal/uasal_development_guide/blob/main/source/C++/documentation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="c-documentation-guidelines">
+<h1>C++ Documentation Guidelines<a class="headerlink" href="#c-documentation-guidelines" title="Link to this heading"></a></h1>
+<p>This document provides an overview of the standards for documenting C++ code in the MagAOX, MagAOX-scoob
+and the XWCTk codebases to ensure consistency, maintainability, and adherence to project standards, but
+is applicable to any C++ code development within UASAL more generally.</p>
+<p><a class="reference external" href="https://www.doxygen.nl/">Doxygen</a> is adopted as the primary tool for generating documentation from source code comments.</p>
+<section id="doxygen-overview">
+<h2>Doxygen Overview<a class="headerlink" href="#doxygen-overview" title="Link to this heading"></a></h2>
+<section id="what-is-doxygen">
+<h3>What is Doxygen?<a class="headerlink" href="#what-is-doxygen" title="Link to this heading"></a></h3>
+<p>Doxygen is a documentation generator for C++, C, and other programming languages.
+Doxygen allows developers to write structured comments directly in the code, which can then be processed to produce hosted HTML API documentation.
+It extracts specially formatted comments from the source code and generates documentation in various formats.</p>
+</section>
+<section id="why-use-doxygen">
+<h3>Why Use Doxygen?<a class="headerlink" href="#why-use-doxygen" title="Link to this heading"></a></h3>
+<p><strong>Consistency</strong>: Ensures all code is documented in a uniform manner.
+<strong>Ease of Use</strong>: Allows developers to write documentation alongside the code.
+<strong>Automation</strong>: Automatically generates documentation from comments, reducing manual effort.</p>
+</section>
+</section>
+<section id="documentation-and-comment-style">
+<h2>Documentation and Comment Style<a class="headerlink" href="#documentation-and-comment-style" title="Link to this heading"></a></h2>
+<section id="general-guidelines">
+<h3>General Guidelines<a class="headerlink" href="#general-guidelines" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use Doxygen-style comments for all files, classes and methods.</p></li>
+<li><p>Write comments intended to be included in the documentation and capture the code API in the Javadoc style:</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * This is a Doxygen Javadoc-style comment.</span>
+<span class="cm"> * It describes the purpose of the code that follows.</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Write comments intended to clarify logic and architectural decisions in the C++ single-line style:</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// This is a C++ comment explaining the following lines of code.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Ensure comments are concise, descriptive, and relevant to the code they accompany.</p></li>
+<li><p>Avoid redundant comments that merely restate the code.</p></li>
+<li><p>Use Markdown files (<code class="docutils literal notranslate"><span class="pre">*.md</span></code>) for high-level documentation, such as README files.</p></li>
+</ul>
+</section>
+<section id="file-level-documentation">
+<h3>File-Level Documentation<a class="headerlink" href="#file-level-documentation" title="Link to this heading"></a></h3>
+<p>Every file must include the project-specific abridged license statement at the top of the file,
+followed by a header comment at the top with the following information:
+- <strong>File Name</strong>: Use <code class="docutils literal notranslate"><span class="pre">\file</span></code> to specify the file name.
+- <strong>Brief Description</strong>: Use <code class="docutils literal notranslate"><span class="pre">\brief</span></code> to describe the purpose of the file.
+- <strong>Author</strong>: Use <code class="docutils literal notranslate"><span class="pre">\author</span></code>  to include the name and email of the authors.
+- <strong>Group</strong>: Use <code class="docutils literal notranslate"><span class="pre">\ingroup</span></code> to specify the group this file belongs to.</p>
+<p>Example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">//***********************************************************************//</span>
+<span class="c1">// Copyright 2025 &lt;author_name&gt; (&lt;author_email&gt;)</span>
+<span class="c1">//</span>
+<span class="c1">// This file is part of &lt;project_name&gt;.</span>
+<span class="c1">//</span>
+<span class="c1">// &lt;project_name&gt; is free software: you can redistribute it and/or modify</span>
+<span class="c1">// it under the terms of the GNU General Public License as published by</span>
+<span class="c1">// the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">// (at your option) any later version.</span>
+<span class="c1">//</span>
+<span class="c1">// &lt;project_name&gt; is distributed in the hope that it will be useful,</span>
+<span class="c1">// but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">// GNU General Public License for more details.</span>
+<span class="c1">//</span>
+<span class="c1">// You should have received a copy of the GNU General Public License</span>
+<span class="c1">// along with &lt;project_name&gt;.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">//***********************************************************************//</span>
+
+<span class="cm">/** \file MagAOXApp.hpp</span>
+<span class="cm">* \brief The basic MagAO-X Application</span>
+<span class="cm">* \author Jared R. Males (jaredmales@gmail.com)</span>
+<span class="cm">*</span>
+<span class="cm">* \ingroup app_files</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+<section id="class-documentation">
+<h3>Class Documentation<a class="headerlink" href="#class-documentation" title="Link to this heading"></a></h3>
+<p>Each class should be preceded by a comment block consisting of:
+1. a concise (ideally single-line) description formatted in a <code class="docutils literal notranslate"><span class="pre">\\\</span></code> comment style
+2. a Javadoc-style comment block that provides further details on the class’s functionality, usage, and any special considerations.</p>
+<p>Example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">/// The base-class for MagAO-X applications.</span>
+<span class="cm">/**</span>
+<span class="cm">* You can define a base configuration file for this class by defining</span>
+<span class="cm">* \code</span>
+<span class="cm">*  m_configBase = &quot;base_name&quot;;</span>
+<span class="cm">*  \endcode</span>
+<span class="cm">* in the derived class constructor. This would be used, for instance, to have a config common to</span>
+<span class="cm">* all filter wheels.</span>
+<span class="cm">*</span>
+<span class="cm">* \todo Make m_powerMgtEnabled a template parameter, and static_assert check if _useINDI == false and power management</span>
+<span class="cm">* is true.</span>
+<span class="cm">*</span>
+<span class="cm">* \ingroup magaoxapp</span>
+<span class="cm">*/</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">bool</span><span class="w"> </span><span class="n">_useINDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MagAOXApp</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">application</span>
+</pre></div>
+</div>
+</section>
+<section id="member-variables-documentation">
+<h3>Member Variables Documentation<a class="headerlink" href="#member-variables-documentation" title="Link to this heading"></a></h3>
+<p>Document all member variables with inline comments marked with <code class="docutils literal notranslate"><span class="pre">///&lt;</span></code> to describe the variable’s purpose.</p>
+<p>Example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">m_devicePort</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; The device port</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">m_bootDelay</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">};</span><span class="w"> </span><span class="c1">///&lt; Time in seconds it takes the device to boot.</span>
+</pre></div>
+</div>
+</section>
+<section id="function-documentation">
+<h3>Function Documentation<a class="headerlink" href="#function-documentation" title="Link to this heading"></a></h3>
+<p>Each function should be preceded by a comment block consisting of:
+1. a concise (ideally single-line) description formatted in a <code class="docutils literal notranslate"><span class="pre">\\\</span></code> comment style
+2. a Javadoc-style comment block that includes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Description</strong>: a more detailed description of the function’s functionality, usage, and any special considerations.</p></li>
+<li><dl class="simple">
+<dt><strong>Parameters</strong>: an inline description of each parameter, starting with <code class="docutils literal notranslate"><span class="pre">///&lt;</span></code>. This comment string should start with</dt><dd><p><code class="docutils literal notranslate"><span class="pre">[in]</span></code> or <code class="docutils literal notranslate"><span class="pre">[out]</span></code>, if the parameter is an input or output parameter, respectively. If the parameter
+is optional, also add <code class="docutils literal notranslate"><span class="pre">[optional]</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>Template Parameters</strong>: for function templates, a description of their parameters using <code class="docutils literal notranslate"><span class="pre">\tparam</span></code>.</p></li>
+<li><p><strong>Return Value</strong>: a description of the return value using <code class="docutils literal notranslate"><span class="pre">\returns</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>Example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">/// Make a log entry</span>
+<span class="cm">/** Wrapper for logManager::log</span>
+<span class="cm"> *</span>
+<span class="cm"> * \tparam logT the log entry type</span>
+<span class="cm"> * \tparam retval the value returned by this method.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">logT</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">retval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="o">&gt;</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">logT</span><span class="o">::</span><span class="n">messageT</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span><span class="w">   </span><span class="c1">///&lt; [in] the message to log</span>
+<span class="w">                </span><span class="n">logPrioT</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logPrio</span><span class="o">::</span><span class="n">LOG_DEFAULT</span><span class="w"> </span><span class="cm">/**&lt; [in] [optional] the log level.  The default</span>
+<span class="cm">                                                                           is used if not specified.*/</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="grouping-and-organization">
+<h3>Grouping and Organization<a class="headerlink" href="#grouping-and-organization" title="Link to this heading"></a></h3>
+<section id="topics">
+<h4>Topics<a class="headerlink" href="#topics" title="Link to this heading"></a></h4>
+<p>Files, classes, structures etc. can be organized into logical groups, called <strong>topics</strong>,
+making the documentation easier to navigate.
+For example, all application-related files are grouped under the <code class="docutils literal notranslate"><span class="pre">apps</span></code> topic and each application
+defines its own topic and subtopics (e.g. <code class="docutils literal notranslate"><span class="pre">streamWriter</span></code> and <code class="docutils literal notranslate"><span class="pre">streamWriter_files</span></code>).</p>
+<p>Groups are defined using the <code class="docutils literal notranslate"><span class="pre">\defgroup</span></code> command, typically as the first thing after opening the namespace.
+Each group is given a unique name and a brief description.
+Groups can be nested to create subcategories within a larger topic.
+Items (files, classes, structures, functions etc.) are added to groups using the <code class="docutils literal notranslate"><span class="pre">\ingroup</span></code> command.
+The <code class="docutils literal notranslate"><span class="pre">\ingroup</span></code> command is placed in the Doxygen comment block of the item being added.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/** \defgroup streamWriter ImageStreamIO Stream Writing</span>
+<span class="cm">*  \brief Writes the contents of an ImageStreamIO image stream to disk.</span>
+<span class="cm">*</span>
+<span class="cm">*  &lt;a href=&quot;../handbook/operating/software/apps/streamWriter.html&quot;&gt;Application Documentation&lt;/a&gt;</span>
+<span class="cm">*</span>
+<span class="cm">*  \ingroup apps</span>
+<span class="cm">*</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+<section id="member-groups">
+<h4>Member Groups<a class="headerlink" href="#member-groups" title="Link to this heading"></a></h4>
+<p>Group related functions and variables within a member list using the <code class="docutils literal notranslate"><span class="pre">\name</span></code> and <code class="docutils literal notranslate"><span class="pre">|&#64;{/&#64;}</span></code> tags.
+Also include a brief description of the member group.</p>
+<p>Example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/** \name Pure Virtual Functions</span>
+<span class="cm"> * Derived applications must implement these.</span>
+<span class="cm"> * @{</span>
+<span class="cm"> */</span>
+
+<span class="c1">/// ...</span>
+<span class="cm">/** ... */</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">appStartup</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">/// ...</span>
+<span class="cm">/** ... */</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">appLogic</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">/// ...</span>
+<span class="cm">/** ... */</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">appShutdown</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">///@} -- Pure Virtual Functions</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="special-tags">
+<h3>Special Tags<a class="headerlink" href="#special-tags" title="Link to this heading"></a></h3>
+<section id="todo-items">
+<h4>Todo Items<a class="headerlink" href="#todo-items" title="Link to this heading"></a></h4>
+<p>Highlight areas for improvement or future work using the <code class="docutils literal notranslate"><span class="pre">\todo</span></code> command in comment blocks or inline comments.</p>
+</section>
+<section id="code-examples">
+<h4>Code Examples<a class="headerlink" href="#code-examples" title="Link to this heading"></a></h4>
+<p>In the entity’s coment block, include code examples using <code class="docutils literal notranslate"><span class="pre">\code</span></code> and <code class="docutils literal notranslate"><span class="pre">\endcode</span></code>.</p>
+</section>
+<section id="example">
+<h4>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h4>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">/// The base-class for MagAO-X applications.</span>
+<span class="cm">/**</span>
+<span class="cm">* You can define a base configuration file for this class by defining</span>
+<span class="cm">* \code</span>
+<span class="cm">*  m_configBase = &quot;base_name&quot;;</span>
+<span class="cm">*  \endcode</span>
+<span class="cm">* in the derived class constructor. This would be used, for instance to have a config common to</span>
+<span class="cm">* all filter wheels.</span>
+<span class="cm">*</span>
+<span class="cm">*</span>
+<span class="cm">* \todo make m_powerMgtEnabled a template parameter, and static_assert check if _useINDI== false and power management</span>
+<span class="cm">* is true</span>
+<span class="cm">*</span>
+<span class="cm">* \ingroup magaoxapp</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="general.html" class="btn btn-neutral float-left" title="C++ Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="testing.html" class="btn btn-neutral float-right" title="Testing Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, UASAL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
