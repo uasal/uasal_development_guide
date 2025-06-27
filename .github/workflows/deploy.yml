@@ -3,7 +3,7 @@ name: Deploy Sphinx Docs to GitHub Pages
 on:
   push:
     branches:
-      - istefan/generate_pdf
+      - main
   pull_request:
     types: [opened,reopened,edited,synchronize]
 
@@ -47,13 +47,13 @@ jobs:
         run: |
           sphinx-build -M latexpdf ./source ./build --keep-going
 
-      # - name: Upload Artifacts
-      #   uses: actions/upload-artifact@v4
-      #   if: always()
-      #   with: 
-      #     name: github-pages
-      #     path: |
-      #       build/html/*
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with: 
+          name: github-pages
+          path: |
+            build/html/*
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
@@ -63,16 +63,16 @@ jobs:
           path: |
             build/latex/*.pdf
 
-      # - name: Generate a token for the UASAL development guide builder app
-      #   id: generate-token
-      #   uses: actions/create-github-app-token@v2
-      #   with:
-      #     app-id: ${{ vars.APP_ID }}
-      #     private-key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Generate a token for the UASAL development guide builder app
+        id: generate-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
     
-      # - name: Deploy to GitHub Pages
-      #   uses: peaceiris/actions-gh-pages@v4
-      #   if: github.ref == 'refs/heads/main'
-      #   with:
-      #     github_token: ${{ steps.generate-token.outputs.token }}
-      #     publish_dir: build/html
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ steps.generate-token.outputs.token }}
+          publish_dir: build/html
