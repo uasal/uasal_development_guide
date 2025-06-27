@@ -3,7 +3,7 @@ name: Deploy Sphinx Docs to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - istefan/generate_pdf
   pull_request:
     types: [opened,reopened,edited,synchronize]
 
@@ -20,7 +20,18 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
+      - name: Install dependencies for PDF build
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+          texlive-latex-recommended \
+          texlive-fonts-recommended \
+          texlive-fonts-extra \
+          tex-gyre \
+          texlive-latex-extra \
+          latexmk
+
+      - name: Install sphix and dependencies
         run: |
           pip install sphinx sphinx-rtd-theme ghp-import
 
@@ -32,24 +43,36 @@ jobs:
         run: |
           sphinx-build -M linkcheck ./source ./build --fail-on-warning
 
-      - name: Upload Artifacts
+      - name: Build PDF
+        run: |
+          sphinx-build -M latexpdf ./source ./build --keep-going
+
+      # - name: Upload Artifacts
+      #   uses: actions/upload-artifact@v4
+      #   if: always()
+      #   with: 
+      #     name: github-pages
+      #     path: |
+      #       build/html/*
+
+      - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         if: always()
-        with: 
-          name: github-pages
+        with:
+          name: latex-pdf
           path: |
-            build/html/*
+            build/latex/*.pdf
 
-      - name: Generate a token for the UASAL development guide builder app
-        id: generate-token
-        uses: actions/create-github-app-token@v2
-        with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+      # - name: Generate a token for the UASAL development guide builder app
+      #   id: generate-token
+      #   uses: actions/create-github-app-token@v2
+      #   with:
+      #     app-id: ${{ vars.APP_ID }}
+      #     private-key: ${{ secrets.APP_PRIVATE_KEY }}
     
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ steps.generate-token.outputs.token }}
-          publish_dir: build/html
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   if: github.ref == 'refs/heads/main'
+      #   with:
+      #     github_token: ${{ steps.generate-token.outputs.token }}
+      #     publish_dir: build/html
