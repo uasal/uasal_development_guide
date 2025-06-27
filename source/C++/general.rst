@@ -67,10 +67,11 @@ An example of a `.clang-format` file can be found `here <https://github.com/maga
 Python scripts, Markdown files, and Makefiles. Most modern IDEs and text editors support .editorconfig for enforcing these rules.
 An example of a `.editorconfig` file can be found `here <https://github.com/magao-x/MagAOX/blob/dev/.editorconfig>`__
 
-Including New Libraries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Including and Delivering New Libraries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before deciding to include a new library, it's reliability and long-term viability should first be evaluated.
+1. Evaluate Necessity and Viability
+Before deciding to include a new library, its reliability and long-term viability should first be evaluated.
 A "serious" library should demonstrate stability and a clear maintenance track record.
 This assessment helps ensure that the library can be trusted without introducing unnecessary risks to the project.
 Items to consider are:
@@ -81,7 +82,17 @@ Items to consider are:
 - Evaluate the library's performance and its impact on the project.
 - Research alternative libraries to ensure the best option is chosen.
 
-If a new library is deemed necessary, update the dependency list in the project's documentation and README installation instructions.
+2. Choosing a Delivery Method
+Next we need to decide whether to rely on the operating-system's package manager or to vendor/bundle it in our repository (including its source in our repository or maintaining our own fork/copy of it and building it as part of our build process):
+
+In general:
+- O/S libraries:
+    - **Prefer O/S-managed packages** whenever the version and build options in our target distributions meet our needs. This approach simplifies our repository and build process. Ensure that the exact package name and minimum version required are captured in the version-specific "configure_ubuntu" bash file or architecture-specific "conda_env_pinned" yaml file.
+    - Vendor or bundle an O/S library when the O/S packages are missing, out of date, or built without the flags and optimizations we require (for example, OpenBLAS). In these cases, include a bash script with the specific build steps that use an exact source and version for the package. Include this in the project's build process so the library compiles automatically with the rest of the project.
+- non-O/S libraries:
+    -  **Always** bundle a local copy rather than invoking `git clone` at build time. This guarantees reproducibility even if the upstream repo changes or disappears.
+
+When introducing a new library, make sure to update the dependency list in the project's documentation and README installation instructions.
 
 Comments and Documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
