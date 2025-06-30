@@ -87,9 +87,12 @@ Next we need to decide whether to rely on the operating-system's package manager
 
 In general:
 - O/S libraries:
+
     - **Prefer O/S-managed packages** whenever the version and build options in our target distributions meet our needs. This approach simplifies our repository and build process. Ensure that the exact package name and minimum version required are captured in the version-specific "configure_ubuntu" bash file or architecture-specific "conda_env_pinned" yaml file.
     - Vendor or bundle an O/S library when the O/S packages are missing, out of date, or built without the flags and optimizations we require (for example, OpenBLAS). In these cases, include a bash script with the specific build steps that use an exact source and version for the package. Include this in the project's build process so the library compiles automatically with the rest of the project.
+
 - non-O/S libraries:
+
     -  **Always** bundle a local copy rather than invoking `git clone` at build time. This guarantees reproducibility even if the upstream repo changes or disappears.
 
 When introducing a new library, make sure to update the dependency list in the project's documentation and README installation instructions.
