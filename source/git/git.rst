@@ -2,7 +2,7 @@ Git
 ==============================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    git-flow-guide
    pull_request_checklist

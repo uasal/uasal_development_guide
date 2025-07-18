@@ -2,7 +2,7 @@ Python
 ==============================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    general
    python_package_creation

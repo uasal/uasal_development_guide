@@ -12,7 +12,6 @@ Note that much of this stems from the space instrumentation and space observator
 
 
 .. toctree::
-   :titlesonly: 
    :glob:
    
    general
