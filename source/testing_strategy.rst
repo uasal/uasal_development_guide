@@ -60,12 +60,12 @@ Scientific algorithms are exercised against abstract-hardware models. Tests run 
 Ground-Copy System Testing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A complete physical replica of flight software and hardware interfaces supports on-site troubleshooting.
+A complete physical replica of flight software and hardware interfaces, network-isolated from live systems, supports on-site troubleshooting.
 
 Test Environments and Infrastructure
 -------------------------------------
 
 We leverage both cloud-based CI runners and dedicated hardware to ensure consistency and realism:
 
-- Continuous Integration (GitHub Actions / GitLab CI) executes builds, unit and integration tests, static analysis, and coverage reporting on every commit.
-- A physical ground-copy hardware unit, network-isolated from live systems, enables hands-on validation and troubleshooting of mission operations.
+- Continuous Integration (GitHub Actions / GitLab CI) executes unit tests on every commit, as well as integration tests, regression test, static analysis, and coverage reporting on every pull request.
+- A physical ground-copy hardware unit enables hands-on validation and troubleshooting of mission operations.
