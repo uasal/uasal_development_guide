@@ -9,14 +9,19 @@ is applicable to any C++ code development within UASAL more generally.
 
 Doxygen Overview
 -----------------
+
 What is Doxygen?
 ~~~~~~~~~~~~~~~~~
+
 Doxygen is a documentation generator for C++, C, and other programming languages.
+
 Doxygen allows developers to write structured comments directly in the code, which can then be processed to produce hosted HTML API documentation.
+
 It extracts specially formatted comments from the source code and generates documentation in various formats.
 
 Why Use Doxygen?
 ~~~~~~~~~~~~~~~~~
+
 **Consistency**: Ensures all code is documented in a uniform manner.
 **Ease of Use**: Allows developers to write documentation alongside the code.
 **Automation**: Automatically generates documentation from comments, reducing manual effort.
@@ -26,6 +31,7 @@ Documentation and Comment Style
 
 General Guidelines
 ~~~~~~~~~~~~~~~~~~~~
+
 - Use Doxygen-style comments for all files, classes and methods.
 - Write comments intended to be included in the documentation and capture the code API in the Javadoc style:
 
@@ -48,8 +54,10 @@ General Guidelines
 
 File-Level Documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Every file must include the project-specific abridged license statement at the top of the file, 
 followed by a header comment at the top with the following information:
+
 - **File Name**: Use ``\file`` to specify the file name.
 - **Brief Description**: Use ``\brief`` to describe the purpose of the file.
 - **Author**: Use ``\author``  to include the name and email of the authors.
@@ -88,7 +96,9 @@ Example:
 
 Class Documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Each class should be preceded by a comment block consisting of:
+
 1. a concise (ideally single-line) description formatted in a ``\\\`` comment style 
 2. a Javadoc-style comment block that provides further details on the class's functionality, usage, and any special considerations.
 
@@ -116,6 +126,7 @@ Example:
 
 Member Variables Documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Document all member variables with inline comments marked with ``///<`` to describe the variable's purpose.
 
 Example:
@@ -128,7 +139,9 @@ Example:
 
 Function Documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Each function should be preceded by a comment block consisting of:
+
 1. a concise (ideally single-line) description formatted in a ``\\\`` comment style 
 2. a Javadoc-style comment block that includes:
 
@@ -162,15 +175,19 @@ Grouping and Organization
 
 Topics
 ^^^^^^^^
+
 Files, classes, structures etc. can be organized into logical groups, called **topics**, 
 making the documentation easier to navigate.
+
 For example, all application-related files are grouped under the ``apps`` topic and each application 
 defines its own topic and subtopics (e.g. ``streamWriter`` and ``streamWriter_files``).
 
 Groups are defined using the ``\defgroup`` command, typically as the first thing after opening the namespace.
 Each group is given a unique name and a brief description.
 Groups can be nested to create subcategories within a larger topic.
+
 Items (files, classes, structures, functions etc.) are added to groups using the ``\ingroup`` command.
+
 The ``\ingroup`` command is placed in the Doxygen comment block of the item being added.
 
 .. code-block:: c++
@@ -187,6 +204,7 @@ The ``\ingroup`` command is placed in the Doxygen comment block of the item bein
 
 Member Groups
 ^^^^^^^^^^^^^^^
+
 Group related functions and variables within a member list using the ``\name`` and ``|@{/@}`` tags.
 Also include a brief description of the member group.
 
@@ -216,12 +234,15 @@ Example:
 
 Special Tags
 ~~~~~~~~~~~~~
+
 Todo Items
 ^^^^^^^^^^^
+
 Highlight areas for improvement or future work using the ``\todo`` command in comment blocks or inline comments.
 
 Code Examples
 ^^^^^^^^^^^^^^
+
 In the entity's coment block, include code examples using ``\code`` and ``\endcode``.
 
 Example

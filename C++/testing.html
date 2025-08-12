@@ -88,7 +88,7 @@ is applicable to any C++ code development within UASAL more generally.</p>
 <p>There are many resources that cover testing in general and test writing in C++ in particular, so this
 document is not intended as an introduction to testing, but it will highlight several basic concepts
 in order to establish a common language and starting point. To skip this and refer only to the specific guidelines
-for writing tests, refer to the Guidelines section below.</p>
+for writing tests, refer to the <a class="reference internal" href="#guidelines"><span class="std std-ref">Guidelines</span></a> section below.</p>
 <section id="testing-primer">
 <h2>Testing primer<a class="headerlink" href="#testing-primer" title="Link to this heading"></a></h2>
 <section id="what-is-the-point-of-testing">
@@ -150,10 +150,10 @@ To isolate units under test, replace real dependencies with test doubles:</p>
 <h3>Test automation and Continuous Integration<a class="headerlink" href="#test-automation-and-continuous-integration" title="Link to this heading"></a></h3>
 <p>Manual testing is error-prone and slow.
 A robust project automatically compiles and executes the entire test suite with a single command.
-This can be done locally or integrated into a Continuous Integration (CI) pipeline, such that every change to the codebase triggers a full test run.
-CI systems such as GitHub Actions, or GitLab CI pick up every pushed change,
-run the full test suite, collect coverage reports, and enforce coverage thresholds before allowing new code to merge.
-Regression testing is baked into this pipeline: every time a previously passing test fails,
+This can be done locally or integrated into a Continuous Integration (CI) pipeline, such that every change to the codebase triggers a full test run.</p>
+<p>CI systems such as GitHub Actions, or GitLab CI pick up every pushed change,
+run the full test suite, collect coverage reports, and enforce coverage thresholds before allowing new code to merge.</p>
+<p>Regression testing is baked into this pipeline: every time a previously passing test fails,
 the CI issues an alert, ensuring new changes do not allow old bugs from creeping back.</p>
 </section>
 </section>

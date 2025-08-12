@@ -60,21 +60,21 @@ Auto-formatting Tools
 To ensure consistent formatting across the codebase, the use of auto-formatting tools is strongly encouraged.
 Integrating these tools into your workflow, reduces manual formatting effort and ensures that the project's style guidelines
 are consistently implemented. For C++ projects ``clang-format`` is recommended and for multiple-language projects, ``.editorconfig``.
-- `clang-format <https://clang.llvm.org/docs/ClangFormat.html>`__: A ``.clang-format`` file defines the project's formatting rules for C++ files. 
-``clang-format`` can be used either through your IDE of choice or the command line.
-An example of a `.clang-format` file can be found `here <https://github.com/magao-x/MagAOX/blob/dev/.clang-format>`__
-- `.editorconfig <https://editorconfig.org/>`__: An `.editorconfig` file provides additional rules for general text files, 
-Python scripts, Markdown files, and Makefiles. Most modern IDEs and text editors support .editorconfig for enforcing these rules.
-An example of a `.editorconfig` file can be found `here <https://github.com/magao-x/MagAOX/blob/dev/.editorconfig>`__
+
+- `clang-format <https://clang.llvm.org/docs/ClangFormat.html>`__: A ``.clang-format`` file defines the project's formatting rules for C++ files. ``clang-format`` can be used either through your IDE of choice or the command line. An example of a `.clang-format` file can be found `here <https://github.com/magao-x/MagAOX/blob/dev/.clang-format>`__
+- `.editorconfig <https://editorconfig.org/>`__: An `.editorconfig` file provides additional rules for general text files, Python scripts, Markdown files, and Makefiles. Most modern IDEs and text editors support .editorconfig for enforcing these rules. An example of a `.editorconfig` file can be found `here <https://github.com/magao-x/MagAOX/blob/dev/.editorconfig>`__
 
 Including and Delivering New Libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Evaluate Necessity and Viability
+
 Before deciding to include a new library, its reliability and long-term viability should first be evaluated.
+
 A "serious" library should demonstrate stability and a clear maintenance track record.
 This assessment helps ensure that the library can be trusted without introducing unnecessary risks to the project.
 Items to consider are:
+
 - Ensure the library addresses a specific problem that cannot be addressed with existing code or libraries.
 - Ensure the library is compatible with the project's licensing.
 - Assess how frequently the library is updated and maintained.
@@ -83,9 +83,11 @@ Items to consider are:
 - Research alternative libraries to ensure the best option is chosen.
 
 2. Choosing a Delivery Method
+
 Next we need to decide whether to rely on the operating-system's package manager or to vendor/bundle it in our repository (including its source in our repository or maintaining our own fork/copy of it and building it as part of our build process):
 
 In general:
+
 - O/S libraries:
 
     - **Prefer O/S-managed packages** whenever the version and build options in our target distributions meet our needs. This approach simplifies our repository and build process. Ensure that the exact package name and minimum version required are captured in the version-specific "configure_ubuntu" bash file or architecture-specific "conda_env_pinned" yaml file.
@@ -101,6 +103,7 @@ Comments and Documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For more details refer to the :doc:`Documentation <documentation>` page, but in general:
+
 - Use Markdown files (``*.md``) for high-level documentation, such as README files.
 - Use Doxygen-style comments for all files, classes and methods.
 - Use inline comments to outline logic, paying particular attention to complex logic.
@@ -108,6 +111,7 @@ For more details refer to the :doc:`Documentation <documentation>` page, but in 
 
 Error Handling
 ~~~~~~~~~~~~~~~
+
 - Use exceptions for critical errors that cannot be recovered.
 - For recoverable errors, use logging mechanisms (``log<software_error>``, ``log<text_log>`` etc.).
 - Avoid using ``assert`` in production code.
@@ -115,6 +119,7 @@ Error Handling
 Testing
 ~~~~~~~~~
 For more details refer to the :doc:`Testing <testing>` page, but in general:
+
 - Write tests for new functionality using the Catch2 framework.
 - Place test files in the app's corresponding tests directory (see the adding (a new application)[https://magao-x.org/docs/api/page_module_appadd.html] section in the API documentation).
 - Use the ``SCENARIO`` structure for Behavior-Driven Development (BDD) style tests; e.g.

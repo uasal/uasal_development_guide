@@ -90,9 +90,9 @@ is applicable to any C++ code development within UASAL more generally.</p>
 <h2>Doxygen Overview<a class="headerlink" href="#doxygen-overview" title="Link to this heading"></a></h2>
 <section id="what-is-doxygen">
 <h3>What is Doxygen?<a class="headerlink" href="#what-is-doxygen" title="Link to this heading"></a></h3>
-<p>Doxygen is a documentation generator for C++, C, and other programming languages.
-Doxygen allows developers to write structured comments directly in the code, which can then be processed to produce hosted HTML API documentation.
-It extracts specially formatted comments from the source code and generates documentation in various formats.</p>
+<p>Doxygen is a documentation generator for C++, C, and other programming languages.</p>
+<p>Doxygen allows developers to write structured comments directly in the code, which can then be processed to produce hosted HTML API documentation.</p>
+<p>It extracts specially formatted comments from the source code and generates documentation in various formats.</p>
 </section>
 <section id="why-use-doxygen">
 <h3>Why Use Doxygen?<a class="headerlink" href="#why-use-doxygen" title="Link to this heading"></a></h3>
@@ -130,11 +130,13 @@ It extracts specially formatted comments from the source code and generates docu
 <section id="file-level-documentation">
 <h3>File-Level Documentation<a class="headerlink" href="#file-level-documentation" title="Link to this heading"></a></h3>
 <p>Every file must include the project-specific abridged license statement at the top of the file,
-followed by a header comment at the top with the following information:
-- <strong>File Name</strong>: Use <code class="docutils literal notranslate"><span class="pre">\file</span></code> to specify the file name.
-- <strong>Brief Description</strong>: Use <code class="docutils literal notranslate"><span class="pre">\brief</span></code> to describe the purpose of the file.
-- <strong>Author</strong>: Use <code class="docutils literal notranslate"><span class="pre">\author</span></code>  to include the name and email of the authors.
-- <strong>Group</strong>: Use <code class="docutils literal notranslate"><span class="pre">\ingroup</span></code> to specify the group this file belongs to.</p>
+followed by a header comment at the top with the following information:</p>
+<ul class="simple">
+<li><p><strong>File Name</strong>: Use <code class="docutils literal notranslate"><span class="pre">\file</span></code> to specify the file name.</p></li>
+<li><p><strong>Brief Description</strong>: Use <code class="docutils literal notranslate"><span class="pre">\brief</span></code> to describe the purpose of the file.</p></li>
+<li><p><strong>Author</strong>: Use <code class="docutils literal notranslate"><span class="pre">\author</span></code>  to include the name and email of the authors.</p></li>
+<li><p><strong>Group</strong>: Use <code class="docutils literal notranslate"><span class="pre">\ingroup</span></code> to specify the group this file belongs to.</p></li>
+</ul>
 <p>Example:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">//***********************************************************************//</span>
 <span class="c1">// Copyright 2025 &lt;author_name&gt; (&lt;author_email&gt;)</span>
@@ -166,9 +168,11 @@ followed by a header comment at the top with the following information:
 </section>
 <section id="class-documentation">
 <h3>Class Documentation<a class="headerlink" href="#class-documentation" title="Link to this heading"></a></h3>
-<p>Each class should be preceded by a comment block consisting of:
-1. a concise (ideally single-line) description formatted in a <code class="docutils literal notranslate"><span class="pre">\\\</span></code> comment style
-2. a Javadoc-style comment block that provides further details on the class’s functionality, usage, and any special considerations.</p>
+<p>Each class should be preceded by a comment block consisting of:</p>
+<ol class="arabic simple">
+<li><p>a concise (ideally single-line) description formatted in a <code class="docutils literal notranslate"><span class="pre">\\\</span></code> comment style</p></li>
+<li><p>a Javadoc-style comment block that provides further details on the class’s functionality, usage, and any special considerations.</p></li>
+</ol>
 <p>Example:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">/// The base-class for MagAO-X applications.</span>
 <span class="cm">/**</span>
@@ -200,9 +204,10 @@ followed by a header comment at the top with the following information:
 </section>
 <section id="function-documentation">
 <h3>Function Documentation<a class="headerlink" href="#function-documentation" title="Link to this heading"></a></h3>
-<p>Each function should be preceded by a comment block consisting of:
-1. a concise (ideally single-line) description formatted in a <code class="docutils literal notranslate"><span class="pre">\\\</span></code> comment style
-2. a Javadoc-style comment block that includes:</p>
+<p>Each function should be preceded by a comment block consisting of:</p>
+<ol class="arabic">
+<li><p>a concise (ideally single-line) description formatted in a <code class="docutils literal notranslate"><span class="pre">\\\</span></code> comment style</p></li>
+<li><p>a Javadoc-style comment block that includes:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Description</strong>: a more detailed description of the function’s functionality, usage, and any special considerations.</p></li>
@@ -216,6 +221,8 @@ is optional, also add <code class="docutils literal notranslate"><span class="pr
 <li><p><strong>Return Value</strong>: a description of the return value using <code class="docutils literal notranslate"><span class="pre">\returns</span></code>.</p></li>
 </ul>
 </div></blockquote>
+</li>
+</ol>
 <p>Example:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">/// Make a log entry</span>
 <span class="cm">/** Wrapper for logManager::log</span>
@@ -237,14 +244,14 @@ is optional, also add <code class="docutils literal notranslate"><span class="pr
 <section id="topics">
 <h4>Topics<a class="headerlink" href="#topics" title="Link to this heading"></a></h4>
 <p>Files, classes, structures etc. can be organized into logical groups, called <strong>topics</strong>,
-making the documentation easier to navigate.
-For example, all application-related files are grouped under the <code class="docutils literal notranslate"><span class="pre">apps</span></code> topic and each application
+making the documentation easier to navigate.</p>
+<p>For example, all application-related files are grouped under the <code class="docutils literal notranslate"><span class="pre">apps</span></code> topic and each application
 defines its own topic and subtopics (e.g. <code class="docutils literal notranslate"><span class="pre">streamWriter</span></code> and <code class="docutils literal notranslate"><span class="pre">streamWriter_files</span></code>).</p>
 <p>Groups are defined using the <code class="docutils literal notranslate"><span class="pre">\defgroup</span></code> command, typically as the first thing after opening the namespace.
 Each group is given a unique name and a brief description.
-Groups can be nested to create subcategories within a larger topic.
-Items (files, classes, structures, functions etc.) are added to groups using the <code class="docutils literal notranslate"><span class="pre">\ingroup</span></code> command.
-The <code class="docutils literal notranslate"><span class="pre">\ingroup</span></code> command is placed in the Doxygen comment block of the item being added.</p>
+Groups can be nested to create subcategories within a larger topic.</p>
+<p>Items (files, classes, structures, functions etc.) are added to groups using the <code class="docutils literal notranslate"><span class="pre">\ingroup</span></code> command.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">\ingroup</span></code> command is placed in the Doxygen comment block of the item being added.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/** \defgroup streamWriter ImageStreamIO Stream Writing</span>
 <span class="cm">*  \brief Writes the contents of an ImageStreamIO image stream to disk.</span>
 <span class="cm">*</span>

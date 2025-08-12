@@ -152,38 +152,43 @@ Particularly relevant are the steps for adding <a class="reference external" hre
 <h3>Auto-formatting Tools<a class="headerlink" href="#auto-formatting-tools" title="Link to this heading"></a></h3>
 <p>To ensure consistent formatting across the codebase, the use of auto-formatting tools is strongly encouraged.
 Integrating these tools into your workflow, reduces manual formatting effort and ensures that the project’s style guidelines
-are consistently implemented. For C++ projects <code class="docutils literal notranslate"><span class="pre">clang-format</span></code> is recommended and for multiple-language projects, <code class="docutils literal notranslate"><span class="pre">.editorconfig</span></code>.
-- <a class="reference external" href="https://clang.llvm.org/docs/ClangFormat.html">clang-format</a>: A <code class="docutils literal notranslate"><span class="pre">.clang-format</span></code> file defines the project’s formatting rules for C++ files.
-<code class="docutils literal notranslate"><span class="pre">clang-format</span></code> can be used either through your IDE of choice or the command line.
-An example of a <cite>.clang-format</cite> file can be found <a class="reference external" href="https://github.com/magao-x/MagAOX/blob/dev/.clang-format">here</a>
-- <a class="reference external" href="https://editorconfig.org/">.editorconfig</a>: An <cite>.editorconfig</cite> file provides additional rules for general text files,
-Python scripts, Markdown files, and Makefiles. Most modern IDEs and text editors support .editorconfig for enforcing these rules.
-An example of a <cite>.editorconfig</cite> file can be found <a class="reference external" href="https://github.com/magao-x/MagAOX/blob/dev/.editorconfig">here</a></p>
+are consistently implemented. For C++ projects <code class="docutils literal notranslate"><span class="pre">clang-format</span></code> is recommended and for multiple-language projects, <code class="docutils literal notranslate"><span class="pre">.editorconfig</span></code>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://clang.llvm.org/docs/ClangFormat.html">clang-format</a>: A <code class="docutils literal notranslate"><span class="pre">.clang-format</span></code> file defines the project’s formatting rules for C++ files. <code class="docutils literal notranslate"><span class="pre">clang-format</span></code> can be used either through your IDE of choice or the command line. An example of a <cite>.clang-format</cite> file can be found <a class="reference external" href="https://github.com/magao-x/MagAOX/blob/dev/.clang-format">here</a></p></li>
+<li><p><a class="reference external" href="https://editorconfig.org/">.editorconfig</a>: An <cite>.editorconfig</cite> file provides additional rules for general text files, Python scripts, Markdown files, and Makefiles. Most modern IDEs and text editors support .editorconfig for enforcing these rules. An example of a <cite>.editorconfig</cite> file can be found <a class="reference external" href="https://github.com/magao-x/MagAOX/blob/dev/.editorconfig">here</a></p></li>
+</ul>
 </section>
 <section id="including-and-delivering-new-libraries">
 <h3>Including and Delivering New Libraries<a class="headerlink" href="#including-and-delivering-new-libraries" title="Link to this heading"></a></h3>
-<p>1. Evaluate Necessity and Viability
-Before deciding to include a new library, its reliability and long-term viability should first be evaluated.
-A “serious” library should demonstrate stability and a clear maintenance track record.
+<ol class="arabic simple">
+<li><p>Evaluate Necessity and Viability</p></li>
+</ol>
+<p>Before deciding to include a new library, its reliability and long-term viability should first be evaluated.</p>
+<p>A “serious” library should demonstrate stability and a clear maintenance track record.
 This assessment helps ensure that the library can be trusted without introducing unnecessary risks to the project.
-Items to consider are:
-- Ensure the library addresses a specific problem that cannot be addressed with existing code or libraries.
-- Ensure the library is compatible with the project’s licensing.
-- Assess how frequently the library is updated and maintained.
-- Evaluate the library’s documentation for clarity and completenss.
-- Evaluate the library’s performance and its impact on the project.
-- Research alternative libraries to ensure the best option is chosen.</p>
-<p>2. Choosing a Delivery Method
-Next we need to decide whether to rely on the operating-system’s package manager or to vendor/bundle it in our repository (including its source in our repository or maintaining our own fork/copy of it and building it as part of our build process):</p>
-<p>In general:
-- O/S libraries:</p>
+Items to consider are:</p>
+<ul class="simple">
+<li><p>Ensure the library addresses a specific problem that cannot be addressed with existing code or libraries.</p></li>
+<li><p>Ensure the library is compatible with the project’s licensing.</p></li>
+<li><p>Assess how frequently the library is updated and maintained.</p></li>
+<li><p>Evaluate the library’s documentation for clarity and completenss.</p></li>
+<li><p>Evaluate the library’s performance and its impact on the project.</p></li>
+<li><p>Research alternative libraries to ensure the best option is chosen.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Choosing a Delivery Method</p></li>
+</ol>
+<p>Next we need to decide whether to rely on the operating-system’s package manager or to vendor/bundle it in our repository (including its source in our repository or maintaining our own fork/copy of it and building it as part of our build process):</p>
+<p>In general:</p>
+<ul>
+<li><p>O/S libraries:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Prefer O/S-managed packages</strong> whenever the version and build options in our target distributions meet our needs. This approach simplifies our repository and build process. Ensure that the exact package name and minimum version required are captured in the version-specific “configure_ubuntu” bash file or architecture-specific “conda_env_pinned” yaml file.</p></li>
 <li><p>Vendor or bundle an O/S library when the O/S packages are missing, out of date, or built without the flags and optimizations we require (for example, OpenBLAS). In these cases, include a bash script with the specific build steps that use an exact source and version for the package. Include this in the project’s build process so the library compiles automatically with the rest of the project.</p></li>
 </ul>
 </div></blockquote>
-<ul>
+</li>
 <li><p>non-O/S libraries:</p>
 <blockquote>
 <div><ul class="simple">
@@ -196,11 +201,13 @@ Next we need to decide whether to rely on the operating-system’s package manag
 </section>
 <section id="comments-and-documentation">
 <h3>Comments and Documentation<a class="headerlink" href="#comments-and-documentation" title="Link to this heading"></a></h3>
-<p>For more details refer to the <a class="reference internal" href="documentation.html"><span class="doc">Documentation</span></a> page, but in general:
-- Use Markdown files (<code class="docutils literal notranslate"><span class="pre">*.md</span></code>) for high-level documentation, such as README files.
-- Use Doxygen-style comments for all files, classes and methods.
-- Use inline comments to outline logic, paying particular attention to complex logic.
-- Avoid redundant comments that merely restate the code.</p>
+<p>For more details refer to the <a class="reference internal" href="documentation.html"><span class="doc">Documentation</span></a> page, but in general:</p>
+<ul class="simple">
+<li><p>Use Markdown files (<code class="docutils literal notranslate"><span class="pre">*.md</span></code>) for high-level documentation, such as README files.</p></li>
+<li><p>Use Doxygen-style comments for all files, classes and methods.</p></li>
+<li><p>Use inline comments to outline logic, paying particular attention to complex logic.</p></li>
+<li><p>Avoid redundant comments that merely restate the code.</p></li>
+</ul>
 </section>
 <section id="error-handling">
 <h3>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h3>
@@ -212,10 +219,12 @@ Next we need to decide whether to rely on the operating-system’s package manag
 </section>
 <section id="testing">
 <h3>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h3>
-<p>For more details refer to the <a class="reference internal" href="testing.html"><span class="doc">Testing</span></a> page, but in general:
-- Write tests for new functionality using the Catch2 framework.
-- Place test files in the app’s corresponding tests directory (see the adding (a new application)[<a class="reference external" href="https://magao-x.org/docs/api/page_module_appadd.html">https://magao-x.org/docs/api/page_module_appadd.html</a>] section in the API documentation).
-- Use the <code class="docutils literal notranslate"><span class="pre">SCENARIO</span></code> structure for Behavior-Driven Development (BDD) style tests; e.g.</p>
+<p>For more details refer to the <a class="reference internal" href="testing.html"><span class="doc">Testing</span></a> page, but in general:</p>
+<ul class="simple">
+<li><p>Write tests for new functionality using the Catch2 framework.</p></li>
+<li><p>Place test files in the app’s corresponding tests directory (see the adding (a new application)[<a class="reference external" href="https://magao-x.org/docs/api/page_module_appadd.html">https://magao-x.org/docs/api/page_module_appadd.html</a>] section in the API documentation).</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">SCENARIO</span></code> structure for Behavior-Driven Development (BDD) style tests; e.g.</p></li>
+</ul>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">SCENARIO</span><span class="p">(</span><span class="s">&quot;Testing sendArray with valid inputs&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[dmCtrl]&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">GIVEN</span><span class="p">(</span><span class="s">&quot;A valid input vector and mode&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">WHEN</span><span class="p">(</span><span class="s">&quot;sendArray is called&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
