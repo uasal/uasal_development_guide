@@ -61,15 +61,8 @@ To ensure consistent formatting across the codebase, the use of auto-formatting 
 Integrating these tools into your workflow, reduces manual formatting effort and ensures that the project's style guidelines
 are consistently implemented. For C++ projects ``clang-format`` is recommended and for multiple-language projects, ``.editorconfig``.
 
-- `clang-format <https://clang.llvm.org/docs/ClangFormat.html>`__: A ``.clang-format`` file defines the project's formatting rules for C++ files. 
-``clang-format`` can be used either through your IDE of choice or the command line.
-
-An example of a `.clang-format` file can be found `here <https://github.com/magao-x/MagAOX/blob/dev/.clang-format>`__
-
-- `.editorconfig <https://editorconfig.org/>`__: An `.editorconfig` file provides additional rules for general text files, 
-Python scripts, Markdown files, and Makefiles. Most modern IDEs and text editors support .editorconfig for enforcing these rules.
-
-An example of a `.editorconfig` file can be found `here <https://github.com/magao-x/MagAOX/blob/dev/.editorconfig>`__
+- `clang-format <https://clang.llvm.org/docs/ClangFormat.html>`__: A ``.clang-format`` file defines the project's formatting rules for C++ files. ``clang-format`` can be used either through your IDE of choice or the command line. An example of a `.clang-format` file can be found `here <https://github.com/magao-x/MagAOX/blob/dev/.clang-format>`__
+- `.editorconfig <https://editorconfig.org/>`__: An `.editorconfig` file provides additional rules for general text files, Python scripts, Markdown files, and Makefiles. Most modern IDEs and text editors support .editorconfig for enforcing these rules. An example of a `.editorconfig` file can be found `here <https://github.com/magao-x/MagAOX/blob/dev/.editorconfig>`__
 
 Including and Delivering New Libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
