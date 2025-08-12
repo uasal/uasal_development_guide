@@ -16,6 +16,7 @@ Testing primer
 
 What is the point of testing?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Testing is one pillar of software validation, alongside formal verification and code review.
 In C++, hidden issues such as undefined behavior, memory leaks, and pointer errors make systematic testing essential.
 Software testing is hard because:
@@ -29,6 +30,7 @@ The goal of a tester is to find inputs and conditions that break the code, not m
 
 Test first programming
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Aspirationally, one should aim to write tests before writing the code they are testing.
 This is known as Test-Driven Development (TDD).
 TDD encourages you to think about the requirements and expected behavior of your code before implementation,
@@ -57,6 +59,7 @@ We adopt and support the GNU gcov/lcov toolchain for coverage analysis within UA
 
 Types of tests
 ~~~~~~~~~~~~~~~~~
+
 Many different types of tests exist, a ballanced test suite includes at least:
 
 - **Unit Tests**: verify single classes or functions in isolation.
@@ -82,8 +85,10 @@ Test automation and Continuous Integration
 Manual testing is error-prone and slow.
 A robust project automatically compiles and executes the entire test suite with a single command. 
 This can be done locally or integrated into a Continuous Integration (CI) pipeline, such that every change to the codebase triggers a full test run.
+
 CI systems such as GitHub Actions, or GitLab CI pick up every pushed change, 
 run the full test suite, collect coverage reports, and enforce coverage thresholds before allowing new code to merge. 
+
 Regression testing is baked into this pipeline: every time a previously passing test fails, 
 the CI issues an alert, ensuring new changes do not allow old bugs from creeping back.
 
