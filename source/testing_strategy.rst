@@ -79,7 +79,7 @@ We leverage both cloud-based CI runners and dedicated hardware to ensure consist
 
 The figure below summarizes the full CI and testing workflow, from a developer pushing a commit to on-site hardware validation.
 
-.. figure:: _static/CI-diagram.svg
+.. figure:: _static/CI-diagram.png
    :alt: CI and testing workflow
    :align: center
    :width: 100%
