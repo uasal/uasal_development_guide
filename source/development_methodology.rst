@@ -6,7 +6,7 @@ Our team employs an adaptive Agile approach tailored to the demands of a space m
 Team Structure and Roles
 --------------------------
 
-The instruments software team comprises six core members: three software developers, two software scientists, and one systems engineer.
+The instruments software team comprises seven core members: one software manager, three software developers, two software scientists, and one systems engineer.
 
 We maintain a flexible task-allocation model: individuals take on activities based on their expertise and current availability rather than rigidly defined roles. Every team member is responsible for feature design and implementation, testing, documentation, system integration, and troubleshooting support during lab operations.
 
@@ -46,13 +46,14 @@ Testing Layers
 - **Modular integration tests** verify interactions within defined subsystems (e.g. data-saving workflows, power-management workflows etc.). A list of subsystems to cover will be compiled.
 - **Regression tests** are performed end-to-end against an abstract-hardware simulation; these include the injection of fault conditions to validate error handling.
 - **Wavefront-propagation tests** combine wavefront control algorithms with abstract-hardware models, also supporting fault injection to assess robustness.
+- **Performance & benchmarking tests** allow measurement and tracking of latency, throughput and resource usage across updates and usage scenarios.
 - **A dedicated ground-copy system**, mirroring flight software and hardware interfaces, supports on-sky troubleshooting.
 
 Unit Test Coverage Targets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- libMagAOX: maintain 100 % function coverage and 90 % line coverage, with a monthly objective of increasing line coverage by 10 % until we reach the target.
-- Individual applications: classified as critical or important. 
+- XWCTk: maintain 100 % function coverage and 90 % line coverage, with a monthly objective of increasing line coverage by 10 % until we reach the target.
+- XWC Applications and libraries developed in-house or by connected groups:
 
     - Critical applications must achieve 100 % function and 90 % line coverage.
     - Important applications require 100 % function and 80 % line coverage.
@@ -71,7 +72,8 @@ Release
 ------------
 
 Development occurs on feature branches, following the branching strategy documented in the :doc:`Git-Flow Guide <git/git-flow-guide>`.
-All code merges and design documents undergo peer review with at least one reviewer required.
+
+All code merges into main / develop branches undergo peer review with at least one reviewer required. It is not required to include reviewers for merges to other branches, but it is recommended for complex features or branches used on testbeds.
 
 Risk Management 
 -----------------

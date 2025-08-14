@@ -77,6 +77,7 @@ This assessment helps ensure that the library can be trusted without introducing
 Items to consider are:
 - Ensure the library addresses a specific problem that cannot be addressed with existing code or libraries.
 - Ensure the library is compatible with the project's licensing.
+- Ensure the library has a comprehensive test suite.
 - Assess how frequently the library is updated and maintained.
 - Evaluate the library's documentation for clarity and completenss.
 - Evaluate the library's performance and its impact on the project.
