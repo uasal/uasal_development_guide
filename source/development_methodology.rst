@@ -6,7 +6,7 @@ Our team employs an adaptive Agile approach tailored to the demands of a space m
 Team Structure and Roles
 --------------------------
 
-The instruments software team comprises seven core members: one software manager, three software developers, two software scientists, and one systems engineer.
+The instruments software team comprises a software manager, software developers, software scientists, and a systems engineer.
 
 We maintain a flexible task-allocation model: individuals take on activities based on their expertise and current availability rather than rigidly defined roles. Every team member is responsible for feature design and implementation, testing, documentation, system integration, and troubleshooting support during lab operations.
 
