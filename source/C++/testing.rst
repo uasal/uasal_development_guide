@@ -124,6 +124,70 @@ Example:
     }
 
 Generating coverage analysis reports
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------
 
-Todo
+We adopt the GNU ``gcov/lcov`` toolchain for generating coverage reports and encourage automation via GitHub Actions.
+
+The workflow for generating coverage reports:
+
+- Build the code with coverage instrumentation flags (e.g., ``--coverage`` for ``gcc``) and optimizations disabled (``-O0``).
+- Initialize a fresh baseline to zero coverage counters (equivalent to removing existing ``.gcda`` files).
+- Run the full test suite to exercise the code and collect coverage data.
+- Use ``lcov`` to capture the coverage data into a ``.info`` file.
+- Filter out non-project files (e.g., system headers, third-party libraries, test-only code).
+- Generate an HTML report with ``genhtml``.
+
+Example (with dummy build and test commands):
+
+.. code-block:: bash
+
+    # Compile code and tests with coverage flags
+    make all_code
+    make all_tests
+
+    # Zero coverage counters
+    lcov --directory . --zerocounters
+
+    # Run tests to generate coverage data
+    ./run_all_tests.sh
+
+    # Capture coverage data
+    lcov --directory . --capture --output-file coverage.info
+
+    # Filter out unwanted files/dirs
+    lcov --remove coverage.info "*/apps/*/tests/*" "/usr/*" "/sys/*" "/tty/*" --output-file coverage_filtered.info
+
+    # Generate HTML report (use filtered info)
+    genhtml coverage_filtered.info --output-directory coverage_report --title "Coverage Report"
+
+This can be automated via a GitHub Action that outputs the generated HTML report as an artifact and / or publishes it to a server.
+The frequency of running coverage reports can be adjusted based on the repo's needs, 
+but a common approach is to run it on every pull request to the main branch.
+
+External code review tools (e.g. Codacy) can directly consume the ``.info`` file to display coverage metrics alongside code quality analysis, 
+or display coverage badges in the repository's README.
+
+Filtering
+~~~~~~~~~~~
+
+The step that filters out non-project files allows the reported percentages to only reflect the repo analyzed, 
+but can be omitted if a broader, system-level view is required.
+
+Typical directories that are excluded include ``/usr/*``, ``/sys/*``, ``/tty/*``, as well as the directories containing the tests themselves.
+
+This can be achieved with:
+
+.. code-block:: bash
+    
+    lcov --remove coverage.info "/usr/*" "/sys/*" "/tty/*" "*/apps/*/tests/*" --output-file coverage_filtered.info
+
+HTML report
+~~~~~~~~~~~~~
+
+The generated HTML site provides:
+
+- Overall coverage percentage for the repository (aggregate statement coverage) for both line and function coverage.
+- Per-directory and per-file coverage percentages for both line and function coverage.
+- Drill-down to header line-level views showing which lines are covered and which are not.
+
+The report makes it easy to monitor and address blind-spots in testing.

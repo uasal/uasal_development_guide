@@ -15,8 +15,9 @@ Coverage and Field-Use Metrics
 
 We maintain quantitative targets for automated tests and supplement these with operational performance indicators:
 
-- Core library (XWCTk): 100 % function coverage and a minimum of 90 % line coverage, with a monthly increase target of 10 % until the goal is met.
-- XWC Applications and libraries developed in-house or by connected groups:
+- XWCTk: 100 % function coverage and a minimum of 95 % line coverage, with a monthly increase target of 10 % until the goal is met.
+- XWC Applications: The baseline requirement is 100 % function and 95 % line coverage. Exceptions to this requirement are allowed for lines/functionalities that are difficult to target and are not considered critical, but they must be discussed, justified and documented. A risk management board will be implemented to track these exceptions.
+- Libraries developed in-house or by connected groups:
 
     - Critical apps require 100 % function and 90 % line coverage.
     - Important apps require 100 % function and 80 % line coverage.
@@ -44,14 +45,14 @@ These tests verify interactions within defined subsystems. Examples include:
 - Data-saving workflows spanning acquisition, formatting, and persistence modules
 - Power-management sequences for application startup, shutdown, and fault recovery
 
-The integration test suite should run on each pull-request to the main branch and must pass for merge approval.
+The integration test suite should be run before merging new code to the main branch and must pass for the merge to be approved.
 
 Regression Tests in Abstract-Hardware Simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 End-to-end scenarios recreate full observation sequences, with fault-injection capabilities to validate error handling.
 
-The regression test suite should run on each pull-request to the main branch and must pass for merge approval.
+The regression test suite should be run before merging new code to the main branch and must pass for the merge to be approved.
 
 Performance & benchmarking tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
