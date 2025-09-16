@@ -69,7 +69,7 @@ Scientific algorithms are exercised against abstract-hardware models. This will 
 Ground-Copy System Testing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A complete physical replica of flight software and hardware interfaces, network-isolated from live systems, supports on-site troubleshooting.
+A complete physical replica of flight software and hardware interfaces, network-isolated from live systems. Before start of mission it is used to test and validate hardware testing to validate a flight-like observation sequence with a telescope simulator and ground-segment simulator. Subsequently it supports on-site troubleshooting of operations.
 
 Test Environments and Infrastructure
 -------------------------------------
@@ -87,4 +87,4 @@ The figure below summarizes the full CI and testing workflow, from a developer p
 
    Continuous Integration and Testing workflow
 
-2. A physical ground-copy hardware unit enables hands-on validation and troubleshooting of mission operations.
+2. A physical ground-copy hardware unit enables hardware testing and validation of a flight-like observation sequence with a telescope simulator and ground-segment simulator, as well as troubleshooting of mission operations.

@@ -161,7 +161,7 @@ Example (with dummy build and test commands):
     genhtml coverage_filtered.info --output-directory coverage_report --title "Coverage Report"
 
 This can be automated via a GitHub Action that outputs the generated HTML report as an artifact and / or publishes it to a server.
-The frequency of running coverage reports can be adjusted based on the repo's needs, 
+The frequency of running coverage reports can be adjusted based on the repository's needs, 
 but a common approach is to run it on every pull request to the main branch.
 
 External code review tools (e.g. Codacy) can directly consume the ``.info`` file to display coverage metrics alongside code quality analysis, 
@@ -191,3 +191,5 @@ The generated HTML site provides:
 - Drill-down to header line-level views showing which lines are covered and which are not.
 
 The report makes it easy to monitor and address blind-spots in testing.
+
+As an example, the report for the MagAOX repository can be found here: https://magao-x.org/docs/coverage/.
