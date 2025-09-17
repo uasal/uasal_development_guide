@@ -57,19 +57,21 @@ The regression test suite should be run before merging new code to the main bran
 Performance & benchmarking tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-These tests are performed on the Ground-Copy System (see :ref:`ground-copy`) or at least equivalent computer hardware and allow measurement and tracking of latency, throughput and resource usage across updates and usage scenarios.
+These tests are performed on the Ground System (see :ref:`ground-system`) or at least equivalent computer hardware and allow measurement and tracking of latency, throughput and resource usage across updates and usage scenarios.
 
 Wavefront-Propagation Simulation Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Scientific algorithms are exercised against abstract-hardware models. This will include physical optics propagation of wavefronts with spatio-temporal aberrations based on expected system behavior, and non-linear simulators of wavefront control components. The goal is to enable testing of wavefront sensing algorithms and control loops with abstract-hardware simulations.
 
-.. _ground-copy:
+.. _ground-system:
 
-Ground-Copy System Testing
+Ground System Testing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A complete physical replica of flight software and hardware interfaces, network-isolated from live systems. Before start of mission it is used to test and validate hardware testing to validate a flight-like observation sequence with a telescope simulator and ground-segment simulator. Subsequently it supports on-site troubleshooting of operations.
+A functionally complete physical replica of flight running the full suite of flight software.
+Before start of mission it is used for harware and software testing to validate a flight-like observation sequence with a telescope simulator and ground-segment simulator.
+Subsequently it supports on-site troubleshooting of operations.
 
 Test Environments and Infrastructure
 -------------------------------------
@@ -87,4 +89,6 @@ The figure below summarizes the full CI and testing workflow, from a developer p
 
    Continuous Integration and Testing workflow
 
-2. A physical ground-copy hardware unit enables hardware testing and validation of a flight-like observation sequence with a telescope simulator and ground-segment simulator, as well as troubleshooting of mission operations.
+2. A functionally complete ground hardware unit enables software and hardware testing and validation of flight-like observation sequences with a telescope simulator and ground-segment simulator, as well as troubleshooting of mission operations.
+
+The ground system will have all the components of the flight system, presenting the same interfaces, such that the same software will be run on both systems without modification.
