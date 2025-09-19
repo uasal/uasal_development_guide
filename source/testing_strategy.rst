@@ -17,13 +17,18 @@ We maintain quantitative targets for automated tests and supplement these with o
 
 - XWCTk: 100 % function coverage and a minimum of 95 % line coverage, with a monthly increase target of 10 % until the goal is met.
 - XWC Applications: The baseline requirement is 100 % function and 95 % line coverage. Exceptions to this requirement are allowed for lines/functionalities that are difficult to target and are not considered critical, but they must be discussed, justified and documented. A risk management board will be implemented to track these exceptions.
+
+    * Critical applications require 100 % function and 90 % line coverage.
+    * Important applications require 100 % function and 80 % line coverage.
+
 - Libraries developed in-house or by connected groups:
 
-    - Critical apps require 100 % function and 90 % line coverage.
-    - Important apps require 100 % function and 80 % line coverage.
+    * Critical libraries require 100 % function and 90 % line coverage.
+    * Important libraries require 100 % function and 80 % line coverage.
 
 - On-Sky Usage:
-    - Total number of XX nights so far.
+    
+    * Total number of XX nights so far.
 
 Layered Testing Approach
 ----------------------------

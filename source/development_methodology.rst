@@ -54,10 +54,14 @@ Unit Test Coverage Targets
 
 - XWCTk: maintain 100 % function coverage and 90 % line coverage, with a monthly objective of increasing line coverage by 10 % until we reach the target.
 - XWC Applications: The baseline requirement is 100 % function and 95 % line coverage. Exceptions are allowed, but they must be discussed, justified and documented
+
+    * Critical applications require 100 % function and 90 % line coverage.
+    * Important applications require 100 % function and 80 % line coverage.
+
 - Libraries developed in-house or by connected groups:
 
-    - Critical apps require 100 % function and 90 % line coverage.
-    - Important apps require 100 % function and 80 % line coverage.
+    * Critical libraries require 100 % function and 90 % line coverage.
+    * Important libraries require 100 % function and 80 % line coverage.
 
 For comprehensive details, see the :doc:`Testing Strategy document <testing_strategy>`.
 
