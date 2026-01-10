@@ -40,7 +40,7 @@ Here, the ``notebooks`` contains jupyter notebooks. The ``src``
 directory is important to keep the name of as it makes sure that tests
 are run against the installed version of your package rather than the
 files in your package working directory, (For more details, `check
-here <https://www.pyopensci.org/python-package-guide/package-structure-code/python-package-structure.html#the-src-layout-and-testing>`__).
+here <https://www.pyopensci.org/python-package-guide/package-structure-code/python-package-structure.html>`__).
 Lastly, the ``packaged_directory`` directory can be used to contain any
 data files required for the package. To ensure the data inside can be
 found by python scripts when importing the package, check the
