@@ -150,11 +150,11 @@ Usage Limitations and recommendations
 LFS is great but there are limits. You cannot use arbitrary large files.
 There is a **total** 1 GB limit to the total memory AND bandwidth usage.
 The limits depend on your github plan and `can be found
-here <https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github>`__.
+here <https://docs.github.com/en/billing/concepts/product-billing/git-lfs>`__.
 There are also further important clarifications regarding the usage, how
 different file versions are handled and the total bandwidth usage.
 `These can be found
-here <https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-storage-and-bandwidth-usage>`__.
+here <https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage>`__.
 
 Essentially, LFS should not be used for very large files unless you have
 a billing plan. Even if you do, its worth exploring alternate options.
