@@ -191,9 +191,65 @@ the CI issues an alert, ensuring new changes do not allow old bugs from creeping
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
 <section id="generating-coverage-analysis-reports">
-<h3>Generating coverage analysis reports<a class="headerlink" href="#generating-coverage-analysis-reports" title="Link to this heading"></a></h3>
-<p>Todo</p>
+<h2>Generating coverage analysis reports<a class="headerlink" href="#generating-coverage-analysis-reports" title="Link to this heading"></a></h2>
+<p>We adopt the GNU <code class="docutils literal notranslate"><span class="pre">gcov/lcov</span></code> toolchain for generating coverage reports and encourage automation via GitHub Actions.</p>
+<p>The workflow for generating coverage reports:</p>
+<ul class="simple">
+<li><p>Build the code with coverage instrumentation flags (e.g., <code class="docutils literal notranslate"><span class="pre">--coverage</span></code> for <code class="docutils literal notranslate"><span class="pre">gcc</span></code>) and optimizations disabled (<code class="docutils literal notranslate"><span class="pre">-O0</span></code>).</p></li>
+<li><p>Initialize a fresh baseline to zero coverage counters (equivalent to removing existing <code class="docutils literal notranslate"><span class="pre">.gcda</span></code> files).</p></li>
+<li><p>Run the full test suite to exercise the code and collect coverage data.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">lcov</span></code> to capture the coverage data into a <code class="docutils literal notranslate"><span class="pre">.info</span></code> file.</p></li>
+<li><p>Filter out non-project files (e.g., system headers, third-party libraries, test-only code).</p></li>
+<li><p>Generate an HTML report with <code class="docutils literal notranslate"><span class="pre">genhtml</span></code>.</p></li>
+</ul>
+<p>Example (with dummy build and test commands):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile code and tests with coverage flags</span>
+make<span class="w"> </span>all_code
+make<span class="w"> </span>all_tests
+
+<span class="c1"># Zero coverage counters</span>
+lcov<span class="w"> </span>--directory<span class="w"> </span>.<span class="w"> </span>--zerocounters
+
+<span class="c1"># Run tests to generate coverage data</span>
+./run_all_tests.sh
+
+<span class="c1"># Capture coverage data</span>
+lcov<span class="w"> </span>--directory<span class="w"> </span>.<span class="w"> </span>--capture<span class="w"> </span>--output-file<span class="w"> </span>coverage.info
+
+<span class="c1"># Filter out unwanted files/dirs</span>
+lcov<span class="w"> </span>--remove<span class="w"> </span>coverage.info<span class="w"> </span><span class="s2">&quot;*/apps/*/tests/*&quot;</span><span class="w"> </span><span class="s2">&quot;/usr/*&quot;</span><span class="w"> </span><span class="s2">&quot;/sys/*&quot;</span><span class="w"> </span><span class="s2">&quot;/tty/*&quot;</span><span class="w"> </span>--output-file<span class="w"> </span>coverage_filtered.info
+
+<span class="c1"># Generate HTML report (use filtered info)</span>
+genhtml<span class="w"> </span>coverage_filtered.info<span class="w"> </span>--output-directory<span class="w"> </span>coverage_report<span class="w"> </span>--title<span class="w"> </span><span class="s2">&quot;Coverage Report&quot;</span>
+</pre></div>
+</div>
+<p>This can be automated via a GitHub Action that outputs the generated HTML report as an artifact and / or publishes it to a server.
+The frequency of running coverage reports can be adjusted based on the repository’s needs,
+but a common approach is to run it on every pull request to the main branch.</p>
+<p>External code review tools (e.g. Codacy) can directly consume the <code class="docutils literal notranslate"><span class="pre">.info</span></code> file to display coverage metrics alongside code quality analysis,
+or display coverage badges in the repository’s README.</p>
+<section id="filtering">
+<h3>Filtering<a class="headerlink" href="#filtering" title="Link to this heading"></a></h3>
+<p>The step that filters out non-project files allows the reported percentages to only reflect the repo analyzed,
+but can be omitted if a broader, system-level view is required.</p>
+<p>Typical directories that are excluded include <code class="docutils literal notranslate"><span class="pre">/usr/*</span></code>, <code class="docutils literal notranslate"><span class="pre">/sys/*</span></code>, <code class="docutils literal notranslate"><span class="pre">/tty/*</span></code>, as well as the directories containing the tests themselves.</p>
+<p>This can be achieved with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lcov<span class="w"> </span>--remove<span class="w"> </span>coverage.info<span class="w"> </span><span class="s2">&quot;/usr/*&quot;</span><span class="w"> </span><span class="s2">&quot;/sys/*&quot;</span><span class="w"> </span><span class="s2">&quot;/tty/*&quot;</span><span class="w"> </span><span class="s2">&quot;*/apps/*/tests/*&quot;</span><span class="w"> </span>--output-file<span class="w"> </span>coverage_filtered.info
+</pre></div>
+</div>
+</section>
+<section id="html-report">
+<h3>HTML report<a class="headerlink" href="#html-report" title="Link to this heading"></a></h3>
+<p>The generated HTML site provides:</p>
+<ul class="simple">
+<li><p>Overall coverage percentage for the repository (aggregate statement coverage) for both line and function coverage.</p></li>
+<li><p>Per-directory and per-file coverage percentages for both line and function coverage.</p></li>
+<li><p>Drill-down to header line-level views showing which lines are covered and which are not.</p></li>
+</ul>
+<p>The report makes it easy to monitor and address blind-spots in testing.</p>
+<p>As an example, the report for the MagAOX repository can be found here: <a class="reference external" href="https://magao-x.org/docs/coverage/">https://magao-x.org/docs/coverage/</a>.</p>
 </section>
 </section>
 </section>
