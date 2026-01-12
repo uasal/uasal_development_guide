@@ -173,7 +173,7 @@ branches when making/proposing changes.
 - For using the original project as a starting point that you are developing independently
 
 If more information is needed, refer to
-`Graphite <https://graphite.dev/guides/git-fork-vs-branch>`__ and a
+`Graphite <https://graphite.com/guides/git-fork-vs-branch>`__ and a
 related community post on
 `GitHub <https://github.com/orgs/community/discussions/22846>`__ for a
 breakdown between the difference between a branch and a fork and when to
