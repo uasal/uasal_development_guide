@@ -1,0 +1,20 @@
+# For github-action and pip version update checks
+version: 2
+updates:
+    # GitHub Actions
+  - package-ecosystem: "github-actions" 
+    directory: "/"
+    schedule:
+        interval: "monthly"
+    # Python Packages
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+        interval: "monthly"
+    labels:
+        - "dependencies"
+    reviewers:
+        - "sfrinaldi"
+        - "stefi07"
+    open-pull-requests-limit: 3
+    
