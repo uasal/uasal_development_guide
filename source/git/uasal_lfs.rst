@@ -67,7 +67,7 @@ Linking UASAL LFS to GitHub repo
 ---------------------------------
 
 Assuming the git lfs is installed and initialized for you account
-(e.g. ``conda install git lfs`` and ``git lfs install``)
+(e.g. ``conda install git-lfs`` and ``git lfs install``)
 
 Once you have linked your account to the UASAL LFS, an admin needs to add
 you to the relevant repositories.
